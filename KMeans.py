@@ -1,4 +1,5 @@
 import pandas as pd
+from itertools import combinations
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
@@ -6,11 +7,14 @@ class K_Means:
 
     def __init__(self, data_path):
         self.data_path = data_path
+        self.df = pd.read_csv(data_path)
+        self.df.drop('Squad', axis=1, inplace=True)
+        self.df.drop('Top Team Scorer', axis=1, inplace=True)
+        self.df.drop('Goalkeeper', axis=1, inplace=True)
 
-    
+
     def fit_model(self, features, clusters:int):
-        df = pd.read_csv(self.data_path)
-        self.X = df[features]
+        self.X = self.df[features]
         kmeans = KMeans(n_clusters=clusters)
         kmeans.fit(self.X)
         return kmeans
@@ -25,12 +29,14 @@ class K_Means:
         plt.ylabel(self.X.columns[1])
         plt.title('K-Means Clustering')
         plt.legend()
-        plt.show()
+        plt.savefig(f'Clusters/KMeans/KMeans-{self.X.columns[0]}-{self.X.columns[1]}.png')
 
 
-kmean = K_Means('./UEFA_Analisis/UEFA_Final_Data.csv')
-model = kmean.fit_model(['W', 'Pts'], 3)
-kmean.plot_results(model)
+kmean = K_Means('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+column_combinations = [['GF', 'Pts'], ['GF', 'GD'], ['GF', 'Attendance'], ['GD', 'Pts'], ['GD', 'Attendance']]
+for column in column_combinations:
+    model = kmean.fit_model(list(column), 5)
+    kmean.plot_results(model)
 
 
 
