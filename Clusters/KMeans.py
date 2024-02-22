@@ -1,5 +1,4 @@
 import pandas as pd
-from itertools import combinations
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
@@ -29,14 +28,4 @@ class K_Means:
         plt.ylabel(self.X.columns[1])
         plt.title('K-Means Clustering')
         plt.legend()
-        plt.savefig(f'Clusters/KMeans/KMeans-{self.X.columns[0]}-{self.X.columns[1]}.png')
-
-
-kmean = K_Means('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
-column_combinations = [['GF', 'Pts'], ['GF', 'GD'], ['GF', 'Attendance'], ['GD', 'Pts'], ['GD', 'Attendance']]
-for column in column_combinations:
-    model = kmean.fit_model(list(column), 5)
-    kmean.plot_results(model)
-
-
-
+        plt.savefig(f'Clusters/img/KMeans/KMeans-{self.X.columns[0]}-{self.X.columns[1]}.png')
