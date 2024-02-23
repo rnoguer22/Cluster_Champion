@@ -1,5 +1,6 @@
 from Clusters.CentroidClustering.CentroidCluster import CentroidCluster
 from Clusters.DensityClustering.DensityCluster import DensityCluster
+from Clusters.DistributionClustering.DistributionCluster import DistributionCluster
 
 
 class Lanzador:
@@ -47,3 +48,10 @@ class Lanzador:
         for column in self.column_combinations:
             model = hdbscan.fit_model(list(column))
             hdbscan.plot_results(model)
+
+    def lanzar_gmm(self):
+        print('\n ---------GMM---------')
+        gmm = DistributionCluster('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', 'gmm')
+        for column in self.column_combinations:
+            model = gmm.fit_model(list(column), 5)
+            gmm.plot_results(model)
