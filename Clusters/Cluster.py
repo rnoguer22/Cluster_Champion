@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans, MeanShift, estimate_bandwidth
+from sklearn.cluster import KMeans, MeanShift, estimate_bandwidth, MiniBatchKMeans
 
 class Cluster:
 
@@ -20,6 +20,8 @@ class Cluster:
         elif self.cluster_type == 'mean-shift':
             bandwidth = estimate_bandwidth(self.X, quantile=0.2, n_samples=500)
             model = MeanShift(bandwidth=bandwidth, bin_seeding=True)
+        elif self.cluster_type == 'minibatch':
+            model = MiniBatchKMeans(n_clusters=clusters, batch_size=10)
         else:
             raise ValueError('Invalid cluster type')
         model.fit(self.X)
