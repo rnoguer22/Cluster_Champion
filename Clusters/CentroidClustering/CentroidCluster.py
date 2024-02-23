@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans, MeanShift, estimate_bandwidth, MiniBatchKMeans
 
-class Cluster:
+class CentroidCluster:
 
     def __init__(self, data_path, cluster_type:str='kmeans'):
         self.data_path = data_path
@@ -29,6 +29,7 @@ class Cluster:
     
     
     def plot_results(self, model):
+        print(f'Obteniendo cluster {self.cluster_type} para {self.X.columns[0]} y {self.X.columns[1]}...')
         centroids = model.cluster_centers_
         plt.figure(figsize=(8, 6))
         plt.scatter(self.X.iloc[:, 0], self.X.iloc[:, 1], c=model.labels_, cmap='viridis', s=50, alpha=0.5)
@@ -37,4 +38,4 @@ class Cluster:
         plt.ylabel(self.X.columns[1])
         plt.title(f'{self.cluster_type} Clustering')
         plt.legend()
-        plt.savefig(f'Clusters/img/{self.cluster_type}/{self.cluster_type}-{self.X.columns[0]}-{self.X.columns[1]}.png')
+        plt.savefig(f'Clusters/CentroidClustering/img/{self.cluster_type}/{self.cluster_type}-{self.X.columns[0]}-{self.X.columns[1]}.png')
