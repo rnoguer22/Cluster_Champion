@@ -14,7 +14,7 @@ class DensityCluster(CentroidCluster):
     def fit_model(self, features):
         self.X = self.df[features]
         if self.cluster_type == 'dbscan':
-            model = DBSCAN(eps=0.3, min_samples=10)
+            model = DBSCAN(eps=5, min_samples=10)
         elif self.cluster_type == 'optics':
             model = OPTICS(min_samples=10, xi=0.05, min_cluster_size=0.05)
         elif self.cluster_type == 'hdbscan':
@@ -31,6 +31,9 @@ class DensityCluster(CentroidCluster):
         plt.xlabel(self.X.columns[0])
         plt.ylabel(self.X.columns[1])
         plt.title(f'{self.cluster_type} Clustering')
-        if not os.path.exists(f'Clusters/DensityClustering/img/{self.cluster_type}'):
-            os.makedirs(f'Clusters/DensityClustering/img/{self.cluster_type}')
-        plt.savefig(f'Clusters/DensityClustering/img/{self.cluster_type}/{self.cluster_type}-{self.X.columns[0]}-{self.X.columns[1]}.png')    
+        try:
+            if not os.path.exists(f'Clusters/DensityClustering/img/{self.cluster_type}'):
+                os.makedirs(f'Clusters/DensityClustering/img/{self.cluster_type}')
+            plt.savefig(f'Clusters/DensityClustering/img/{self.cluster_type}/{self.cluster_type}-{self.X.columns[0]}-{self.X.columns[1]}.png')    
+        except:
+            print('Error al guardar la imagen')
