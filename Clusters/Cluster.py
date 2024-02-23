@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans, AgglomerativeClustering
+from sklearn.cluster import KMeans, MeanShift, estimate_bandwidth
 
 class Cluster:
 
@@ -16,11 +16,12 @@ class Cluster:
     def fit_model(self, features, clusters:int=3):
         self.X = self.df[features]
         if self.cluster_type == 'kmeans':
-            if self.cluster_type == 'kmean':
-                self.cluster_type = 'kmeans'
             model = KMeans(n_clusters=clusters)
-        elif self.cluster_type == 'agglomerative':
-            model = AgglomerativeClustering(n_clusters=clusters)
+        elif self.cluster_type == 'mean-shift':
+            bandwidth = estimate_bandwidth(self.X, quantile=0.2, n_samples=500)
+            model = MeanShift(bandwidth=bandwidth, bin_seeding=True)
+        else:
+            raise ValueError('Invalid cluster type')
         model.fit(self.X)
         return model
     

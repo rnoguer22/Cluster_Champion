@@ -10,3 +10,9 @@ class Lanzador:
         for column in self.column_combinations:
             model = kmean.fit_model(list(column), 5)
             kmean.plot_results(model)
+    
+    def lanzar_mean_shift(self):
+        ms = Cluster('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', 'mean-shift')
+        for column in self.column_combinations:
+            model = ms.fit_model(list(column), 5)
+            ms.plot_results(model)
