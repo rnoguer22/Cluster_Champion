@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 from sklearn.cluster import KMeans, MeanShift, estimate_bandwidth, MiniBatchKMeans
 
 class CentroidCluster:
@@ -38,4 +39,6 @@ class CentroidCluster:
         plt.ylabel(self.X.columns[1])
         plt.title(f'{self.cluster_type} Clustering')
         plt.legend()
+        if not os.path.exists(f'Clusters/CentroidClustering/img/{self.cluster_type}'):
+            os.makedirs(f'Clusters/CentroidClustering/img/{self.cluster_type}')
         plt.savefig(f'Clusters/CentroidClustering/img/{self.cluster_type}/{self.cluster_type}-{self.X.columns[0]}-{self.X.columns[1]}.png')
