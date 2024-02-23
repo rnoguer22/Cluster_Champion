@@ -1,6 +1,7 @@
 from Clusters.CentroidClustering.CentroidCluster import CentroidCluster
 from Clusters.DensityClustering.DensityCluster import DensityCluster
 from Clusters.DistributionClustering.DistributionCluster import DistributionCluster
+from Clusters.HierarchicalClustering.HierarchicalCluster import HierarchicalCluster
 
 
 class Lanzador:
@@ -55,3 +56,10 @@ class Lanzador:
         for column in self.column_combinations:
             model = gmm.fit_model(list(column), 5)
             gmm.plot_results(model)
+    
+    def lanzar_agglomerative(self):
+        print('\n ---------Agglomerative---------')
+        agglomerative = HierarchicalCluster('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', 'agglomerative')
+        for column in self.column_combinations:
+            model = agglomerative.fit_model(list(column), 3)
+            agglomerative.plot_results(model)

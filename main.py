@@ -9,4 +9,5 @@ if __name__ == '__main__':
     #lanzador.lanzar_dbscan()
     #lanzador.lanzar_optics()
     #lanzador.lanzar_hdbscan()
-    lanzador.lanzar_gmm()
+    #lanzador.lanzar_gmm()
+    lanzador.lanzar_agglomerative()
