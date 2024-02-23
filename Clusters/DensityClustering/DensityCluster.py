@@ -14,7 +14,7 @@ class DensityCluster(CentroidCluster):
     def fit_model(self, features):
         self.X = self.df[features]
         if self.cluster_type == 'dbscan':
-            model = DBSCAN(eps=5, min_samples=10)
+            model = DBSCAN(eps=2, min_samples=10)
         elif self.cluster_type == 'optics':
             model = OPTICS(min_samples=10, xi=0.05, min_cluster_size=0.05)
         elif self.cluster_type == 'hdbscan':
