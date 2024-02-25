@@ -40,12 +40,12 @@ class Prediction2(Prediction):
         elif classifier == 'sarimax':
             model = SARIMAX(data['Rk'].values, order=(1, 1, 1), seasonal_order=(1, 1, 1, 12))
             model_fit = model.fit()
-            predictions = model_fit.forecast(steps=1)
+            predictions = model_fit.forecast(steps=32)
         else:
             raise ValueError('Invalid classifier')
 
-        #print(len(predictions))
-        #print(len(teams))
+        print(len(predictions))
+        print(len(teams))
 
         prediction_df = pd.DataFrame({'Squad':teams, 'Prediction':predictions})
         prediction_df['Prediction'] = prediction_df['Prediction'].apply(self.convert)

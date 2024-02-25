@@ -16,5 +16,5 @@ if __name__ == '__main__':
     #lanzador.lanzar_gradientboosting()
     #lanzador.lanzar_autoregressive()
     #lanzador.lanzar_exponentialsmoothing()
-    lanzador.lanzar_arima()
+    #lanzador.lanzar_arima()
     lanzador.lanzar_sarimax()
