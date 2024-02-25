@@ -33,21 +33,21 @@ class Prediction2(Prediction):
             model_fit = model.fit()
             predictions = model_fit.predict(start=len(data['Rk'])+1, end=len(data['Rk'])+len(rk))
         elif classifier == 'arima':
-            model = ARIMA(data, order=(5,1,0))
-            model_fit = model.fit(disp=0)
-            predictions = model_fit.forecast(steps=1)[0]
+            model = ARIMA(data['Rk'].values, order=(23,7,12))
+            model_fit = model.fit()
+            predictions = model_fit.forecast(steps=32)
+            print(predictions)
         elif classifier == 'sarimax':
-            model = SARIMAX(data, order=(1, 1, 1), seasonal_order=(1, 1, 1, 12))
+            model = SARIMAX(data['Rk'].values, order=(1, 1, 1), seasonal_order=(1, 1, 1, 12))
             model_fit = model.fit()
             predictions = model_fit.forecast(steps=1)
         else:
             raise ValueError('Invalid classifier')
 
-        print(len(predictions))
-        print(len(teams))
+        #print(len(predictions))
+        #print(len(teams))
 
         prediction_df = pd.DataFrame({'Squad':teams, 'Prediction':predictions})
-        print(prediction_df.head())
         prediction_df['Prediction'] = prediction_df['Prediction'].apply(self.convert)
         prediction_df.to_csv(f'./UEFA_Predictions/csv/{classifier}_Predictions.csv', index=False)
 

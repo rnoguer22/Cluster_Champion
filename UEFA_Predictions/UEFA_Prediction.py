@@ -37,8 +37,8 @@ class Prediction:
 
     #Funcion para convertir el numero de standing a la ronda de la champions
     def convert(self, standing):
-        standing = round(standing)
-        if standing == 1:
+        standing = abs(round(standing))
+        if standing == 1 or standing == 0:
             return 'GR'
         elif standing == 2:
             return 'R16'
@@ -49,4 +49,7 @@ class Prediction:
         elif standing == 5:
             return 'F'
         else:
-            return 'W'
+            if standing == 6:
+                return 'W'
+            else:
+                return self.convert(standing/10)
