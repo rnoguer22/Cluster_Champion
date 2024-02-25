@@ -3,6 +3,8 @@ from Clusters.DensityClustering.DensityCluster import DensityCluster
 from Clusters.DistributionClustering.DistributionCluster import DistributionCluster
 from Clusters.HierarchicalClustering.HierarchicalCluster import HierarchicalCluster
 
+from UEFA_Predictions.UEFA_Prediction import Prediction
+
 
 class Lanzador:
     def __init__(self):
