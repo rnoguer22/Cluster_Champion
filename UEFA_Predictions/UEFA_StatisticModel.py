@@ -5,19 +5,16 @@ from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 
 
-from UEFA_Predictions.UEFA_Prediction import Prediction
+from UEFA_Predictions.UEFA_RecursiveForecasting import RecursiveForecasting
 
 
 
-class Prediction2(Prediction):
+class StatisticModel(RecursiveForecasting):
 
     def __init__(self, data_path):
         super().__init__(data_path)
 
     def make_predictions(self, prediction_data_path, classifier):
-        X = self.df.iloc[:, 1:].values
-        y = self.df.iloc[:, 0].values
-
         data = pd.read_csv(self.data_path, encoding='utf-8')
         prediction_data = pd.read_csv(prediction_data_path, encoding='utf-8')
         data = pd.concat([data, prediction_data])

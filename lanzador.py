@@ -3,8 +3,8 @@ from Clusters.DensityClustering.DensityCluster import DensityCluster
 from Clusters.DistributionClustering.DistributionCluster import DistributionCluster
 from Clusters.HierarchicalClustering.HierarchicalCluster import HierarchicalCluster
 
-from UEFA_Predictions.UEFA_Prediction import Prediction
-from UEFA_Predictions.UEFA_Prediction2 import Prediction2
+from UEFA_Predictions.UEFA_RecursiveForecasting import RecursiveForecasting
+from UEFA_Predictions.UEFA_StatisticModel import StatisticModel
 
 
 class Lanzador:
@@ -72,30 +72,30 @@ class Lanzador:
 
     def lanzar_randomforest(self):
         print('\n ---------Random Forest---------')
-        random_forest = Prediction('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+        random_forest = RecursiveForecasting('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         random_forest.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'RandomForest')
 
     def lanzar_gradientboosting(self):
         print('\n ---------Gradient Boosting---------')
-        gradient_boosting = Prediction('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+        gradient_boosting = RecursiveForecasting('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         gradient_boosting.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'GradientBoosting')
 
     def lanzar_autoregressive(self):
         print('\n ---------Autoregressive---------')
-        autoregressive = Prediction2('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+        autoregressive = StatisticModel('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         autoregressive.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'AutoRegressive')
     
     def lanzar_exponentialsmoothing(self):
         print('\n ---------Exponential Smoothing---------')
-        exponentialsmoothing = Prediction2('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+        exponentialsmoothing = StatisticModel('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         exponentialsmoothing.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'ExponentialSmoothing')
     
     def lanzar_arima(self):
         print('\n ---------ARIMA---------')
-        arima = Prediction2('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+        arima = StatisticModel('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         arima.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'ARIMA')
     
     def lanzar_sarimax(self):
         print('\n ---------SARIMAX---------')
-        sarimax = Prediction2('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+        sarimax = StatisticModel('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         sarimax.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'SARIMAX')
