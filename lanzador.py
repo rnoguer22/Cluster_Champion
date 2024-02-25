@@ -67,6 +67,8 @@ class Lanzador:
             agglomerative.plot_results(model)
 
     
+
+    
     def lanzar_randomforest(self):
         print('\n ---------Random Forest---------')
         random_forest = Prediction('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
