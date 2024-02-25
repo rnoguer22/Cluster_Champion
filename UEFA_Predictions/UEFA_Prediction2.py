@@ -29,7 +29,7 @@ class Prediction2(Prediction):
             if classifier == 'autoregressive':
                 model = AutoReg(data['Rk'].values, lags=1)
             if classifier == 'exponentialsmoothing':
-                model = ExponentialSmoothing(data)
+                model = ExponentialSmoothing(data['Rk'].values, trend='add', seasonal='add', seasonal_periods=12)
             model_fit = model.fit()
             predictions = model_fit.predict(start=len(data['Rk'])+1, end=len(data['Rk'])+len(rk))
         elif classifier == 'arima':
