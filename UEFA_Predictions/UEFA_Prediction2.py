@@ -1,5 +1,9 @@
 import pandas as pd
 from statsmodels.tsa.ar_model import AutoReg
+from statsmodels.tsa.holtwinters import ExponentialSmoothing
+from statsmodels.tsa.arima.model import ARIMA
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+
 
 from UEFA_Predictions.UEFA_Prediction import Prediction
 
@@ -21,10 +25,24 @@ class Prediction2(Prediction):
         rk = prediction_data['Rk'].values
 
         classifier = classifier.lower()
-        if classifier == 'autoregressive':
-            model = AutoReg(data['Rk'].values, lags=1)
-        model_fit = model.fit()
-        predictions = model_fit.predict(start=len(data['Rk'])+1, end=len(data['Rk'])+len(rk))
+        if classifier == 'autoregressive' or classifier == 'exponentialsmoothing':
+            if classifier == 'autoregressive':
+                model = AutoReg(data['Rk'].values, lags=1)
+            if classifier == 'exponentialsmoothing':
+                model = ExponentialSmoothing(data)
+            model_fit = model.fit()
+            predictions = model_fit.predict(start=len(data['Rk'])+1, end=len(data['Rk'])+len(rk))
+        elif classifier == 'arima':
+            model = ARIMA(data, order=(5,1,0))
+            model_fit = model.fit(disp=0)
+            predictions = model_fit.forecast(steps=1)[0]
+        elif classifier == 'sarimax':
+            model = SARIMAX(data, order=(1, 1, 1), seasonal_order=(1, 1, 1, 12))
+            model_fit = model.fit()
+            predictions = model_fit.forecast(steps=1)
+        else:
+            raise ValueError('Invalid classifier')
+
         print(len(predictions))
         print(len(teams))
 

@@ -84,3 +84,18 @@ class Lanzador:
         print('\n ---------Autoregressive---------')
         autoregressive = Prediction2('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         autoregressive.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'AutoRegressive')
+    
+    def lanzar_exponentialsmoothing(self):
+        print('\n ---------Exponential Smoothing---------')
+        exponentialsmoothing = Prediction2('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+        exponentialsmoothing.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'ExponentialSmoothing')
+    
+    def lanzar_arima(self):
+        print('\n ---------ARIMA---------')
+        arima = Prediction2('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+        arima.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'ARIMA')
+    
+    def lanzar_sarimax(self):
+        print('\n ---------SARIMAX---------')
+        sarimax = Prediction2('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+        sarimax.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'SARIMAX')
