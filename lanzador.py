@@ -65,3 +65,14 @@ class Lanzador:
         for column in self.column_combinations:
             model = agglomerative.fit_model(list(column), 3)
             agglomerative.plot_results(model)
+
+    
+    def lanzar_randomforest(self):
+        print('\n ---------Random Forest---------')
+        random_forest = Prediction('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+        random_forest.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'RandomForest')
+
+    def lanzar_gradientboosting(self):
+        print('\n ---------Gradient Boosting---------')
+        gradient_boosting = Prediction('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+        gradient_boosting.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'GradientBoosting')

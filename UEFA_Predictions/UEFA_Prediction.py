@@ -9,22 +9,24 @@ class Prediction:
         self.data_path = data_path
         self.df = pd.read_csv(self.data_path, encoding='utf-8')
         self.df.drop(['Squad', 'id'], inplace=True, axis=1)
-    
-    
+        self.df = self.df.iloc[:, :-2]
+
+
     def make_predictions(self, prediction_data_path, classifier):
-        X = self.df.iloc[:, 9:].values
+        X = self.df.iloc[:, 1:].values
         y = self.df.iloc[:, 0].values
 
         prediction_data = pd.read_csv(prediction_data_path, encoding='utf-8')
         teams = prediction_data['Squad'].values
         prediction_data.drop(['Squad', 'id'], inplace=True, axis=1)
-        X_pred = prediction_data.iloc[:, 9:]
+        prediction_data = prediction_data.iloc[:, :-2]
+        X_pred = prediction_data.iloc[:, 1:]
 
         classifier = classifier.lower()
         if classifier == 'randomforest':
             clf = RandomForestClassifier(n_estimators=100, criterion='entropy')
         elif classifier == 'gradientboosting':
-            clf = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=1, random_state=0, loss='ls')
+            clf = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=1, random_state=0, loss='squared_error')
         clf.fit(X, y)
         y_pred = clf.predict(X_pred)
 
