@@ -22,9 +22,9 @@ class Prediction2(Prediction):
 
         classifier = classifier.lower()
         if classifier == 'autoregressive':
-            model = AutoReg(rk, lags=1)
+            model = AutoReg(data['Rk'].values, lags=1)
         model_fit = model.fit()
-        predictions = model_fit.predict(start=1, end=len(rk))
+        predictions = model_fit.predict(start=len(data['Rk'])+1, end=len(data['Rk'])+len(rk))
         print(len(predictions))
         print(len(teams))
 
