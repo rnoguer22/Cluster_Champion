@@ -15,16 +15,21 @@ class Prediction2(Prediction):
         y = self.df.iloc[:, 0].values
 
         data = pd.read_csv(self.data_path, encoding='utf-8')
-        teams = data['Squad'].values
-        data.drop(['Squad', 'id'], inplace=True, axis=1)
+        prediction_data = pd.read_csv(prediction_data_path, encoding='utf-8')
+        data = pd.concat([data, prediction_data])
+        teams = prediction_data['Squad'].values
+        rk = prediction_data['Rk'].values
 
         classifier = classifier.lower()
         if classifier == 'autoregressive':
-            model = AutoReg(data, lags=1)
+            model = AutoReg(rk, lags=1)
         model_fit = model.fit()
-        predictions = model_fit.predict(start=len(data), end=len(data))
+        predictions = model_fit.predict(start=1, end=len(rk))
+        print(len(predictions))
+        print(len(teams))
 
         prediction_df = pd.DataFrame({'Squad':teams, 'Prediction':predictions})
+        print(prediction_df.head())
         prediction_df['Prediction'] = prediction_df['Prediction'].apply(self.convert)
         prediction_df.to_csv(f'./UEFA_Predictions/csv/{classifier}_Predictions.csv', index=False)
 

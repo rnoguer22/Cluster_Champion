@@ -4,6 +4,7 @@ from Clusters.DistributionClustering.DistributionCluster import DistributionClus
 from Clusters.HierarchicalClustering.HierarchicalCluster import HierarchicalCluster
 
 from UEFA_Predictions.UEFA_Prediction import Prediction
+from UEFA_Predictions.UEFA_Prediction2 import Prediction2
 
 
 class Lanzador:
@@ -68,7 +69,7 @@ class Lanzador:
 
     
 
-    
+
     def lanzar_randomforest(self):
         print('\n ---------Random Forest---------')
         random_forest = Prediction('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
@@ -78,3 +79,8 @@ class Lanzador:
         print('\n ---------Gradient Boosting---------')
         gradient_boosting = Prediction('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         gradient_boosting.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'GradientBoosting')
+
+    def lanzar_autoregressive(self):
+        print('\n ---------Autoregressive---------')
+        autoregressive = Prediction2('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+        autoregressive.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'AutoRegressive')
