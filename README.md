@@ -18,7 +18,7 @@ Hemos seguido realizando la tarea de la champions. En esta entrega, nos hemos ce
   - [OPTICS](#optics)
   - [GMM](#gmm)
   - [Agglomerative](#agglomerative)
-- [Series Temporales](#2)
+- [Series Temporales](#serie)
 
 ---
 
@@ -75,3 +75,42 @@ Hemos realizado diferentes técnicas de clusterización, entre las que podemos d
 ![Agglomerative](https://github.com/rnoguer22/Cluster_Champion/blob/main/Clusters/HierarchicalClustering/img/agglomerative/agglomerative-GD-Attendance.png)
 
 ---
+
+## Series Temporales <a name="serie"></a>
+
+Al realizar la prediccion por series temporales, la mejor prediccion resulto ser la arima, con los siguientes resultados (aunque hay que mejorarlos ya que no son muy precisos xd)
+
+| Squad             | Prediction |
+|-------------------|------------|
+| Manchester City   | GR         |
+| Real Madrid       | GR         |
+| Bayern Munich     | GR         |
+| Porto             | R16        |
+| Inter             | F          |
+| Atlético Madrid   | GR         |
+| Arsenal           | GR         |
+| Barcelona         | R16        |
+| Lazio             | R16        |
+| Dortmund          | QF         |
+| Real Sociedad     | SF         |
+| RB Leipzig        | F          |
+| Paris S-G         | GR         |
+| Napoli            | GR         |
+| PSV Eindhoven     | GR         |
+| FC Copenhagen     | GR         |
+| Shakhtar          | R16        |
+| Milan             | R16        |
+| Lens              | R16        |
+| Feyenoord         | QF         |
+| Newcastle Utd     | QF         |
+| Galatasaray       | SF         |
+| Manchester Utd    | SF         |
+| Benfica           | F          |
+| RB Salzburg       | W          |
+| Young Boys        | GR         |
+| Braga             | GR         |
+| Celtic            | GR         |
+| Antwerp           | GR         |
+| Union Berlin      | GR         |
+| Sevilla           | GR         |
+| Red Star          | R16        |
