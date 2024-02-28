@@ -4,7 +4,6 @@ from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 
-
 from UEFA_Predictions.UEFA_RecursiveForecasting import RecursiveForecasting
 
 
@@ -13,6 +12,7 @@ class StatisticModel(RecursiveForecasting):
 
     def __init__(self, data_path):
         super().__init__(data_path)
+
 
     def make_predictions(self, prediction_data_path, classifier):
         data = pd.read_csv(self.data_path, encoding='utf-8')
@@ -41,12 +41,11 @@ class StatisticModel(RecursiveForecasting):
         else:
             raise ValueError('Invalid classifier')
 
-        print(len(predictions))
-        print(len(teams))
-
+        print(f'Obteniendo prediccion de {classifier}...')
         prediction_df = pd.DataFrame({'Squad':teams, 'Prediction':predictions})
         prediction_df['Prediction'] = prediction_df['Prediction'].apply(self.convert)
         prediction_df.to_csv(f'./UEFA_Predictions/csv/{classifier}_Predictions.csv', index=False)
+
 
     def convert(self, standing):
         return super().convert(standing)
