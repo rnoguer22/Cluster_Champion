@@ -2,6 +2,8 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
 import os
 import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
 
 
 
@@ -48,9 +50,25 @@ class Spark:
 
     def linear_regression(self, df, target):
         rows = df.shape[0]
+        #Variable dependiente
         X = list(range(1, rows+1))
-        y = df[target]
-        return X
+        try:
+            prediction = max(X) + 1
+        except:
+            prediction = 1
+        #Variable objetivo
+        y = list(map(int, df[target]))
+
+        X_train = np.array(X).reshape(-1, 1)
+        y_train = np.array(y)
+        model = LinearRegression()
+        model.fit(X_train, y_train)
+
+        # Predecir para nuevos valores de X
+        X_test = np.array([prediction]).reshape(-1, 1)  # Nuevos valores de X
+        y_pred = model.predict(X_test)
+
+        return y_pred
     
 
 print('Ejecutando...')
