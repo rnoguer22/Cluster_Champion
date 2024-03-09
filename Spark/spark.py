@@ -40,18 +40,22 @@ class Spark:
     
     def save_team(self, df, teams):
         for team in teams:
+            print(team)
             filtered_df = df.filter(col('Squad').like('%'+team+'%'))
-            output_dir = './UEFA_Analisis_CSV/Equipos/'
-            if not os.path.exists(output_dir):
-                os.makedirs(output_dir)
-                print("Carpeta creada exitosamente en: ", output_dir)
             pandas_df = filtered_df.toPandas()
+            #De esta manera nos aseguramos que el dataframe no este vacio
+            if pandas_df.shape[0] == 0:
+                print(team, ': No se encontraron datos')
+                data = pd.read_csv('./UEFA_Analisis_CSV/UEFA_Target.csv')
+                pandas_df = data[data['Squad'].str.contains(team)]
+                print(pandas_df)
             print(team, ': ', self.linear_regression(pandas_df, 'Rk'))
 
     def linear_regression(self, df, target):
         rows = df.shape[0]
         #Variable dependiente
-        X = list(range(1, rows+1))
+        X = list(range(1, rows+1))   
+        print(X)         
         try:
             prediction = max(X) + 1
         except:
