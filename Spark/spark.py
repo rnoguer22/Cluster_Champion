@@ -44,13 +44,13 @@ class Spark:
                 os.makedirs(output_dir)
                 print("Carpeta creada exitosamente en: ", output_dir)
             pandas_df = filtered_df.toPandas()
-            pandas_df.to_csv(output_dir + team + '.csv', index=False)
+            print(team, ': ', self.linear_regression(pandas_df, 'Rk'))
 
-
-
-    #Metodo para hacer una regresion lineal de los datos utilizando machine learning de spark
-    def mlregression(self):
-        pass
+    def linear_regression(self, df, target):
+        rows = df.shape[0]
+        X = list(range(1, rows+1))
+        y = df[target]
+        return X
     
 
 print('Ejecutando...')
