@@ -38,24 +38,23 @@ class Spark:
         lista_equipos = [row[col_name][:-10] for row in teams]
         return list(set(lista_equipos))
     
-    def save_team(self, df, teams):
+    def predict(self, df, teams):
+        predictions = {}
         for team in teams:
-            print(team)
             filtered_df = df.filter(col('Squad').like('%'+team+'%'))
             pandas_df = filtered_df.toPandas()
             #De esta manera nos aseguramos que el dataframe no este vacio
             if pandas_df.shape[0] == 0:
-                print(team, ': No se encontraron datos')
                 data = pd.read_csv('./UEFA_Analisis_CSV/UEFA_Target.csv')
                 pandas_df = data[data['Squad'].str.contains(team)]
-                print(pandas_df)
-            print(team, ': ', self.linear_regression(pandas_df, 'Rk'))
+            predictions[team] = self.linear_regression(pandas_df, 'Rk')
+        df_predictions = pd.DataFrame(list(predictions.items()), columns=['Squad', 'Rk'])
+        return df_predictions
 
     def linear_regression(self, df, target):
         rows = df.shape[0]
         #Variable dependiente
         X = list(range(1, rows+1))   
-        print(X)         
         try:
             prediction = max(X) + 1
         except:
@@ -71,16 +70,15 @@ class Spark:
         # Predecir para nuevos valores de X
         X_test = np.array([prediction]).reshape(-1, 1)  # Nuevos valores de X
         y_pred = model.predict(X_test)
-
-        return y_pred
+        return y_pred[0]
     
 
 print('Ejecutando...')
 spark = Spark()
 df = spark.read_file('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
 df_target = spark.read_file('./UEFA_Analisis_CSV/UEFA_Target.csv')
-
-spark.save_team(df, spark.get_teams(df_target, 'Squad'))
+teams = spark.get_teams(df_target, 'Squad')
+print(spark.predict(df, teams))
 print('\n\n\n')
 
 spark.stop()
