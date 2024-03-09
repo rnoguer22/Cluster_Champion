@@ -70,7 +70,23 @@ class Spark:
         # Predecir para nuevos valores de X
         X_test = np.array([prediction]).reshape(-1, 1)  # Nuevos valores de X
         y_pred = model.predict(X_test)
-        return y_pred[0]
+        return self.convert(round(y_pred[0]))
+    
+    def convert(self, standing):
+        standing = abs(round(standing))
+        if standing == 0:
+            return 'GR'
+        elif standing == 1:
+            return 'R16'
+        elif standing == 2:
+            return 'QF'
+        elif standing == 3:
+            return 'SF'
+        elif standing == 4:
+            return 'F'
+        elif standing == 5:
+            return 'W'
+        
     
 
 print('Ejecutando...')
@@ -78,7 +94,8 @@ spark = Spark()
 df = spark.read_file('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
 df_target = spark.read_file('./UEFA_Analisis_CSV/UEFA_Target.csv')
 teams = spark.get_teams(df_target, 'Squad')
-print(spark.predict(df, teams))
+prediction = spark.predict(df, teams)
+
 print('\n\n\n')
 
 spark.stop()
