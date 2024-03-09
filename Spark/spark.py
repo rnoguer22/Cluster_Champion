@@ -56,10 +56,9 @@ class Spark:
 print('Ejecutando...')
 spark = Spark()
 df = spark.read_file('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
-print('\n\n\n')
-spark.df.printSchema()
-print('\n')
-spark.save_team(df, spark.get_teams(df, 'Squad'))
+df_target = spark.read_file('./UEFA_Analisis_CSV/UEFA_Target.csv')
+
+spark.save_team(df, spark.get_teams(df_target, 'Squad'))
 print('\n\n\n')
 
 spark.stop()
