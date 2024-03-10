@@ -44,6 +44,7 @@ class Spark:
         return list(set(lista_equipos))
     
 
+    #Metodo para predecir el standing de los equipos en la champions
     def predict(self, df, teams):
         predictions = {}
         for team in teams:
@@ -60,6 +61,7 @@ class Spark:
         return df_predictions
 
 
+    #Metodo para aplicar una regresion lineal sobre el metodo predict
     def linear_regression(self, df, target):
         rows = df.shape[0]
         #Variable dependiente
@@ -80,6 +82,7 @@ class Spark:
         return y_pred[0]
     
 
+    #Metodo para convertir el numero de standing a la ronda de la champions
     def convert(self, dictionary):
         #Ordenamos el diccionario de manera descendente
         ordered_dict = dict(sorted(dictionary.items(), key=lambda x: x[1], reverse=True))
@@ -110,7 +113,4 @@ df = spark.read_file('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
 df_target = spark.read_file('./UEFA_Analisis_CSV/UEFA_Target.csv')
 teams = spark.get_teams(df_target, 'Squad')
 prediction = spark.predict(df, teams)
-
-print('\n\n\n')
-
 spark.stop()
