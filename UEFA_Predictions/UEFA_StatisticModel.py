@@ -33,7 +33,6 @@ class StatisticModel(RecursiveForecasting):
             model = ARIMA(data['Rk'].values, order=(23,7,12))
             model_fit = model.fit()
             predictions = model_fit.forecast(steps=32)
-            print(predictions)
         elif classifier == 'sarimax':
             model = SARIMAX(data['Rk'].values, order=(1, 1, 1), seasonal_order=(1, 1, 1, 12))
             model_fit = model.fit()

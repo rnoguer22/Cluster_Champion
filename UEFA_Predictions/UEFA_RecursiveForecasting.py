@@ -29,27 +29,31 @@ class RecursiveForecasting:
             clf = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=1, random_state=0, loss='squared_error')
         clf.fit(X, y)
         y_pred = clf.predict(X_pred)
-
-        prediction_df = pd.DataFrame({'Squad':teams, 'Prediction':y_pred})
-        prediction_df['Prediction'] = prediction_df['Prediction'].apply(self.convert)
+        prediction_dict = dict(zip(teams, y_pred))
+        sorted_prediction = self.convert(prediction_dict)
+        prediction_df = pd.DataFrame({'Squad':sorted_prediction.keys(), 'Prediction':sorted_prediction.values()})
         prediction_df.to_csv(f'./UEFA_Predictions/csv/{classifier}_Predictions.csv', index=False)
 
 
-    #Funcion para convertir el numero de standing a la ronda de la champions
-    def convert(self, standing):
-        standing = abs(round(standing))
-        if standing == 1 or standing == 0:
-            return 'GR'
-        elif standing == 2:
-            return 'R16'
-        elif standing == 3:
-            return 'QF'
-        elif standing == 4:
-            return 'SF'
-        elif standing == 5:
-            return 'F'
-        else:
-            if standing == 6:
-                return 'W'
-            else:
-                return self.convert(standing/10)
+    #Metodo para convertir el numero de standing a la ronda de la champions
+    def convert(self, dictionary):
+        #Ordenamos el diccionario de manera descendente
+        ordered_dict = dict(sorted(dictionary.items(), key=lambda x: x[1], reverse=True))
+        final_dict = {}
+        count = 0
+        for key, value in ordered_dict.items():
+            if count < 32:
+                if count == 0:
+                    final_dict[key] = 'W'
+                elif count == 1:
+                    final_dict[key] = 'F'
+                elif count <= 3:
+                    final_dict[key] = 'SF'
+                elif count <= 7:
+                    final_dict[key] = 'QF'
+                elif count <= 15:
+                    final_dict[key] = 'R16'
+                else:
+                    final_dict[key] = 'GR'
+                count += 1
+        return final_dict
