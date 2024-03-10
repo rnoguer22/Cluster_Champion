@@ -16,8 +16,8 @@ class Spark:
             .config("spark.hadoop.fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem") \
             .config("spark.hadoop.mapreduce.framework.name", "local") \
             .getOrCreate()
-    
-        
+
+
     def stop(self):
         self.spark.stop()
 
@@ -54,7 +54,8 @@ class Spark:
                 data = pd.read_csv('./UEFA_Analisis_CSV/UEFA_Target.csv')
                 pandas_df = data[data['Squad'].str.contains(team)]
             predictions[team] = self.linear_regression(pandas_df, 'Rk')
-        df_predictions = pd.DataFrame(list(predictions.items()), columns=['Squad', 'Rk'])
+        converted_pred = self.convert(predictions)
+        df_predictions = pd.DataFrame(list(converted_pred.items()), columns=['Squad', 'Rk'])
         df_predictions.to_csv('./UEFA_Predictions/csv/LinearRegression_Predictions.csv', index=False)
         return df_predictions
 
@@ -76,23 +77,30 @@ class Spark:
         #Predecimos para nuevos valores de X
         X_test = np.array([prediction]).reshape(-1, 1)
         y_pred = model.predict(X_test)
-        return self.convert(round(y_pred[0]))
+        return y_pred[0]
     
 
-    def convert(self, standing):
-        standing = abs(round(standing))
-        if standing == 0:
-            return 'GR'
-        elif standing == 1:
-            return 'R16'
-        elif standing == 2:
-            return 'QF'
-        elif standing == 3:
-            return 'SF'
-        elif standing == 4:
-            return 'F'
-        elif standing == 5:
-            return 'W'
+    def convert(self, dictionary):
+        #Ordenamos el diccionario de manera descendente
+        ordered_dict = dict(sorted(dictionary.items(), key=lambda x: x[1], reverse=True))
+        final_dict = {}
+        count = 0
+        for key, value in ordered_dict.items():
+            if count < 32:
+                if count == 0:
+                    final_dict[key] = 'W'
+                elif count == 1:
+                    final_dict[key] = 'F'
+                elif count <= 3:
+                    final_dict[key] = 'SF'
+                elif count <= 7:
+                    final_dict[key] = 'QF'
+                elif count <= 15:
+                    final_dict[key] = 'R16'
+                else:
+                    final_dict[key] = 'GR'
+                count += 1
+        return final_dict
         
     
 
