@@ -41,10 +41,12 @@ class StatisticModel(RecursiveForecasting):
             raise ValueError('Invalid classifier')
 
         print(f'Obteniendo prediccion de {classifier}...')
-        prediction_df = pd.DataFrame({'Squad':teams, 'Prediction':predictions})
-        prediction_df['Prediction'] = prediction_df['Prediction'].apply(self.convert)
+        prediction_dict = dict(zip(teams, predictions))
+        sorted_prediction = self.convert(prediction_dict)
+        print('\n', sorted_prediction, '\n')
+        prediction_df = pd.DataFrame({'Squad':sorted_prediction.keys(), 'Prediction':sorted_prediction.values()})
         prediction_df.to_csv(f'./UEFA_Predictions/csv/{classifier}_Predictions.csv', index=False)
 
 
-    def convert(self, standing):
-        return super().convert(standing)
+    def convert(self, dictionary):
+        return super().convert(dictionary)
