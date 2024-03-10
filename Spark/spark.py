@@ -104,15 +104,3 @@ class Spark:
                     final_dict[key] = 'GR'
                 count += 1
         return final_dict
-    
-
-    
-    
-
-print('Ejecutando...')
-spark = Spark()
-df = spark.read_file('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
-df_target = spark.read_file('./UEFA_Analisis_CSV/UEFA_Target.csv')
-teams = spark.get_teams(df_target, 'Squad')
-prediction = spark.predict(df, teams)
-spark.stop()

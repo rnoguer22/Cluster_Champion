@@ -5,6 +5,7 @@ from Clusters.HierarchicalClustering.HierarchicalCluster import HierarchicalClus
 
 from UEFA_Predictions.UEFA_RecursiveForecasting import RecursiveForecasting
 from UEFA_Predictions.UEFA_StatisticModel import StatisticModel
+from Spark.spark import Spark
 
 
 class Lanzador:
@@ -99,3 +100,35 @@ class Lanzador:
         print('\n ---------SARIMAX---------')
         sarimax = StatisticModel('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         sarimax.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'SARIMAX')
+    
+
+
+
+    def lanzar_linear_regression(self):
+        print('\n ---------Linear Regression with PySpark---------')
+        print('Launching PySpark...')
+        spark = Spark()
+        df = spark.read_file('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+        df_target = spark.read_file('./UEFA_Analisis_CSV/UEFA_Target.csv')
+        teams = spark.get_teams(df_target, 'Squad')
+        spark.predict(df, teams)
+        spark.stop()
+
+    def launch_all(self):
+        self.lanzar_kmeans()
+        self.lanzar_mean_shift()
+        self.lanzar_minibatch()
+        self.lanzar_dbscan()
+        self.lanzar_optics()
+        self.lanzar_hdbscan()
+        self.lanzar_gmm()
+        self.lanzar_agglomerative()
+
+        self.lanzar_randomforest()
+        self.lanzar_gradientboosting()
+        self.lanzar_autoregressive()
+        self.lanzar_exponentialsmoothing()
+        self.lanzar_arima()
+        self.lanzar_sarimax()
+        
+        self.lanzar_linear_regression()
