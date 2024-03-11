@@ -115,6 +115,7 @@ class Lanzador:
         spark.stop()
 
     def launch_all(self):
+        '''
         self.lanzar_kmeans()
         self.lanzar_mean_shift()
         self.lanzar_minibatch()
@@ -126,9 +127,10 @@ class Lanzador:
 
         self.lanzar_randomforest()
         self.lanzar_gradientboosting()
+        '''
         self.lanzar_autoregressive()
         self.lanzar_exponentialsmoothing()
         self.lanzar_arima()
         self.lanzar_sarimax()
         
-        self.lanzar_linear_regression()
+        #self.lanzar_linear_regression()

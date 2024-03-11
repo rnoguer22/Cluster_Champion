@@ -17,8 +17,11 @@ class StatisticModel(RecursiveForecasting):
     def make_predictions(self, prediction_data_path, classifier):
         data = pd.read_csv(self.data_path, encoding='utf-8')
         prediction_data = pd.read_csv(prediction_data_path, encoding='utf-8')
-        data = pd.concat([data, prediction_data])
+        predictioon_data_rk_1 = prediction_data[prediction_data['Rk'] == 1]
+        prediction_data = prediction_data[prediction_data['Rk'] != 1]
+        data = pd.concat([data, prediction_data, predictioon_data_rk_1])
         teams = prediction_data['Squad'].values
+        teams_1 = predictioon_data_rk_1['Squad'].values
         rk = prediction_data['Rk'].values
 
         classifier = classifier.lower()
@@ -42,7 +45,11 @@ class StatisticModel(RecursiveForecasting):
 
         print(f'Obteniendo prediccion de {classifier}...')
         prediction_dict = dict(zip(teams, predictions))
+        print('\n', len(prediction_dict))
         sorted_prediction = self.convert(prediction_dict)
+        for team1 in teams_1:
+            sorted_prediction.update({team1: 'GR'})
+        print('\n', len(sorted_prediction))
         prediction_df = pd.DataFrame({'Squad':sorted_prediction.keys(), 'Prediction':sorted_prediction.values()})
         prediction_df.to_csv(f'./UEFA_Predictions/csv/{classifier}_Predictions.csv', index=False)
 
