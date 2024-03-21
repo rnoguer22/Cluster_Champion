@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import os
 
 
 
@@ -29,21 +30,24 @@ class ScrapPlayers:
             for row in table.find_all('tr')[1:]:
                 row_data = [cell.get_text(strip=True) for cell in row.find_all(['td', 'th'])]
                 data.append(row_data)
-            return headers, data
+            #Devolvemos un dataframe con el contenido
+            return pd.DataFrame(data, columns=headers, index=None)
         else:
             print("No se encontró la tabla con la clase 'ctr-stadistics-header__table'")
-            return [], []
+            return pd.DataFrame()
+    
+
+    def save_csv(self, df, path):
+        #Verficamos si la carpeta existe, si no la creamos
+        folder = '/'.join(path.split('/')[:-1])
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+            print('Carpeta ', folder, ' creada correctamente')
+        df.to_csv(path, index=False)
 
         
 
-players = ScrapPlayers('https://www.mediotiempo.com/futbol/champions-league/goleadores')
-html = players.get_html()
-
-# Llama a la función get_table y almacena los datos de la tabla y los encabezados
-encabezados, datos = players.get_table(html)
-
-# Crear un DataFrame de Pandas
-df = pd.DataFrame(datos, columns=encabezados, index=None)
-
-# Guardar el DataFrame en un archivo CSV
-print(df)
+goleadores = ScrapPlayers('https://www.mediotiempo.com/futbol/champions-league/goleadores')
+html = goleadores.get_html()
+df = goleadores.get_table(html)
+goleadores.save_csv(df, 'Web_Scrapping/Players_csv/goleadores.csv')
