@@ -7,6 +7,8 @@ from UEFA_Predictions.UEFA_RecursiveForecasting import RecursiveForecasting
 from UEFA_Predictions.UEFA_StatisticModel import StatisticModel
 from Spark.spark import Spark
 
+from Web_Scrapping.scrap_players import ScrapPlayers
+
 
 class Lanzador:
     def __init__(self):
@@ -68,8 +70,6 @@ class Lanzador:
             model = agglomerative.fit_model(list(column), 3)
             agglomerative.plot_results(model)
 
-    
-
 
     def lanzar_randomforest(self):
         print('\n ---------Random Forest---------')
@@ -100,9 +100,6 @@ class Lanzador:
         print('\n ---------SARIMAX---------')
         sarimax = StatisticModel('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         sarimax.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'SARIMAX')
-    
-
-
 
     def lanzar_linear_regression(self):
         print('\n ---------Linear Regression with PySpark---------')
@@ -113,6 +110,30 @@ class Lanzador:
         teams = spark.get_teams(df_target, 'Squad')
         spark.predict(df, teams)
         spark.stop()
+
+
+    def lanzar_scrap_players(self):
+        print('Haciendo scrapping de los goleadores...')
+        goleadores = ScrapPlayers('https://www.mediotiempo.com/futbol/champions-league/goleadores')
+        html = goleadores.get_html()
+        df = goleadores.get_table(html)
+        goleadores.save_csv(df, 'Web_Scrapping/Players_csv/goleadores.csv')
+
+    def lanzar_scrap_pass(self):
+        print('Haciendo scrapping de los pasadores...')
+        goleadores = ScrapPlayers('https://www.mediotiempo.com/futbol/champions-league/pasadores')
+        html = goleadores.get_html()
+        df = goleadores.get_table(html)
+        goleadores.save_csv(df, 'Web_Scrapping/Players_csv/pasadores.csv')
+
+    def lanzar_scrap_gks(self):
+        print('Haciendo scrapping de los porteros...')
+        porteros = ScrapPlayers('https://www.mediotiempo.com/futbol/champions-league/porteros')
+        html = porteros.get_html()
+        df = porteros.get_table(html)
+        porteros.save_csv(df, 'Web_Scrapping/Players_csv/porteros.csv')
+
+
 
     def launch_all(self):
         '''

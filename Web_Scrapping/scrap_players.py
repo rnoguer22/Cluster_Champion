@@ -44,10 +44,3 @@ class ScrapPlayers:
             os.makedirs(folder)
             print('Carpeta ', folder, ' creada correctamente')
         df.to_csv(path, index=False)
-
-        
-
-goleadores = ScrapPlayers('https://www.mediotiempo.com/futbol/champions-league/goleadores')
-html = goleadores.get_html()
-df = goleadores.get_table(html)
-goleadores.save_csv(df, 'Web_Scrapping/Players_csv/goleadores.csv')
