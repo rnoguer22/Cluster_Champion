@@ -85,9 +85,12 @@ class Spark:
 
         #Añadimos un pequeño coeficiente según el desempeño del goleador de cada equipo en las champions anteriores
         for jugador in df_coef_players['Jugadores']:
-            if df['Top Team Scorer'].iloc[-1][:-1] == jugador:
-                coef_player = df_coef_players.loc[df_coef_players['Jugadores'] == jugador, 'pred'].iloc[0]
-                y_pred[0] += coef_player
+            players = df['Top Team Scorer'].iloc[-1][:-1]
+            for player in players.split(','):
+                player = player.replace('...', '')
+                if player == jugador:
+                    coef_player = df_coef_players.loc[df_coef_players['Jugadores'] == jugador, 'pred'].iloc[0]
+                    y_pred[0] += coef_player
         return y_pred[0]
     
 
