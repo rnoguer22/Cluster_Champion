@@ -37,15 +37,17 @@ class Spark:
         return self.spark.sql(query).show()
     
 
-    #Metodo para obtener una lista con los equipos de la champions
+    #Metodo para obtener una lista con los equipos de la champions, y el coeficiente de cada jugador
     def get_teams(self, df, col_name):
         teams = df.select(col_name).distinct().collect()
         lista_equipos = [row[col_name][:-10] for row in teams]
-        return list(set(lista_equipos))
+        equipos = list(set(lista_equipos))
+        df_coef_players = self.predict_player('./Web_Scrapping/Players_csv/goleadores.csv')
+        return equipos, df_coef_players
     
 
     #Metodo para predecir el standing de los equipos en la champions
-    def predict(self, df, teams):
+    def predict(self, df, teams, df_coef_players):
         predictions = {}
         for team in teams:
             filtered_df = df.filter(col('Squad').like('%'+team+'%'))
@@ -54,7 +56,7 @@ class Spark:
             if pandas_df.shape[0] == 0:
                 data = pd.read_csv('./UEFA_Analisis_CSV/UEFA_Target.csv')
                 pandas_df = data[data['Squad'].str.contains(team)]
-            predictions[team] = self.linear_regression(pandas_df, 'Rk')
+            predictions[team] = self.linear_regression(pandas_df, 'Rk', df_coef_players)
         print(predictions)
         converted_pred = self.convert(predictions)
         df_predictions = pd.DataFrame(list(converted_pred.items()), columns=['Squad', 'Rk'])
@@ -63,7 +65,7 @@ class Spark:
 
 
     #Metodo para aplicar una regresion lineal sobre el metodo predict
-    def linear_regression(self, df, target):
+    def linear_regression(self, df, target, df_coef_players):
         rows = df.shape[0]
         #Variable dependiente
         X = list(range(1, rows+1))   
@@ -80,6 +82,12 @@ class Spark:
         #Predecimos para nuevos valores de X
         X_test = np.array([prediction]).reshape(-1, 1)
         y_pred = model.predict(X_test)
+
+        print('\n\n\n', df['Top Team Scorer'], '\n\n\n')
+        for jugador in df_coef_players['Jugadores']:
+            if df['Top Team Scorer'].iloc[-1][:-1] == jugador:
+                print('\n\n\n', jugador, '\n\n\n')
+        #y_pred[0] += df_coef_players
         return y_pred[0]
     
 
@@ -108,12 +116,26 @@ class Spark:
     
 
     #Metodo para calcular un coeficiente para cada jugador, y posteriormente añadirlo a los coeficientes de regresion del equipo
-    def predict_player(self, path, type_):  
+    def predict_player(self, path):  
         df = pd.read_csv(path)
+        type_ = path.split('/')[-1][:-4]
+
         if type_ == 'goleadores':
-            
+            ga = df['GA'] / 10
+            gc = (10 - df['G/C']) / 10
+            df['pred'] = (ga + gc)/2
+        
+        #elif type_ == 'porteros':
+        
+        return df[['Jugadores', 'pred']]
 
-        elif type_ == 'pasadores':
 
 
-        elif type_ == 'porteros':
+print('\n ---------Linear Regression with PySpark---------')
+print('Launching PySpark...')
+spark = Spark()
+df = spark.read_file('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
+df_target = spark.read_file('./UEFA_Analisis_CSV/UEFA_Target.csv')
+teams, df_coef_players = spark.get_teams(df_target, 'Squad')
+spark.predict(df, teams, df_coef_players)
+spark.stop()

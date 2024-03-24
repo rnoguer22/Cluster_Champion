@@ -107,8 +107,8 @@ class Lanzador:
         spark = Spark()
         df = spark.read_file('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         df_target = spark.read_file('./UEFA_Analisis_CSV/UEFA_Target.csv')
-        teams = spark.get_teams(df_target, 'Squad')
-        spark.predict(df, teams)
+        teams, coef_players = spark.get_teams(df_target, 'Squad')
+        spark.predict(df, teams, coef_players)
         spark.stop()
 
 
