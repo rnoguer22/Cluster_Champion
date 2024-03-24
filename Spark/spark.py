@@ -55,6 +55,7 @@ class Spark:
                 data = pd.read_csv('./UEFA_Analisis_CSV/UEFA_Target.csv')
                 pandas_df = data[data['Squad'].str.contains(team)]
             predictions[team] = self.linear_regression(pandas_df, 'Rk')
+        print(predictions)
         converted_pred = self.convert(predictions)
         df_predictions = pd.DataFrame(list(converted_pred.items()), columns=['Squad', 'Rk'])
         df_predictions.to_csv('./UEFA_Predictions/csv/LinearRegression_Predictions.csv', index=False)
