@@ -83,11 +83,11 @@ class Spark:
         X_test = np.array([prediction]).reshape(-1, 1)
         y_pred = model.predict(X_test)
 
-        print('\n\n\n', df['Top Team Scorer'], '\n\n\n')
+        #Añadimos un pequeño coeficiente según el desempeño del goleador de cada equipo en las champions anteriores
         for jugador in df_coef_players['Jugadores']:
             if df['Top Team Scorer'].iloc[-1][:-1] == jugador:
-                print('\n\n\n', jugador, '\n\n\n')
-        #y_pred[0] += df_coef_players
+                coef_player = df_coef_players.loc[df_coef_players['Jugadores'] == jugador, 'pred'].iloc[0]
+                y_pred[0] += coef_player
         return y_pred[0]
     
 
