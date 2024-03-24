@@ -105,3 +105,15 @@ class Spark:
                     final_dict[key] = 'GR'
                 count += 1
         return final_dict
+    
+
+    #Metodo para calcular un coeficiente para cada jugador, y posteriormente añadirlo a los coeficientes de regresion del equipo
+    def predict_player(self, path, type_):  
+        df = pd.read_csv(path)
+        if type_ == 'goleadores':
+            
+
+        elif type_ == 'pasadores':
+
+
+        elif type_ == 'porteros':
