@@ -30,6 +30,7 @@ class RecursiveForecasting:
         clf.fit(X, y)
         y_pred = clf.predict(X_pred)
         prediction_dict = dict(zip(teams, y_pred))
+        print(prediction_dict)
         sorted_prediction = self.convert(prediction_dict)
         prediction_df = pd.DataFrame({'Squad':sorted_prediction.keys(), 'Prediction':sorted_prediction.values()})
         prediction_df.to_csv(f'./UEFA_Predictions/csv/{classifier}_Predictions.csv', index=False)
