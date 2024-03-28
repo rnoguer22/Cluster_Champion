@@ -155,10 +155,11 @@ class Lanzador:
         #Lanzamos los modelos de prediccion
         self.lanzar_randomforest()
         self.lanzar_gradientboosting()
-        '''
+    
         self.lanzar_autoregressive()
         self.lanzar_exponentialsmoothing()
+        '''
         self.lanzar_arima()
-        self.lanzar_sarimax()
+        #self.lanzar_sarimax()
 
         #self.lanzar_linear_regression()
