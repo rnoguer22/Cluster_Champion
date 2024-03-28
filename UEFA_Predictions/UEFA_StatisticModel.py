@@ -44,7 +44,8 @@ class StatisticModel(RecursiveForecasting):
             raise ValueError('Invalid classifier')
 
         print(f'Obteniendo prediccion de {classifier}...')
-        prediction_dict = dict(zip(teams, predictions))
+        prediction_dict = super().player_performance(prediction_data, dict(zip(teams, predictions)))
+
         print('\n', len(prediction_dict))
         sorted_prediction = self.convert(prediction_dict)
         for team1 in teams_1:

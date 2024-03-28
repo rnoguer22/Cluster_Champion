@@ -33,19 +33,16 @@ class RecursiveForecasting(Spark):
         clf.fit(X, y)
         y_pred = clf.predict(X_pred)
         prediction_dict = self.player_performance(copy_players, dict(zip(teams, y_pred)))
-        print(prediction_dict)              
-
         sorted_prediction = self.convert(prediction_dict)
-        print(sorted_prediction)
         prediction_df = pd.DataFrame({'Squad':sorted_prediction.keys(), 'Prediction':sorted_prediction.values()})
         prediction_df.to_csv(f'./UEFA_Predictions/csv/{classifier}_Predictions.csv', index=False)
 
 
+    #Metodo para hacer predicciones a cada jugador, y posteriormente añadirlo a los coeficientes de prediccion del equipo
     def player_performance(self, df_players, pred_dict):
         df_pred_players = super().predict_player('./Web_Scrapping/Players_csv/goleadores.csv')
         df_pred_gks = super().predict_player('./Web_Scrapping/Players_csv/porteros.csv')
         for team in pred_dict.keys():
-            print(team)
             #Obtenemos el coeficiente para cada goleador y lo añadimos a la prediccion del equipo
             for jugador in df_pred_players['Jugadores']:
                 players = df_players.loc[df_players['Squad'] == team]
@@ -54,7 +51,6 @@ class RecursiveForecasting(Spark):
                     player = player.replace('...', '')
                     if player == jugador:
                         coef_player = df_pred_players.loc[df_pred_players['Jugadores'] == jugador, 'pred'].iloc[0]
-                        print(jugador, coef_player)
                         pred_dict[team] += coef_player
 
             #Obtenemos el coeficiente para cada portero y lo añadimos a la prediccion del equipo
@@ -62,7 +58,6 @@ class RecursiveForecasting(Spark):
                 gk = df_players['Goalkeeper'].loc[df_players['Squad'] == team].iloc[0]
                 if gk == goalkeeper:
                     coef_gk = df_pred_gks.loc[df_pred_gks['Jugadores'] == gk, 'pred'].iloc[0]
-                    print(goalkeeper, coef_gk)
                     pred_dict[team] += coef_gk
 
         return pred_dict
