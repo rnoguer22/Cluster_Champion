@@ -42,6 +42,7 @@ class RecursiveForecasting(Spark):
 
 
     def player_performance(self, df_players, pred_dict):
+        #Obtenemos el coeficiente para cada goleador y lo añadimos a la prediccion del equipo
         df_pred_players = super().predict_player('./Web_Scrapping/Players_csv/goleadores.csv')
         for jugador in df_pred_players['Jugadores']:
             for team in pred_dict.keys():
@@ -51,10 +52,17 @@ class RecursiveForecasting(Spark):
                     player = player.replace('...', '')
                     if player == jugador:
                         coef_player = df_pred_players.loc[df_pred_players['Jugadores'] == jugador, 'pred'].iloc[0]
-                        print(team)
-                        print(player)
-                        print(coef_player)
                         pred_dict[team] += coef_player
+                        
+        #Obtenemos el coeficiente para cada portero y lo añadimos a la prediccion del equipo
+        df_pred_gks = super().predict_player('./Web_Scrapping/Players_csv/porteros.csv')
+        for jugador in df_pred_gks['Jugadores']:
+            gk = df_players['Goalkeeper'].iloc[-1]
+            if gk == jugador:
+                coef_gk = df_pred_gks.loc[df_pred_gks['Jugadores'] == gk, 'pred'].iloc[0]
+                print(jugador, coef_gk)
+                pred_dict[gk] += coef_gk
+
         return pred_dict
 
 
