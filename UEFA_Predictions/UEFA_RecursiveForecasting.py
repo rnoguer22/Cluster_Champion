@@ -42,26 +42,28 @@ class RecursiveForecasting(Spark):
 
 
     def player_performance(self, df_players, pred_dict):
-        #Obtenemos el coeficiente para cada goleador y lo añadimos a la prediccion del equipo
         df_pred_players = super().predict_player('./Web_Scrapping/Players_csv/goleadores.csv')
-        for jugador in df_pred_players['Jugadores']:
-            for team in pred_dict.keys():
+        df_pred_gks = super().predict_player('./Web_Scrapping/Players_csv/porteros.csv')
+        for team in pred_dict.keys():
+            print(team)
+            #Obtenemos el coeficiente para cada goleador y lo añadimos a la prediccion del equipo
+            for jugador in df_pred_players['Jugadores']:
                 players = df_players.loc[df_players['Squad'] == team]
                 scorer = players['Top Team Scorer'].iloc[-1][:-1]
                 for player in scorer.split(','):
                     player = player.replace('...', '')
                     if player == jugador:
                         coef_player = df_pred_players.loc[df_pred_players['Jugadores'] == jugador, 'pred'].iloc[0]
+                        print(jugador, coef_player)
                         pred_dict[team] += coef_player
-                        
-        #Obtenemos el coeficiente para cada portero y lo añadimos a la prediccion del equipo
-        df_pred_gks = super().predict_player('./Web_Scrapping/Players_csv/porteros.csv')
-        for jugador in df_pred_gks['Jugadores']:
-            gk = df_players['Goalkeeper'].iloc[-1]
-            if gk == jugador:
-                coef_gk = df_pred_gks.loc[df_pred_gks['Jugadores'] == gk, 'pred'].iloc[0]
-                print(jugador, coef_gk)
-                pred_dict[gk] += coef_gk
+
+            #Obtenemos el coeficiente para cada portero y lo añadimos a la prediccion del equipo
+            for goalkeeper in df_pred_gks['Jugadores']:
+                gk = df_players['Goalkeeper'].loc[df_players['Squad'] == team].iloc[0]
+                if gk == goalkeeper:
+                    coef_gk = df_pred_gks.loc[df_pred_gks['Jugadores'] == gk, 'pred'].iloc[0]
+                    print(goalkeeper, coef_gk)
+                    pred_dict[team] += coef_gk
 
         return pred_dict
 
