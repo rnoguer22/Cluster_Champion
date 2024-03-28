@@ -32,24 +32,31 @@ class RecursiveForecasting(Spark):
             clf = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=1, random_state=0, loss='squared_error')
         clf.fit(X, y)
         y_pred = clf.predict(X_pred)
-        self.player_performance(copy_players, teams, y_pred)
-        prediction_dict = dict(zip(teams, y_pred))
-                    
+        prediction_dict = self.player_performance(copy_players, dict(zip(teams, y_pred)))
+        print(prediction_dict)              
+
         sorted_prediction = self.convert(prediction_dict)
         print(sorted_prediction)
         prediction_df = pd.DataFrame({'Squad':sorted_prediction.keys(), 'Prediction':sorted_prediction.values()})
         prediction_df.to_csv(f'./UEFA_Predictions/csv/{classifier}_Predictions.csv', index=False)
 
 
-    def player_performance(self, df_players, teams, predictions):
-        for team in teams:
-            players = df_players.loc[df_players['Squad'] == team]
-            scorer = players['Top Team Scorer'].iloc[-1][:-1]
-            for player in scorer.split(','):
-                player = player.replace('...', '')
-                print(player)
-            print(team[:-9])
-            print('\n')
+    def player_performance(self, df_players, pred_dict):
+        df_pred_players = super().predict_player('./Web_Scrapping/Players_csv/goleadores.csv')
+        for jugador in df_pred_players['Jugadores']:
+            for team in pred_dict.keys():
+                players = df_players.loc[df_players['Squad'] == team]
+                scorer = players['Top Team Scorer'].iloc[-1][:-1]
+                for player in scorer.split(','):
+                    player = player.replace('...', '')
+                    if player == jugador:
+                        coef_player = df_pred_players.loc[df_pred_players['Jugadores'] == jugador, 'pred'].iloc[0]
+                        print(team)
+                        print(player)
+                        print(coef_player)
+                        pred_dict[team] += coef_player
+        return pred_dict
+
 
 
     #Metodo para convertir el numero de standing a la ronda de la champions
