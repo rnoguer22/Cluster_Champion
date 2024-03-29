@@ -43,6 +43,7 @@ class RecursiveForecasting(Spark):
         df_pred_players = super().predict_player('./Web_Scrapping/Players_csv/goleadores.csv')
         df_pred_gks = super().predict_player('./Web_Scrapping/Players_csv/porteros.csv')
         for team in pred_dict.keys():
+            
             #Obtenemos el coeficiente para cada goleador y lo añadimos a la prediccion del equipo
             for jugador in df_pred_players['Jugadores']:
                 players = df_players.loc[df_players['Squad'] == team]
