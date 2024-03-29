@@ -9,6 +9,8 @@ from Spark.spark import Spark
 
 from Web_Scrapping.scrap_players import ScrapPlayers
 
+from UEFA_Winrate.winrate import Winrate
+
 
 class Lanzador:
     def __init__(self):
@@ -133,6 +135,14 @@ class Lanzador:
         df = porteros.get_table(html)
         porteros.save_csv(df, 'Web_Scrapping/Players_csv/porteros.csv')
 
+    
+
+    def lanzar_winrate(self):
+        print('Calculando probabilidad de éxito para cada equipo...')
+        winrate = Winrate('./UEFA_Predictions/csv')
+        combined_df = winrate.combine_data('./UEFA_Winrate/winrate.csv')
+        return combined_df
+
 
 
     def launch_all(self):
@@ -162,4 +172,6 @@ class Lanzador:
         #self.lanzar_arima()
         #self.lanzar_sarimax()
 
-        self.lanzar_linear_regression()
+        #self.lanzar_linear_regression()
+
+        self.lanzar_winrate()
