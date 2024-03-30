@@ -24,7 +24,7 @@ class Winrate:
         score_mapping = {'W': 10, 'F': 7, 'SF': 5, 'QF': 2, 'R16': 1, 'GR': 0}
         combined_df['Score'] = combined_df['Prediction'].map(score_mapping)
         #Hallamos la probabilidad
-        team_probabilities = combined_df.groupby('Squad')['Score'].mean().sort_values(ascending=False)
+        team_probabilities = combined_df.groupby(combined_df['Squad'].str[:-10])['Score'].mean().sort_values(ascending=False)
         total_score = team_probabilities.sum()
         team_probabilities_percentage = round((team_probabilities / total_score) * 100, 2)
         #Guardamos en csv
@@ -38,7 +38,7 @@ class Winrate:
             fig, ax = plt.subplots()
             ax.bar(df_prob['Squad'], df_prob['Prediction'])
             ax.set_xlabel('Squad')
-            ax.set_ylabel('Probability (%)')
-            ax.set_title('Probability of winning for each squad')
+            ax.set_ylabel('Winrate (%)')
+            plt.xticks(rotation=45, ha='right')  # Rotar las etiquetas del eje x
             plt.savefig(path)
             plt.show()
