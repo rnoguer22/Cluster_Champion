@@ -59,7 +59,7 @@ class Spark:
                 pandas_df = data[data['Squad'].str.contains(team)]
             predictions[f'{team} 2023-2024'] = self.linear_regression(pandas_df, 'Rk', df_coef_players, df_coef_gks)
         converted_pred = self.convert(predictions)
-        df_predictions = pd.DataFrame(list(converted_pred.items()), columns=['Squad', 'Rk'])
+        df_predictions = pd.DataFrame(list(converted_pred.items()), columns=['Squad', 'Prediction'])
         df_predictions.to_csv('./UEFA_Predictions/csv/LinearRegression_Predictions.csv', index=False)
         return df_predictions
 

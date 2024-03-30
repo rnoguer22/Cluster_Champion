@@ -140,8 +140,9 @@ class Lanzador:
     def lanzar_winrate(self):
         print('Calculando probabilidad de éxito para cada equipo...')
         winrate = Winrate('./UEFA_Predictions/csv')
-        combined_df = winrate.combine_data('./UEFA_Winrate/winrate.csv')
-        return combined_df
+        combined_df = winrate.combine_data()
+        df_prob = winrate.calculate_prob(combined_df, './UEFA_Winrate/csv/winrate.csv')
+        winrate.plot_prob('./UEFA_Winrate/img/winrate.png', df_prob)
 
 
 
