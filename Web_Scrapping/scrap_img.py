@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+from unidecode import unidecode
 
 
 
@@ -10,6 +11,7 @@ class Scrap_Img:
         self.url = url
     
 
+    #Metodo para obtener el contenedor html donde se encuentran las imagenes
     def get_html(self):
         response = requests.get(self.url)
         if response.status_code == 200:
@@ -20,40 +22,47 @@ class Scrap_Img:
             print('Error al obtener el contenido de la página:', response.status_code)
 
 
+    #Metodo para obtener las etiquetas html de las imagenes que necesitamos
     def get_imgs(self, soup):
         section = soup.find('section', class_='equipos-inferior cf')
         if section:
             return section.find_all('img')
     
 
+    #Funcion para descargar cada imagen y guardarla en una carpeta con su nombre
     def save_imgs(self, output_path, img_tags):
-        # Si el directorio no existe, créalo
         if not os.path.exists(output_path):
             os.makedirs(output_path)
 
-        # Descargar cada imagen
         for img_tag in img_tags:
-            # Obtenemos la URL de la imagen desde el atributo 'data-src'
             img_url = img_tag.get('data-src')
-            # Obtenemos el nombre del equipo desde el atributo 'alt'
             alt_text = img_tag.get('alt')
             if img_url and alt_text:
-                # Eliminamos la parte común "Escudo/Bandera" del atributo 'alt'
-                team_name = alt_text.split(' ')[1] if alt_text.startswith('Escudo/Bandera') else alt_text
+                #Obtenemos el nombre del equipo
+                team_name = ' '.join(alt_text.split()[1:]) if alt_text.startswith('Escudo/Bandera') else alt_text
+                team_name = unidecode(team_name)
+                team_name = self.fix_team_name(team_name)
                 # Creamos una carpeta para el equipo si no existe
                 team_directory = os.path.join(output_path, team_name)
                 if not os.path.exists(team_directory):
                     os.makedirs(team_directory)
-                # Extraemos el nombre del archivo de la URL de la imagen
                 img_name = team_name + '.png'
-                # Escribimos el contenido de la imagen en un archivo en el directorio del equipo
+                #Descargamos la imagen y la guardamos en su carpeta correspondiente
                 with open(os.path.join(team_directory, img_name), 'wb') as f:
                     f.write(requests.get(img_url).content)
                     print(f'Imagen {img_name} del equipo {team_name} descargada exitosamente.')
+    
 
-
-url = 'https://resultados.as.com/resultados/futbol/champions/equipos/'
-scrap_img = Scrap_Img(url)
-soup = scrap_img.get_html()
-img_tags = scrap_img.get_imgs(soup)
-scrap_img.save_imgs('./Web_Scrapping/Logos_img', img_tags)
+    #Metodo para corregir los nombres de los equipos
+    def fix_team_name(self, team_name):
+        if team_name == 'Atletico':
+            team_name = 'Atlético Madrid'
+        if team_name == 'E. Roja':
+            team_name = 'Red Star'
+        if 'M.' in team_name:
+            team_name = team_name.replace('M.', 'Manchester')
+        if 'B.' in team_name:
+            team_name = team_name.replace('B.', 'Borussia')
+        if 'R.' in team_name:
+            team_name = team_name.replace('R.', 'Real')
+        return team_name

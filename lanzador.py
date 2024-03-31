@@ -8,6 +8,7 @@ from UEFA_Predictions.UEFA_StatisticModel import StatisticModel
 from Spark.spark import Spark
 
 from Web_Scrapping.scrap_players import ScrapPlayers
+from Web_Scrapping.scrap_img import Scrap_Img
 
 from UEFA_Winrate.winrate import Winrate
 
@@ -134,6 +135,13 @@ class Lanzador:
         html = porteros.get_html()
         df = porteros.get_table(html)
         porteros.save_csv(df, 'Web_Scrapping/Players_csv/porteros.csv')
+    
+    def lanzar_scrap_logos(self):
+        url = 'https://resultados.as.com/resultados/futbol/champions/equipos/'
+        scrap_img = Scrap_Img(url)
+        soup = scrap_img.get_html()
+        img_tags = scrap_img.get_imgs(soup)
+        scrap_img.save_imgs('./Web_Scrapping/Logos_img', img_tags)
 
     
 
@@ -152,7 +160,9 @@ class Lanzador:
         lanzador.lanzar_scrap_players()
         lanzador.lanzar_scrap_pass()
         lanzador.lanzar_scrap_gks()
-
+        '''
+        self.lanzar_scrap_logos()
+        '''
         #Lanzamos los clusters
         self.lanzar_kmeans()
         self.lanzar_mean_shift()
@@ -175,4 +185,4 @@ class Lanzador:
 
         #self.lanzar_linear_regression()
 
-        self.lanzar_winrate()
+        #self.lanzar_winrate()
