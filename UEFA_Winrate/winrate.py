@@ -41,4 +41,3 @@ class Winrate:
             ax.set_ylabel('Winrate (%)')
             plt.xticks(rotation=45, ha='right')  # Rotar las etiquetas del eje x
             plt.savefig(path)
-            plt.show()
