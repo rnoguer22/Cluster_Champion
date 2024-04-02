@@ -12,6 +12,8 @@ from Web_Scrapping.scrap_img import Scrap_Img
 
 from UEFA_Winrate.winrate import Winrate
 
+from IMG_Classifier.img_classifier import Img_Classifier
+
 
 class Lanzador:
     def __init__(self):
@@ -152,6 +154,13 @@ class Lanzador:
         df_prob = winrate.calculate_prob(combined_df, './UEFA_Winrate/csv/winrate.csv')
         winrate.plot_prob('./UEFA_Winrate/img/winrate.png', df_prob)
 
+    
+
+    def lanzar_img_classifier(self):
+        print('Clasificando imagenes...')
+        img_classifier = Img_Classifier('./Web_Scrapping/Logos_img')
+        img_classifier.data_exploration()
+
 
 
     def launch_all(self):
@@ -161,7 +170,7 @@ class Lanzador:
         lanzador.lanzar_scrap_pass()
         lanzador.lanzar_scrap_gks()
         '''
-        self.lanzar_scrap_logos()
+        #self.lanzar_scrap_logos()
         '''
         #Lanzamos los clusters
         self.lanzar_kmeans()
@@ -186,3 +195,5 @@ class Lanzador:
         #self.lanzar_linear_regression()
 
         #self.lanzar_winrate()
+
+        self.lanzar_img_classifier()
