@@ -75,7 +75,27 @@ class Scrap_Img:
                         img_rotated = img_zoomed.rotate(r, expand=True)
                         new_img_name = f'{team_name}_{i}_{r}.png'
                         img_rotated.save(os.path.join(team_directory, new_img_name))
+
+                    if i == 0.75:
+                        j = 45
+                    elif i == 1:
+                        j = 135
+                    elif i == 1.25:
+                        j = 225
+                    elif i == 1.5:
+                        j = 315
+                    else:
+                        print(f'Error al guardar la imagen {new_img_name} del equipo {team_name}.')
                         
+                    #Guardamos algunas imagenes de test
+                    directory = f'./Web_Scrapping/test/{team_name}'
+                    img_rotated = img_zoomed.rotate(j, expand=True)
+                    new_img_name = f'{team_name}_{i}_{j}.png'
+                    if not os.path.exists(directory):
+                        os.makedirs(directory)
+                    img_rotated.save(os.path.join(directory, new_img_name))
+
+
 
     #Metodo para corregir los nombres de los equipos
     def fix_team_name(self, team_name):

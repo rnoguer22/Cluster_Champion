@@ -171,13 +171,14 @@ class Lanzador:
 
 
     def launch_all(self):
+        '''
         #Lanzamos el web scrapping de los jugadores
-        self.lanzar_scrap_players()
-        self.lanzar_scrap_pass()
-        self.lanzar_scrap_gks()
-        
+        lanzador.lanzar_scrap_players()
+        lanzador.lanzar_scrap_pass()
+        lanzador.lanzar_scrap_gks()
+        '''
         self.lanzar_scrap_logos()
-    
+        '''
         #Lanzamos los clusters
         self.lanzar_kmeans()
         self.lanzar_mean_shift()
@@ -191,14 +192,15 @@ class Lanzador:
         #Lanzamos los modelos de prediccion
         self.lanzar_randomforest()
         self.lanzar_gradientboosting()
+    
         self.lanzar_autoregressive()
         self.lanzar_exponentialsmoothing()
+        '''
+        #self.lanzar_arima()
+        #self.lanzar_sarimax()
 
-        self.lanzar_arima()
-        self.lanzar_sarimax()
+        #self.lanzar_linear_regression()
 
-        self.lanzar_linear_regression()
+        #self.lanzar_winrate()
 
-        self.lanzar_winrate()
-
-        self.lanzar_img_classifier()
+        #self.lanzar_img_classifier()
