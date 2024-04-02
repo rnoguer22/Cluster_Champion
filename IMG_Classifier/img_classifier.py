@@ -5,7 +5,10 @@ import matplotlib.image as mpimg
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, Dense
+from tensorflow.keras import models
 from sklearn.metrics import confusion_matrix
+
+from tensorflow import convert_to_tensor
 
 
 
@@ -35,6 +38,12 @@ class Img_Classifier:
             plt.imshow(img)
             a.set_title(img_file + ' : ' + str(self.img_shape)).set_rotation(90)
         plt.show()
+    
+
+    #Metodo getter para obtener las clases
+    def get_classes(self):
+        classes = os.listdir(self.data_path)
+        return classes
     
 
     #Metodo para crear los data generators
@@ -146,3 +155,38 @@ class Img_Classifier:
         model.save(output_path)
         del model  # deletes the existing model variable
         print('Model saved as', output_path)
+    
+
+    #Metodo para predecir el equipo de los logos de test
+    def predict(self, model_path, test_data_path, classes):
+        #Definimos una funcion dentro del metodo para predecir la clase de una imagen
+        def predict_image(classifier, image):
+            # The model expects a batch of images as input, so we'll create an array of 1 image
+            imgfeatures = img.reshape(1, img.shape[0], img.shape[1], img.shape[2])
+            # We need to format the input to match the training data
+            # The generator loaded the values as floating point numbers
+            # and normalized the pixel values, so...
+            imgfeatures = imgfeatures.astype('float32')
+            imgfeatures /= 255
+            # Use the model to predict the image class
+            class_probabilities = classifier.predict(imgfeatures)
+            # Find the class predictions with the highest predicted probability
+            index = int(np.argmax(class_probabilities, axis=1)[0])
+            return index
+        
+        model = models.load_model(model_path)
+
+        #Mostramos las imagenes con las predicciones
+        fig = plt.figure(figsize=(8, 12))
+        i = 0
+        for img_file in os.listdir(test_data_path):
+            i += 1
+            img_path = os.path.join(test_data_path, img_file)
+            img = mpimg.imread(img_path)
+            #Obtenemos la prediccion de la imagen
+            index = predict_image(model, np.array(img))
+            a = fig.add_subplot(1, len(classes), i)
+            a.axis('off')
+            imgplot = plt.imshow(img)
+            a.set_title(classes[index])
+        plt.show()

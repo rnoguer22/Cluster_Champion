@@ -86,9 +86,9 @@ class Scrap_Img:
                         j = 315
                     else:
                         print(f'Error al guardar la imagen {new_img_name} del equipo {team_name}.')
-                        
+
                     #Guardamos algunas imagenes de test
-                    directory = f'./Web_Scrapping/test/{team_name}'
+                    directory = f'./Web_Scrapping/test'
                     img_rotated = img_zoomed.rotate(j, expand=True)
                     new_img_name = f'{team_name}_{i}_{j}.png'
                     if not os.path.exists(directory):

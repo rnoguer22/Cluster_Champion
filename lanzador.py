@@ -166,6 +166,8 @@ class Lanzador:
         img_classifier.plot_loss(history)
         img_classifier.get_model_performance(model, validation_generator, classnames)
         img_classifier.save_model(model, './IMG_Classifier/model.h5')
+        classes = img_classifier.get_classes()
+        img_classifier.predict('./IMG_Classifier/model.h5', './Web_Scrapping/test', classes)
 
 
 
@@ -177,7 +179,7 @@ class Lanzador:
         lanzador.lanzar_scrap_pass()
         lanzador.lanzar_scrap_gks()
         '''
-        self.lanzar_scrap_logos()
+        #self.lanzar_scrap_logos()
         '''
         #Lanzamos los clusters
         self.lanzar_kmeans()
@@ -203,4 +205,4 @@ class Lanzador:
 
         #self.lanzar_winrate()
 
-        #self.lanzar_img_classifier()
+        self.lanzar_img_classifier()
