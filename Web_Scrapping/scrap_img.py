@@ -75,8 +75,7 @@ class Scrap_Img:
                         img_rotated = img_zoomed.rotate(r, expand=True)
                         new_img_name = f'{team_name}_{i}_{r}.png'
                         img_rotated.save(os.path.join(team_directory, new_img_name))
-
-
+                        
 
     #Metodo para corregir los nombres de los equipos
     def fix_team_name(self, team_name):
