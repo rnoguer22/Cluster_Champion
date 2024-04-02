@@ -160,6 +160,7 @@ class Lanzador:
         print('Clasificando imagenes...')
         img_classifier = Img_Classifier('./Web_Scrapping/Logos_img')
         img_classifier.data_exploration()
+        img_classifier.create_data_generators()
 
 
 
