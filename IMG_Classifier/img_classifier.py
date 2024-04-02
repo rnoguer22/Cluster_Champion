@@ -5,7 +5,7 @@ import matplotlib.image as mpimg
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, Dense
-
+from sklearn.metrics import confusion_matrix
 
 
 
@@ -60,7 +60,7 @@ class Img_Classifier:
             subset='validation') # set as validation data
         classnames = list(train_generator.class_indices.keys())
         print('Data generators ready')
-        return train_generator, validation_generator, batch_size
+        return train_generator, validation_generator, batch_size, classnames
     
 
     #Metodo para definir la CNN
@@ -69,7 +69,7 @@ class Img_Classifier:
         # Define the model as a sequence of layers
         model = Sequential()
         # The input layer accepts an image and applies a convolution that uses 32 6x6 filters and a rectified linear unit activation function
-        model.add(Conv2D(32, (6, 6), input_shape=train_generator.image_shape, activation='relu'))
+        model.add(Conv2D(32, (6, 6), input_shape = train_generator.image_shape, activation = 'relu'))
         # Next we'll add a max pooling layer with a 2x2 patch
         model.add(MaxPooling2D(pool_size=(2,2)))
         # We can add as many layers as we think necessary - here we'll add another convolution and max pooling layer
@@ -82,7 +82,7 @@ class Img_Classifier:
         model.add(Dropout(0.2))
         # Now we'll flatten the feature maps and generate an output layer with a predicted probability for each class
         model.add(Flatten())
-        model.add(Dense(train_generator.num_classes, activation='softmax'))
+        model.add(Dense(train_generator.num_classes, activation = 'softmax'))
         # With the layers defined, we can now compile the model for categorical (multi-class) classification
         model.compile(loss='categorical_crossentropy',
                     optimizer='adam',
@@ -93,10 +93,56 @@ class Img_Classifier:
 
     #Metodo para entrenar el modelo
     def train_model(self, model, train_generator, validation_generator, batch_size):
-        num_epochs = 5
+        self.num_epochs = 5
         history = model.fit(
             train_generator,
             steps_per_epoch = train_generator.samples // batch_size,
             validation_data = validation_generator, 
             validation_steps = validation_generator.samples // batch_size,
-            epochs = num_epochs)
+            epochs = self.num_epochs)
+        return history
+    
+
+    #Metodo para visualizar los resultados
+    def plot_loss(self, history):
+        epoch_nums = range(1, self.num_epochs + 1)
+        training_loss = history.history["loss"]
+        validation_loss = history.history["val_loss"]
+        plt.plot(epoch_nums, training_loss)
+        plt.plot(epoch_nums, validation_loss)
+        plt.xlabel('epoch')
+        plt.ylabel('loss')
+        plt.legend(['training', 'validation'], loc='upper right')
+        plt.show()
+
+    
+    #Obtenemos la matriz de confusion del modelo
+    def get_model_performance(self, model, validation_generator, classnames):
+        print("Generating predictions from validation data...")
+        # Get the image and label arrays for the first batch of validation data
+        x_test = validation_generator[0][0]
+        y_test = validation_generator[0][1]
+        # Use the model to predict the class
+        class_probabilities = model.predict(x_test)
+        # The model returns a probability value for each class
+        # The one with the highest probability is the predicted class
+        predictions = np.argmax(class_probabilities, axis=1)
+        # The actual labels are hot encoded (e.g. [0 1 0], so get the one with the value 1
+        true_labels = np.argmax(y_test, axis=1)
+        # Plot the confusion matrix
+        cm = confusion_matrix(true_labels, predictions)
+        plt.imshow(cm, interpolation="nearest", cmap=plt.cm.Blues)
+        plt.colorbar()
+        tick_marks = np.arange(len(classnames))
+        plt.xticks(tick_marks, classnames, rotation=85)
+        plt.yticks(tick_marks, classnames)
+        plt.xlabel("Predicted Shape")
+        plt.ylabel("Actual Shape")
+        plt.show()  
+    
+
+    #Guardamos el modelo
+    def save_model(self, model, output_path):
+        model.save(output_path)
+        del model  # deletes the existing model variable
+        print('Model saved as', output_path)
