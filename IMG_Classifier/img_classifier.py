@@ -10,6 +10,8 @@ from sklearn.metrics import confusion_matrix
 
 from tensorflow import convert_to_tensor
 
+from PIL import Image
+
 
 
 
@@ -161,12 +163,18 @@ class Img_Classifier:
     def predict(self, model_path, test_data_path, classes):
         #Definimos una funcion dentro del metodo para predecir la clase de una imagen
         def predict_image(classifier, image):
+            # Convertir la imagen a modo RGB si tiene un canal alpha (transparencia)
+            print(image.shape)
+            if image.shape[2] == 4:  # Si la imagen tiene 4 canales (RGBA)
+                image = image[:, :, :3]  # Eliminar el canal alpha
+                print(image.shape)
             # The model expects a batch of images as input, so we'll create an array of 1 image
-            imgfeatures = img.reshape(1, img.shape[0], img.shape[1], img.shape[2])
+            imgfeatures = image.reshape(1, image.shape[0], image.shape[1], image.shape[2])
             # We need to format the input to match the training data
             # The generator loaded the values as floating point numbers
             # and normalized the pixel values, so...
             imgfeatures = imgfeatures.astype('float32')
+            print(imgfeatures.shape)
             imgfeatures /= 255
             # Use the model to predict the image class
             class_probabilities = classifier.predict(imgfeatures)
@@ -190,21 +198,3 @@ class Img_Classifier:
             imgplot = plt.imshow(img)
             a.set_title(classes[index])
         plt.show()
-
-from PIL import Image
-
-def check_image_channels(img_path):
-    # Cargar la imagen utilizando Pillow
-    img = Image.open(img_path)
-    
-    # Verificar el modo de la imagen (que indica la cantidad de canales)
-    print("Modo de la imagen:", img.mode)
-    if img.mode == 'RGB':
-        print("La imagen tiene 3 canales (RGB)")
-    elif img.mode == 'RGBA':
-        print("La imagen tiene 4 canales (RGB + canal alpha)")
-    else:
-        print("La imagen tiene un modo desconocido o número de canales diferente a 3 o 4")
-
-# Llamar a la función para verificar los canales de una imagen
-check_image_channels('./Web_Scrapping/test/Real Madrid_0.75_45.png')
