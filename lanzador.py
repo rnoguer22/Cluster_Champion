@@ -205,4 +205,4 @@ class Lanzador:
 
         #self.lanzar_winrate()
 
-        self.lanzar_img_classifier()
+        #self.lanzar_img_classifier()
