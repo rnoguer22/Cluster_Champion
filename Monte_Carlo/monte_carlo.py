@@ -30,7 +30,6 @@ class MonteCarlo:
             wins[winner_index] += 1
 
         win_probabilities = wins / num_simulations
-        print(win_probabilities)
         return win_probabilities
 
 
@@ -43,8 +42,19 @@ class MonteCarlo:
 
     def predict_champions_winner(self, num_simulations=1000):
         win_probabilities = self.simulate_outcomes(self.current_df, num_simulations)
+        print(win_probabilities)
         winner = self.predict_winner(win_probabilities, self.current_df)
-        return winner
+
+        # Calcular el porcentaje
+        percentages = win_probabilities / np.sum(win_probabilities) * 100
+
+        # Crear un DataFrame con los equipos y sus probabilidades
+        teams_df = pd.DataFrame({'Squad': self.current_df['Squad'], 'Win Probability (%)': percentages})
+
+        # Ordenar el DataFrame por la columna 'Win Probability (%)' de forma descendente
+        teams_df_sorted = teams_df.sort_values(by='Win Probability (%)', ascending=False)
+
+        print(teams_df_sorted)
 
 
 
@@ -53,6 +63,6 @@ class MonteCarlo:
 mc = MonteCarlo('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', './UEFA_Analisis_CSV/UEFA_Target.csv')
 
 # Realizar la predicción del ganador de la Champions League
-winner = mc.predict_champions_winner(num_simulations=1000)
+winner_df = mc.predict_champions_winner(num_simulations=1000)
 
-print("Predicted winner of Champions League:", winner)
+print(winner_df)
