@@ -13,19 +13,26 @@ class MonteCarlo:
     def prepare_data(self):
         merged_df = pd.concat([self.historical_df, self.current_df], ignore_index=True)
         merged_df.drop(columns=['id', 'Rk', 'MP', 'Attendance', 'Top Team Scorer', 'Goalkeeper'], inplace=True)
+        print(merged_df)
         return merged_df
 
 
-    def simulate_outcomes(self, current_df, num_simulations=1000):
-        num_teams = current_df.shape[0]
-        wins = np.zeros(num_teams)
+    def simulate_outcomes(self, historical_df, num_simulations=1000):
+        historical_df['Pts'] = historical_df['Pts'] / historical_df['Pts'].sum()
+
+        teams = historical_df['Squad'].tolist()
+        win_probabilities = historical_df['Pts'].tolist()
+
+        wins = np.zeros(len(teams))
 
         for _ in range(num_simulations):
-            winner_index = np.random.randint(num_teams)
+            winner_index = np.random.choice(len(teams), p=win_probabilities)
             wins[winner_index] += 1
 
         win_probabilities = wins / num_simulations
+        print(win_probabilities)
         return win_probabilities
+
 
 
     def predict_winner(self, win_probabilities, merged_df):
