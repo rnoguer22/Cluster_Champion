@@ -14,6 +14,11 @@ from UEFA_Winrate.winrate import Winrate
 
 from IMG_Classifier.img_classifier import Img_Classifier
 
+from Monte_Carlo.monte_carlo import MonteCarlo
+
+
+
+
 
 class Lanzador:
     def __init__(self):
@@ -116,6 +121,10 @@ class Lanzador:
         spark.predict(df, teams, coef_players, coef_gks)
         spark.stop()
 
+    def lanzar_monte_carlo(self):
+        mc = MonteCarlo('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', './UEFA_Analisis_CSV/UEFA_Target.csv')
+        mc.predict_champions_winner('./UEFA_Predictions/csv', num_simulations=1000)
+
 
     def lanzar_scrap_players(self):
         print('Haciendo scrapping de los goleadores...')
@@ -202,6 +211,7 @@ class Lanzador:
         #self.lanzar_sarimax()
 
         #self.lanzar_linear_regression()
+        self.lanzar_monte_carlo()
 
         #self.lanzar_winrate()
 
