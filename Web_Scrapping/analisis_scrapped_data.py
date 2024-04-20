@@ -6,7 +6,7 @@ class AnalisisScrappedData:
 
     def __init__(self) -> None:
         self.ruta = 'Web_Scrapping/scrapped_csv'
-        self.rutas = os.listdir(self.ruta)
+        self.rutas = sorted(os.listdir(self.ruta))
 
 
     #En esta funcion vamos a analizar los datos de los csv
@@ -22,10 +22,9 @@ class AnalisisScrappedData:
     def analize(self, path):
         df = pd.read_csv(path)
         df.drop('Notes', inplace=True, axis=1)
-        df.drop('Top Team Scorer', inplace=True, axis=1)
-        df.drop('Goalkeeper', inplace=True, axis=1)
         df.dropna(inplace=True)
-        df['id'] = df.index
+        df['id'] = range(len(df))
+        print(len(df))
         try: 
             df['Attendance'] = df['Attendance'].str.replace(',', '').astype(float) / 1000
         except:
@@ -49,6 +48,7 @@ class AnalisisScrappedData:
         contador = 0
         for csv in self.rutas:
             data_path = self.ruta + '/' + csv
+            print(data_path)
             df = pd.read_csv(data_path)
             df['id'] = range(contador, contador + len(df))
             dfs.append(df)
@@ -59,8 +59,8 @@ class AnalisisScrappedData:
         final_df['Rk'] = final_df['Rk'].apply(self.get_ucl_rk)
         df_predictions = final_df.tail(32)
         final_df = final_df.iloc[:-32]   
-        final_df.to_csv('UEFA_Analisis/UEFA_Final_Data.csv', index=False)
-        df_predictions.to_csv('UEFA_Analisis/UEFA_Target.csv', index=False)
+        final_df.to_csv('UEFA_Analisis_CSV/UEFA_Final_Data.csv', index=False)
+        df_predictions.to_csv('UEFA_Analisis_CSV/UEFA_Target.csv', index=False)
     
 
     #Funcion para obtener el ranking de la champions

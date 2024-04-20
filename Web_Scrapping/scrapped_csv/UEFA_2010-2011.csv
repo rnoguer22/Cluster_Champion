@@ -1,33 +1,33 @@
-id,Rk,Squad,MP,W,D,L,GF,GA,GD,Pts,Attendance
-0,W,Barcelona 2010-2011,13.0,8.0,4.0,1.0,30.0,9.0,21.0,28.0,85.535
-2,F,Manchester Utd 2010-2011,13.0,6.0,6.0,1.0,19.0,7.0,12.0,24.0,80.325
-4,SF,Real Madrid 2010-2011,12.0,7.0,4.0,1.0,25.0,6.0,19.0,25.0,71.583
-5,SF,Schalke 04 2010-2011,12.0,5.0,4.0,3.0,22.0,14.0,8.0,19.0,52.378
-7,QF,Shakhtar 2010-2011,10.0,6.0,2.0,2.0,19.0,14.0,5.0,20.0,49.083
-8,QF,Chelsea 2010-2011,10.0,6.0,1.0,3.0,17.0,7.0,10.0,19.0,39.157
-9,QF,Tottenham 2010-2011,12.0,4.0,5.0,3.0,25.0,19.0,6.0,17.0,34.986
-10,QF,Inter 2010-2011,10.0,4.0,1.0,5.0,18.0,21.0,-3.0,13.0,60.72
-12,R16,Bayern Munich 2010-2011,8.0,6.0,1.0,1.0,19.0,9.0,10.0,19.0,65.75
-13,R16,Arsenal 2010-2011,8.0,5.0,0.0,3.0,21.0,11.0,10.0,15.0,59.633
-14,R16,FC Copenhagen 2010-2011,12.0,3.0,5.0,4.0,12.0,11.0,1.0,14.0,35.102
-15,R16,Marseille 2010-2011,8.0,4.0,1.0,3.0,13.0,5.0,8.0,13.0,52.922
-16,R16,Valencia 2010-2011,8.0,3.0,3.0,2.0,17.0,8.0,9.0,12.0,32.412
-17,R16,Lyon 2010-2011,8.0,3.0,2.0,3.0,12.0,14.0,-2.0,11.0,36.881
-18,R16,Roma 2010-2011,8.0,3.0,1.0,4.0,12.0,17.0,-5.0,10.0,34.666
-19,R16,Milan 2010-2011,8.0,2.0,3.0,3.0,7.0,8.0,-1.0,9.0,60.11
-21,GR,Braga 2010-2011,10.0,6.0,0.0,4.0,14.0,16.0,-2.0,18.0,13.754
-22,GR,Hapoel Tel Aviv 2010-2011,12.0,4.0,4.0,4.0,20.0,15.0,5.0,16.0,12.711
-23,GR,Basel 2010-2011,10.0,5.0,1.0,4.0,17.0,12.0,5.0,16.0,36.746
-24,GR,Partizan 2010-2011,12.0,4.0,2.0,6.0,15.0,19.0,-4.0,14.0,24.595
-25,GR,Ajax 2010-2011,10.0,2.0,5.0,3.0,13.0,16.0,-3.0,11.0,47.581
-26,GR,Spartak Moscow 2010-2011,6.0,3.0,0.0,3.0,7.0,10.0,-3.0,9.0,51.739
-27,GR,Werder Bremen 2010-2011,8.0,2.0,2.0,4.0,11.0,16.0,-5.0,8.0,30.315
-28,GR,MŠK Žilina 2010-2011,12.0,1.0,4.0,7.0,13.0,22.0,-9.0,7.0,9.594
-29,GR,Twente 2010-2011,6.0,1.0,3.0,2.0,9.0,11.0,-2.0,6.0,23.933
-30,GR,Rubin Kazan 2010-2011,6.0,1.0,3.0,2.0,2.0,4.0,-2.0,6.0,19.557
-31,GR,Rangers 2010-2011,6.0,1.0,3.0,2.0,3.0,6.0,-3.0,6.0,45.686
-32,GR,Benfica 2010-2011,6.0,2.0,0.0,4.0,7.0,12.0,-5.0,6.0,28.62
-33,GR,CFR Cluj 2010-2011,6.0,1.0,1.0,4.0,6.0,12.0,-6.0,4.0,10.6
-34,GR,Auxerre 2010-2011,8.0,1.0,1.0,6.0,5.0,13.0,-8.0,4.0,19.99
-35,GR,Panathinaikos 2010-2011,6.0,0.0,2.0,4.0,2.0,13.0,-11.0,2.0,49.452
-36,GR,Bursaspor 2010-2011,6.0,0.0,1.0,5.0,2.0,16.0,-14.0,1.0,17.908
+id,Rk,Squad,MP,W,D,L,GF,GA,GD,Pts,Attendance,Top Team Scorer,Goalkeeper
+0,W,Barcelona 2010-2011,13.0,8.0,4.0,1.0,30.0,9.0,21.0,28.0,85.535,Lionel Messi-,Víctor Valdés
+1,F,Manchester Utd 2010-2011,13.0,6.0,6.0,1.0,19.0,7.0,12.0,24.0,80.325,"Javier Hernández,Wayne Rooney-",Edwin van der Sar
+2,SF,Real Madrid 2010-2011,12.0,7.0,4.0,1.0,25.0,6.0,19.0,25.0,71.583,"Karim Benzema,Cristiano Ronaldo-",Iker Casillas
+3,SF,Schalke 04 2010-2011,12.0,5.0,4.0,3.0,22.0,14.0,8.0,19.0,52.378,Raúl-,Manuel Neuer
+4,QF,Shakhtar 2010-2011,10.0,6.0,2.0,2.0,19.0,14.0,5.0,20.0,49.083,"Eduardo da Silva,Luiz Adriano-",Andriy Pyatov
+5,QF,Chelsea 2010-2011,10.0,6.0,1.0,3.0,17.0,7.0,10.0,19.0,39.157,Nicolas Anelka-,Petr Čech
+6,QF,Tottenham 2010-2011,12.0,4.0,5.0,3.0,25.0,19.0,6.0,17.0,34.986,"Gareth Bale,Peter Crouch-",Heurelho Gomes
+7,QF,Inter 2010-2011,10.0,4.0,1.0,5.0,18.0,21.0,-3.0,13.0,60.72,Samuel Eto'o-,Júlio César
+8,R16,Bayern Munich 2010-2011,8.0,6.0,1.0,1.0,19.0,9.0,10.0,19.0,65.75,Mario Gómez-,"Hans-Jörg Butt,Thomas Kraft"
+9,R16,Arsenal 2010-2011,8.0,5.0,0.0,3.0,21.0,11.0,10.0,15.0,59.633,"Cesc Fàbregas,Andrey Arshavin... -",Łukasz Fabiański
+10,R16,FC Copenhagen 2010-2011,12.0,3.0,5.0,4.0,12.0,11.0,1.0,14.0,35.102,"Dame N'Doye,Martin Vingaard-",Johan Wiland
+11,R16,Marseille 2010-2011,8.0,4.0,1.0,3.0,13.0,5.0,8.0,13.0,52.922,André-Pierre Gignac-,Steve Mandanda
+12,R16,Valencia 2010-2011,8.0,3.0,3.0,2.0,17.0,8.0,9.0,12.0,32.412,Roberto Soldado-,César Sánchez
+13,R16,Lyon 2010-2011,8.0,3.0,2.0,3.0,12.0,14.0,-2.0,11.0,36.881,Michel Bastos-,Hugo Lloris
+14,R16,Roma 2010-2011,8.0,3.0,1.0,4.0,12.0,17.0,-5.0,10.0,34.666,Marco Borriello-,Júlio Sérgio
+15,R16,Milan 2010-2011,8.0,2.0,3.0,3.0,7.0,8.0,-1.0,9.0,60.11,Zlatan Ibrahimović-,Christian Abbiati
+16,GR,Braga 2010-2011,10.0,6.0,0.0,4.0,14.0,16.0,-2.0,18.0,13.754,Matheus Leite Nascimento-,Felipe
+17,GR,Hapoel Tel Aviv 2010-2011,12.0,4.0,4.0,4.0,20.0,15.0,5.0,16.0,12.711,Eran Zahavi-,Vincent Enyeama
+18,GR,Basel 2010-2011,10.0,5.0,1.0,4.0,17.0,12.0,5.0,16.0,36.746,Alexander Frei-,Franco Costanzo
+19,GR,Partizan 2010-2011,12.0,4.0,2.0,6.0,15.0,19.0,-4.0,14.0,24.595,Cléo-,Vladimir Stojković
+20,GR,Ajax 2010-2011,10.0,2.0,5.0,3.0,13.0,16.0,-3.0,11.0,47.581,"Toby Alderweireld,Demy de Zeeuw-",Maarten Stekelenburg
+21,GR,Spartak Moscow 2010-2011,6.0,3.0,0.0,3.0,7.0,10.0,-3.0,9.0,51.739,"Ari,Ibson-",Andriy Dykan
+22,GR,Werder Bremen 2010-2011,8.0,2.0,2.0,4.0,11.0,16.0,-5.0,8.0,30.315,Marko Arnautović-,Tim Wiese
+23,GR,MŠK Žilina 2010-2011,12.0,1.0,4.0,7.0,13.0,22.0,-9.0,7.0,9.594,"Bello Babatounde,Tomáš Majtán... -",Martin Dúbravka
+24,GR,Twente 2010-2011,6.0,1.0,3.0,2.0,9.0,11.0,-2.0,6.0,23.933,Nacer Chadli-,Nikolay Mihaylov
+25,GR,Rubin Kazan 2010-2011,6.0,1.0,3.0,2.0,2.0,4.0,-2.0,6.0,19.557,Christian Noboa-,Sergey Ryzhikov
+26,GR,Rangers 2010-2011,6.0,1.0,3.0,2.0,3.0,6.0,-3.0,6.0,45.686,"Maurice Edu,Kenny Miller... -",Allan McGregor
+27,GR,Benfica 2010-2011,6.0,2.0,0.0,4.0,7.0,12.0,-5.0,6.0,28.62,"Fábio Coentrão,Luisão-",Roberto
+28,GR,CFR Cluj 2010-2011,6.0,1.0,1.0,4.0,6.0,12.0,-6.0,4.0,10.6,"Ionuț Rada,Lacina Traoré-","Nuno Claro,Eduard Stăncioiu"
+29,GR,Auxerre 2010-2011,8.0,1.0,1.0,6.0,5.0,13.0,-8.0,4.0,19.99,"Valter Birsa,Steeven Langil... -",Olivier Sorin
+30,GR,Panathinaikos 2010-2011,6.0,0.0,2.0,4.0,2.0,13.0,-11.0,2.0,49.452,"Cédric Kanté,Sidney Govou-",Alexandros Tzorvas
+31,GR,Bursaspor 2010-2011,6.0,0.0,1.0,5.0,2.0,16.0,-14.0,1.0,17.908,"Pablo Batalla,Sercan Yıldırım-",Dimitar Ivankov

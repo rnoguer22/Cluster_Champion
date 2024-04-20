@@ -1,33 +1,33 @@
-id,Rk,Squad,MP,W,D,L,GF,GA,GD,Pts,Attendance
-0,W,Real Madrid 2015-2016,13.0,9.0,3.0,1.0,28.0,6.0,22.0,30.0,72.831
-2,F,Atlético Madrid 2015-2016,13.0,6.0,4.0,3.0,17.0,8.0,9.0,22.0,44.276
-4,SF,Bayern Munich 2015-2016,12.0,8.0,2.0,2.0,30.0,11.0,19.0,26.0,70.0
-5,SF,Manchester City 2015-2016,12.0,6.0,3.0,3.0,18.0,12.0,6.0,21.0,47.779
-7,QF,Barcelona 2015-2016,10.0,7.0,2.0,1.0,22.0,8.0,14.0,23.0,74.651
-8,QF,Wolfsburg 2015-2016,10.0,7.0,0.0,3.0,15.0,11.0,4.0,21.0,23.951
-9,QF,Paris S-G 2015-2016,10.0,6.0,2.0,2.0,18.0,6.0,12.0,20.0,46.322
-10,QF,Benfica 2015-2016,10.0,5.0,2.0,3.0,15.0,12.0,3.0,17.0,45.581
-12,R16,Zenit 2015-2016,8.0,5.0,0.0,3.0,14.0,9.0,5.0,15.0,17.575
-13,R16,Chelsea 2015-2016,8.0,4.0,1.0,3.0,15.0,7.0,8.0,13.0,40.153
-14,R16,Dynamo Kyiv 2015-2016,8.0,3.0,3.0,2.0,9.0,7.0,2.0,12.0,41.706
-15,R16,Juventus 2015-2016,8.0,3.0,3.0,2.0,10.0,9.0,1.0,12.0,39.241
-16,R16,PSV Eindhoven 2015-2016,8.0,3.0,3.0,2.0,8.0,7.0,1.0,12.0,34.81
-17,R16,Gent 2015-2016,8.0,3.0,1.0,4.0,10.0,11.0,-1.0,10.0,19.752
-18,R16,Arsenal 2015-2016,8.0,3.0,0.0,5.0,13.0,15.0,-2.0,9.0,57.029
-19,R16,Roma 2015-2016,8.0,1.0,3.0,4.0,11.0,20.0,-9.0,6.0,45.324
-21,GR,BATE Borisov 2015-2016,12.0,4.0,4.0,4.0,11.0,16.0,-5.0,16.0,12.814
-22,GR,FC Astana 2015-2016,12.0,3.0,6.0,3.0,14.0,17.0,-3.0,15.0,23.861
-23,GR,Dinamo Zagreb 2015-2016,12.0,4.0,3.0,5.0,17.0,21.0,-4.0,15.0,17.066
-24,GR,Manchester Utd 2015-2016,8.0,4.0,2.0,2.0,14.0,8.0,6.0,14.0,75.099
-25,GR,Malmö 2015-2016,12.0,4.0,1.0,7.0,9.0,26.0,-17.0,13.0,20.5
-26,GR,CSKA Moscow 2015-2016,10.0,3.0,2.0,5.0,14.0,16.0,-2.0,11.0,17.019
-27,GR,Shakhtar 2015-2016,10.0,3.0,2.0,5.0,13.0,16.0,-3.0,11.0,30.144
-28,GR,Porto 2015-2016,6.0,3.0,1.0,2.0,9.0,8.0,1.0,10.0,37.516
-29,GR,Leverkusen 2015-2016,8.0,2.0,3.0,3.0,16.0,13.0,3.0,9.0,27.701
-30,GR,Valencia 2015-2016,8.0,3.0,0.0,5.0,9.0,12.0,-3.0,9.0,32.902
-31,GR,Olympiacos 2015-2016,6.0,3.0,0.0,3.0,6.0,13.0,-7.0,9.0,31.516
-32,GR,Maccabi Tel Aviv 2015-2016,12.0,2.0,2.0,8.0,13.0,24.0,-11.0,8.0,27.622
-33,GR,Sevilla 2015-2016,6.0,2.0,0.0,4.0,8.0,11.0,-3.0,6.0,37.267
-34,GR,M'Gladbach 2015-2016,6.0,1.0,2.0,3.0,8.0,12.0,-4.0,5.0,45.87
-35,GR,Galatasaray 2015-2016,6.0,1.0,2.0,3.0,6.0,10.0,-4.0,5.0,31.182
-36,GR,Lyon 2015-2016,6.0,1.0,1.0,4.0,5.0,9.0,-4.0,4.0,31.304
+id,Rk,Squad,MP,W,D,L,GF,GA,GD,Pts,Attendance,Top Team Scorer,Goalkeeper
+0,W,Real Madrid 2015-2016,13.0,9.0,3.0,1.0,28.0,6.0,22.0,30.0,72.831,Cristiano Ronaldo-,Keylor Navas
+1,F,Atlético Madrid 2015-2016,13.0,6.0,4.0,3.0,17.0,8.0,9.0,22.0,44.276,Antoine Griezmann-,Jan Oblak
+2,SF,Bayern Munich 2015-2016,12.0,8.0,2.0,2.0,30.0,11.0,19.0,26.0,70.0,Robert Lewandowski-,Manuel Neuer
+3,SF,Manchester City 2015-2016,12.0,6.0,3.0,3.0,18.0,12.0,6.0,21.0,47.779,"Kevin De Bruyne,Raheem Sterling-",Joe Hart
+4,QF,Barcelona 2015-2016,10.0,7.0,2.0,1.0,22.0,8.0,14.0,23.0,74.651,Luis Suárez-,Marc-André ter Stegen
+5,QF,Wolfsburg 2015-2016,10.0,7.0,0.0,3.0,15.0,11.0,4.0,21.0,23.951,Julian Draxler-,Diego Benaglio
+6,QF,Paris S-G 2015-2016,10.0,6.0,2.0,2.0,18.0,6.0,12.0,20.0,46.322,Zlatan Ibrahimović-,Kevin Trapp
+7,QF,Benfica 2015-2016,10.0,5.0,2.0,3.0,15.0,12.0,3.0,17.0,45.581,Nicolás Gaitán-,Júlio César
+8,R16,Zenit 2015-2016,8.0,5.0,0.0,3.0,14.0,9.0,5.0,15.0,17.575,Artem Dzyuba-,Yuri Lodygin
+9,R16,Chelsea 2015-2016,8.0,4.0,1.0,3.0,15.0,7.0,8.0,13.0,40.153,Willian-,Asmir Begović
+10,R16,Dynamo Kyiv 2015-2016,8.0,3.0,3.0,2.0,9.0,7.0,2.0,12.0,41.706,"Andriy Yarmolenko,Vitaliy Buyalskyi-",Oleksandr Shovkovskiy
+11,R16,Juventus 2015-2016,8.0,3.0,3.0,2.0,10.0,9.0,1.0,12.0,39.241,"Álvaro Morata,Mario Mandžukić-",Gianluigi Buffon
+12,R16,PSV Eindhoven 2015-2016,8.0,3.0,3.0,2.0,8.0,7.0,1.0,12.0,34.81,"Luuk de Jong,Maxime Lestienne-",Jeroen Zoet
+13,R16,Gent 2015-2016,8.0,3.0,1.0,4.0,10.0,11.0,-1.0,10.0,19.752,Danijel Milićević-,Matz Sels
+14,R16,Arsenal 2015-2016,8.0,3.0,0.0,5.0,13.0,15.0,-2.0,9.0,57.029,Olivier Giroud-,Petr Čech
+15,R16,Roma 2015-2016,8.0,1.0,3.0,4.0,11.0,20.0,-9.0,6.0,45.324,"Miralem Pjanić,Edin Džeko... -",Wojciech Szczęsny
+16,GR,BATE Borisov 2015-2016,12.0,4.0,4.0,4.0,11.0,16.0,-5.0,16.0,12.814,Filip Mladenović-,Sergei Chernik
+17,GR,FC Astana 2015-2016,12.0,3.0,6.0,3.0,14.0,17.0,-3.0,15.0,23.861,Patrick Twumasi-,Nenad Erić
+18,GR,Dinamo Zagreb 2015-2016,12.0,4.0,3.0,5.0,17.0,21.0,-4.0,15.0,17.066,"Junior Fernándes,Josip Pivarić... -",Eduardo Carvalho
+19,GR,Manchester Utd 2015-2016,8.0,4.0,2.0,2.0,14.0,8.0,6.0,14.0,75.099,Anthony Martial-,David de Gea
+20,GR,Malmö 2015-2016,12.0,4.0,1.0,7.0,9.0,26.0,-17.0,13.0,20.5,Markus Rosenberg-,Johan Wiland
+21,GR,CSKA Moscow 2015-2016,10.0,3.0,2.0,5.0,14.0,16.0,-2.0,11.0,17.019,Seydou Doumbia-,Igor Akinfeev
+22,GR,Shakhtar 2015-2016,10.0,3.0,2.0,5.0,13.0,16.0,-3.0,11.0,30.144,Alex Teixeira-,Andriy Pyatov
+23,GR,Porto 2015-2016,6.0,3.0,1.0,2.0,9.0,8.0,1.0,10.0,37.516,Vincent Aboubakar-,Iker Casillas
+24,GR,Leverkusen 2015-2016,8.0,2.0,3.0,3.0,16.0,13.0,3.0,9.0,27.701,Javier Hernández-,Bernd Leno
+25,GR,Valencia 2015-2016,8.0,3.0,0.0,5.0,9.0,12.0,-3.0,9.0,32.902,"João Cancelo,Sofiane Feghouli... -",Jaume Doménech
+26,GR,Olympiacos 2015-2016,6.0,3.0,0.0,3.0,6.0,13.0,-7.0,9.0,31.516,Felipe Pardo-,Roberto
+27,GR,Maccabi Tel Aviv 2015-2016,12.0,2.0,2.0,8.0,13.0,24.0,-11.0,8.0,27.622,Eran Zahavi-,Predrag Rajković
+28,GR,Sevilla 2015-2016,6.0,2.0,0.0,4.0,8.0,11.0,-3.0,6.0,37.267,"Yevhen Konoplyanka,Éver Banega-",Sergio Rico
+29,GR,M'Gladbach 2015-2016,6.0,1.0,2.0,3.0,8.0,12.0,-4.0,5.0,45.87,Lars Stindl-,Yann Sommer
+30,GR,Galatasaray 2015-2016,6.0,1.0,2.0,3.0,6.0,10.0,-4.0,5.0,31.182,"Lukas Podolski,Selçuk İnan-",Fernando Muslera
+31,GR,Lyon 2015-2016,6.0,1.0,1.0,4.0,5.0,9.0,-4.0,4.0,31.304,Alexandre Lacazette-,Anthony Lopes

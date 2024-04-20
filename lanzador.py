@@ -7,6 +7,8 @@ from UEFA_Predictions.UEFA_RecursiveForecasting import RecursiveForecasting
 from UEFA_Predictions.UEFA_StatisticModel import StatisticModel
 from Spark.spark import Spark
 
+from Web_Scrapping.scrapper import Scrapping
+from Web_Scrapping.analisis_scrapped_data import AnalisisScrappedData
 from Web_Scrapping.scrap_players import ScrapPlayers
 from Web_Scrapping.scrap_img import Scrap_Img
 
@@ -125,6 +127,38 @@ class Lanzador:
         mc = MonteCarlo('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', './UEFA_Analisis_CSV/UEFA_Target.csv')
         mc.predict_champions_winner('./UEFA_Predictions/csv', num_simulations=1000)
 
+    def lanzar_actualizacion_scrapping(self):
+        def scrape(url, year):
+            scrap = Scrapping(url, year)
+            scrap.get_html()
+            df = scrap.get_table()
+            scrap.save_csv(df)
+        
+        urls = ['https://fbref.com/en/comps/8/Champions-League-Stats',
+                'https://fbref.com/en/comps/8/2022-2023/2022-2023-Champions-League-Stats',
+                'https://fbref.com/en/comps/8/2021-2022/2021-2022-Champions-League-Stats',
+                'https://fbref.com/en/comps/8/2020-2021/2020-2021-Champions-League-Stats',
+                'https://fbref.com/en/comps/8/2019-2020/2019-2020-Champions-League-Stats',
+                'https://fbref.com/en/comps/8/2018-2019/2018-2019-Champions-League-Stats',
+                'https://fbref.com/en/comps/8/2017-2018/2017-2018-Champions-League-Stats',
+                'https://fbref.com/en/comps/8/2016-2017/2016-2017-Champions-League-Stats',
+                'https://fbref.com/en/comps/8/2015-2016/2015-2016-Champions-League-Stats',
+                'https://fbref.com/en/comps/8/2014-2015/2014-2015-Champions-League-Stats',  
+                'https://fbref.com/en/comps/8/2013-2014/2013-2014-Champions-League-Stats',
+                'https://fbref.com/en/comps/8/2012-2013/2012-2013-Champions-League-Stats',
+                'https://fbref.com/en/comps/8/2011-2012/2011-2012-Champions-League-Stats',
+                'https://fbref.com/en/comps/8/2010-2011/2010-2011-Champions-League-Stats',]
+        
+        years = ['2023-2024', '2022-2023', '2021-2022', '2020-2021', '2019-2020', '2018-2019', '2017-2018', 
+                 '2016-2017', '2015-2016', '2014-2015', '2013-2014', '2012-2013', '2011-2012', '2010-2011']
+
+        for url, year in zip(urls, years):
+            scrape(url, year) 
+
+    def lanzar_analisis_scrapped_data(self):
+        analisis = AnalisisScrappedData()
+        analisis.analize_csv()
+        analisis.get_final_data()       
 
     def lanzar_scrap_players(self):
         print('Haciendo scrapping de los goleadores...')
@@ -188,6 +222,8 @@ class Lanzador:
         lanzador.lanzar_scrap_pass()
         lanzador.lanzar_scrap_gks()
         '''
+        self.lanzar_actualizacion_scrapping()
+        self.lanzar_analisis_scrapped_data()
         #self.lanzar_scrap_logos()
         '''
         #Lanzamos los clusters
@@ -211,7 +247,7 @@ class Lanzador:
         #self.lanzar_sarimax()
 
         #self.lanzar_linear_regression()
-        self.lanzar_monte_carlo()
+        #self.lanzar_monte_carlo()
 
         #self.lanzar_winrate()
 

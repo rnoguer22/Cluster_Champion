@@ -1,20 +1,20 @@
 id,Rk,Squad,MP,W,D,L,GF,GA,GD,Pts,Attendance,Top Team Scorer,Goalkeeper
-400,2,Manchester City 2023-2024,7.0,7.0,0.0,0.0,21.0,8.0,13.0,21.0,50.885,Erling Haaland-,Ederson
-401,2,Real Madrid 2023-2024,7.0,7.0,0.0,0.0,17.0,7.0,10.0,21.0,69.093,Jude Bellingham-,Kepa Arrizabalaga
-402,2,Bayern Munich 2023-2024,7.0,5.0,1.0,1.0,12.0,7.0,5.0,16.0,75.0,Harry Kane-,Manuel Neuer
-403,2,Porto 2023-2024,7.0,5.0,0.0,2.0,16.0,8.0,8.0,15.0,47.944,Galeno-,Diogo Costa
-404,2,Inter 2023-2024,7.0,4.0,3.0,0.0,9.0,5.0,4.0,15.0,70.279,"Alexis Sánchez,Marko Arnautović... -",Yann Sommer
-405,2,Atlético Madrid 2023-2024,7.0,4.0,2.0,1.0,17.0,7.0,10.0,14.0,62.06,"Álvaro Morata,Antoine Griezmann-",Jan Oblak
-406,2,Arsenal 2023-2024,7.0,4.0,1.0,2.0,16.0,5.0,11.0,13.0,59.624,Gabriel Jesus-,David Raya
-407,2,Barcelona 2023-2024,7.0,4.0,1.0,2.0,13.0,7.0,6.0,13.0,41.977,"Ferrán Torres,João Félix-",Marc-André ter Stegen
-408,2,Lazio 2023-2024,7.0,4.0,1.0,2.0,8.0,7.0,1.0,13.0,47.701,Ciro Immobile-,Ivan Provedel
-409,2,Dortmund 2023-2024,7.0,3.0,3.0,1.0,8.0,5.0,3.0,12.0,81.365,Karim Adeyemi-,Gregor Kobel
-410,2,Real Sociedad 2023-2024,7.0,3.0,3.0,1.0,7.0,4.0,3.0,12.0,35.942,Brais Méndez-,Álex Remiro
-411,2,RB Leipzig 2023-2024,7.0,4.0,0.0,3.0,13.0,11.0,2.0,12.0,43.949,Loïs Openda-,Janis Blaswich
-412,2,Paris S-G 2023-2024,7.0,3.0,2.0,2.0,11.0,8.0,3.0,11.0,46.553,Kylian Mbappé-,Gianluigi Donnarumma
-413,2,Napoli 2023-2024,7.0,3.0,2.0,2.0,11.0,10.0,1.0,11.0,45.367,Victor Osimhen-,Alex Meret
-414,2,PSV Eindhoven 2023-2024,7.0,2.0,4.0,1.0,9.0,11.0,-2.0,10.0,34.589,Luuk de Jong-,Walter Benítez
-415,2,FC Copenhagen 2023-2024,7.0,2.0,2.0,3.0,9.0,11.0,-2.0,8.0,35.592,Lukas Lerager-,Kamil Grabara
+400,4,Real Madrid 2023-2024,10.0,7.0,3.0,0.0,22.0,12.0,10.0,24.0,72.017,Rodrygo-,Andriy Lunin
+401,4,Bayern Munich 2023-2024,10.0,7.0,2.0,1.0,18.0,9.0,9.0,23.0,60.0,Harry Kane-,Manuel Neuer
+402,4,Dortmund 2023-2024,10.0,5.0,3.0,2.0,15.0,9.0,6.0,18.0,65.092,"Marco Reus,Julian Brandt... -",Gregor Kobel
+403,4,Paris S-G 2023-2024,10.0,5.0,2.0,3.0,19.0,13.0,6.0,17.0,46.736,Kylian Mbappé-,Gianluigi Donnarumma
+404,3,Manchester City 2023-2024,10.0,8.0,2.0,0.0,28.0,13.0,15.0,26.0,40.837,Erling Haaland-,Ederson
+405,3,Atlético Madrid 2023-2024,10.0,6.0,2.0,2.0,23.0,13.0,10.0,20.0,64.803,Antoine Griezmann-,Jan Oblak
+406,3,Barcelona 2023-2024,10.0,6.0,1.0,3.0,20.0,14.0,6.0,19.0,45.308,"Robert Lewandowski,Ferrán Torres... -",Marc-André ter Stegen
+407,3,Arsenal 2023-2024,10.0,5.0,2.0,3.0,19.0,8.0,11.0,17.0,59.87,"Leandro Trossard,Gabriel Jesus... -",David Raya
+408,2,Porto 2023-2024,8.0,5.0,0.0,3.0,16.0,9.0,7.0,15.0,47.944,Galeno-,Diogo Costa
+409,2,Inter 2023-2024,8.0,4.0,3.0,1.0,10.0,7.0,3.0,15.0,70.279,"Alexis Sánchez,Marko Arnautović... -",Yann Sommer
+410,2,RB Leipzig 2023-2024,8.0,4.0,1.0,3.0,14.0,12.0,2.0,13.0,43.949,Loïs Openda-,Janis Blaswich
+411,2,Lazio 2023-2024,8.0,4.0,1.0,3.0,8.0,10.0,-2.0,13.0,47.701,Ciro Immobile-,Ivan Provedel
+412,2,Real Sociedad 2023-2024,8.0,3.0,3.0,2.0,8.0,6.0,2.0,12.0,36.79,Brais Méndez-,Álex Remiro
+413,2,Napoli 2023-2024,8.0,3.0,2.0,3.0,12.0,13.0,-1.0,11.0,45.367,Victor Osimhen-,Alex Meret
+414,2,PSV Eindhoven 2023-2024,8.0,2.0,4.0,2.0,9.0,13.0,-4.0,10.0,34.589,Luuk de Jong-,Walter Benítez
+415,2,FC Copenhagen 2023-2024,8.0,2.0,2.0,4.0,10.0,14.0,-4.0,8.0,35.592,"Mohamed Elyounoussi,Lukas Lerager-",Kamil Grabara
 416,1,Shakhtar 2023-2024,6.0,3.0,0.0,3.0,10.0,12.0,-2.0,9.0,47.695,Danylo Sikan-,Dmytro Riznyk
 417,1,Milan 2023-2024,6.0,2.0,2.0,2.0,5.0,8.0,-3.0,8.0,72.212,Samuel Chukwueze-,Mike Maignan
 418,1,Lens 2023-2024,6.0,2.0,2.0,2.0,6.0,11.0,-5.0,8.0,37.543,"Angelo Fulgini,Elye Wahi-",Brice Samba
