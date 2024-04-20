@@ -241,9 +241,8 @@ class Lanzador:
         self.lanzar_randomforest()
         self.lanzar_gradientboosting()
     
-        self.lanzar_autoregressive()
-        self.lanzar_exponentialsmoothing()
-        
+        #self.lanzar_autoregressive()
+        #self.lanzar_exponentialsmoothing()    
         #self.lanzar_arima()
         #self.lanzar_sarimax()
 

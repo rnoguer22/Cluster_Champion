@@ -67,23 +67,33 @@ class RecursiveForecasting(Spark):
 
     #Metodo para convertir el numero de standing a la ronda de la champions
     def convert(self, dictionary):
-        #Ordenamos el diccionario de manera descendente
-        ordered_dict = dict(sorted(dictionary.items(), key=lambda x: x[1], reverse=True))
+        semifinalists_dict = dict(zip(list(dictionary.keys())[:4], list(dictionary.values())[:4]))
+        defeated_dict = dict(zip(list(dictionary.keys())[4:], list(dictionary.values())[4:]))
+        #Ordenamos los diccionarios de manera descendente
+        semifinalists_ordered_dict = dict(sorted(semifinalists_dict.items(), key=lambda x: x[1], reverse=True))
+        defeated_ordered_dict = dict(sorted(defeated_dict.items(), key=lambda x: x[1], reverse=True))
         final_dict = {}
-        count = 0
-        for key, value in ordered_dict.items():
-            if count < 32:
-                if count == 0:
+
+        count_semi = 0
+        for key, value in semifinalists_ordered_dict.items():
+            if count_semi < 32 - len(defeated_ordered_dict):
+                if count_semi == 0:
                     final_dict[key] = 'W'
-                elif count == 1:
+                elif count_semi == 1:
                     final_dict[key] = 'F'
-                elif count <= 3:
+                elif count_semi <= 3:
                     final_dict[key] = 'SF'
-                elif count <= 7:
+                count_semi += 1
+
+        count_defeated = 0
+        for key, value in defeated_ordered_dict.items():
+            if count_defeated < 32 - len(semifinalists_ordered_dict):
+                if count_defeated <= 3:
                     final_dict[key] = 'QF'
-                elif count <= 15:
+                elif 3 < count_defeated <= 11:
                     final_dict[key] = 'R16'
                 else:
                     final_dict[key] = 'GR'
-                count += 1
+                count_defeated += 1
+                
         return final_dict
