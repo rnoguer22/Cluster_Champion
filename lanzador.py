@@ -217,13 +217,14 @@ class Lanzador:
 
     def launch_all(self):
         '''
+        #Lanzamos el web scrapping de las clasficasiones de la champions
+        self.lanzar_actualizacion_scrapping()
+        self.lanzar_analisis_scrapped_data()
         #Lanzamos el web scrapping de los jugadores
         lanzador.lanzar_scrap_players()
         lanzador.lanzar_scrap_pass()
         lanzador.lanzar_scrap_gks()
         '''
-        self.lanzar_actualizacion_scrapping()
-        self.lanzar_analisis_scrapped_data()
         #self.lanzar_scrap_logos()
         '''
         #Lanzamos los clusters
@@ -235,14 +236,14 @@ class Lanzador:
         self.lanzar_hdbscan()
         self.lanzar_gmm()
         self.lanzar_agglomerative()
-
+        '''
         #Lanzamos los modelos de prediccion
         self.lanzar_randomforest()
         self.lanzar_gradientboosting()
     
         self.lanzar_autoregressive()
         self.lanzar_exponentialsmoothing()
-        '''
+        
         #self.lanzar_arima()
         #self.lanzar_sarimax()
 
