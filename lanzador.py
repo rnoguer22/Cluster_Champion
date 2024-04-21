@@ -1,32 +1,9 @@
-from Clusters.CentroidClustering.CentroidCluster import CentroidCluster
-from Clusters.DensityClustering.DensityCluster import DensityCluster
-from Clusters.DistributionClustering.DistributionCluster import DistributionCluster
-from Clusters.HierarchicalClustering.HierarchicalCluster import HierarchicalCluster
-
-from UEFA_Predictions.UEFA_RecursiveForecasting import RecursiveForecasting
-from UEFA_Predictions.UEFA_StatisticModel import StatisticModel
-from Spark.spark import Spark
-
-from Web_Scrapping.scrapper import Scrapping
-from Web_Scrapping.analisis_scrapped_data import AnalisisScrappedData
-from Web_Scrapping.scrap_players import ScrapPlayers
-from Web_Scrapping.scrap_img import Scrap_Img
-
-from UEFA_Winrate.winrate import Winrate
-
-from IMG_Classifier.img_classifier import Img_Classifier
-
-from Monte_Carlo.monte_carlo import MonteCarlo
-
-
-
-
-
 class Lanzador:
     def __init__(self):
         self.column_combinations = [['GF', 'Pts'], ['GF', 'GD'], ['GF', 'Attendance'], ['GD', 'Pts'], ['GD', 'Attendance']]
 
     def lanzar_kmeans(self):
+        from Clusters.CentroidClustering.CentroidCluster import CentroidCluster
         print('\n ---------Kmeans---------')
         kmean = CentroidCluster('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', 'Kmeans')
         for column in self.column_combinations:
@@ -34,6 +11,7 @@ class Lanzador:
             kmean.plot_results(model)
     
     def lanzar_mean_shift(self):
+        from Clusters.CentroidClustering.CentroidCluster import CentroidCluster
         print('\n ---------Mean Shift---------')
         ms = CentroidCluster('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', 'mean-shift')
         for column in self.column_combinations:
@@ -41,6 +19,7 @@ class Lanzador:
             ms.plot_results(model)
 
     def lanzar_minibatch(self):
+        from Clusters.CentroidClustering.CentroidCluster import CentroidCluster
         print('\n ---------Mini Batch---------')
         minibatch = CentroidCluster('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', 'minibatch')
         for column in self.column_combinations:
@@ -48,6 +27,7 @@ class Lanzador:
             minibatch.plot_results(model)
 
     def lanzar_dbscan(self):
+        from Clusters.DensityClustering.DensityCluster import DensityCluster
         print('\n ---------DBSCAN---------')
         dbscan = DensityCluster('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', 'dbscan')
         for column in self.column_combinations:
@@ -55,6 +35,7 @@ class Lanzador:
             dbscan.plot_results(model)
     
     def lanzar_optics(self):
+        from Clusters.DensityClustering.DensityCluster import DensityCluster
         print('\n ---------OPTICS---------')
         optics = DensityCluster('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', 'optics')
         for column in self.column_combinations:
@@ -62,6 +43,7 @@ class Lanzador:
             optics.plot_results(model)
     
     def lanzar_hdbscan(self):
+        from Clusters.DensityClustering.DensityCluster import DensityCluster
         print('\n ---------HDBSCAN---------')
         hdbscan = DensityCluster('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', 'hdbscan')
         for column in self.column_combinations:
@@ -69,6 +51,7 @@ class Lanzador:
             hdbscan.plot_results(model)
 
     def lanzar_gmm(self):
+        from Clusters.DistributionClustering.DistributionCluster import DistributionCluster
         print('\n ---------GMM---------')
         gmm = DistributionCluster('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', 'gmm')
         for column in self.column_combinations:
@@ -76,6 +59,7 @@ class Lanzador:
             gmm.plot_results(model)
     
     def lanzar_agglomerative(self):
+        from Clusters.HierarchicalClustering.HierarchicalCluster import HierarchicalCluster
         print('\n ---------Agglomerative---------')
         agglomerative = HierarchicalCluster('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', 'agglomerative')
         for column in self.column_combinations:
@@ -84,36 +68,43 @@ class Lanzador:
 
 
     def lanzar_randomforest(self):
+        from UEFA_Predictions.UEFA_RecursiveForecasting import RecursiveForecasting
         print('\n ---------Random Forest---------')
         random_forest = RecursiveForecasting('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         random_forest.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'RandomForest')
 
     def lanzar_gradientboosting(self):
+        from UEFA_Predictions.UEFA_RecursiveForecasting import RecursiveForecasting
         print('\n ---------Gradient Boosting---------')
         gradient_boosting = RecursiveForecasting('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         gradient_boosting.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'GradientBoosting')
 
     def lanzar_autoregressive(self):
+        from UEFA_Predictions.UEFA_StatisticModel import StatisticModel
         print('\n ---------Autoregressive---------')
         autoregressive = StatisticModel('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         autoregressive.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'AutoRegressive')
     
     def lanzar_exponentialsmoothing(self):
+        from UEFA_Predictions.UEFA_StatisticModel import StatisticModel
         print('\n ---------Exponential Smoothing---------')
         exponentialsmoothing = StatisticModel('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         exponentialsmoothing.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'ExponentialSmoothing')
     
     def lanzar_arima(self):
+        from UEFA_Predictions.UEFA_StatisticModel import StatisticModel
         print('\n ---------ARIMA---------')
         arima = StatisticModel('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         arima.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'ARIMA')
     
     def lanzar_sarimax(self):
+        from UEFA_Predictions.UEFA_StatisticModel import StatisticModel
         print('\n ---------SARIMAX---------')
         sarimax = StatisticModel('./UEFA_Analisis_CSV/UEFA_Final_Data.csv')
         sarimax.make_predictions('./UEFA_Analisis_CSV/UEFA_Target.csv', 'SARIMAX')
 
     def lanzar_linear_regression(self):
+        from Spark.spark import Spark
         print('\n ---------Linear Regression with PySpark---------')
         print('Launching PySpark...')
         spark = Spark()
@@ -124,10 +115,12 @@ class Lanzador:
         spark.stop()
 
     def lanzar_monte_carlo(self):
+        from Monte_Carlo.monte_carlo import MonteCarlo
         mc = MonteCarlo('./UEFA_Analisis_CSV/UEFA_Final_Data.csv', './UEFA_Analisis_CSV/UEFA_Target.csv')
         mc.predict_champions_winner('./UEFA_Predictions/csv', num_simulations=1000)
 
     def lanzar_actualizacion_scrapping(self):
+        from Web_Scrapping.scrapper import Scrapping
         def scrape(url, year):
             scrap = Scrapping(url, year)
             scrap.get_html()
@@ -156,11 +149,13 @@ class Lanzador:
             scrape(url, year) 
 
     def lanzar_analisis_scrapped_data(self):
+        from Web_Scrapping.analisis_scrapped_data import AnalisisScrappedData
         analisis = AnalisisScrappedData()
         analisis.analize_csv()
         analisis.get_final_data()       
 
     def lanzar_scrap_players(self):
+        from Web_Scrapping.scrap_players import ScrapPlayers
         print('Haciendo scrapping de los goleadores...')
         goleadores = ScrapPlayers('https://www.mediotiempo.com/futbol/champions-league/goleadores')
         html = goleadores.get_html()
@@ -168,6 +163,7 @@ class Lanzador:
         goleadores.save_csv(df, 'Web_Scrapping/Players_csv/goleadores.csv')
 
     def lanzar_scrap_pass(self):
+        from Web_Scrapping.scrap_players import ScrapPlayers
         print('Haciendo scrapping de los pasadores...')
         goleadores = ScrapPlayers('https://www.mediotiempo.com/futbol/champions-league/pasadores')
         html = goleadores.get_html()
@@ -175,6 +171,7 @@ class Lanzador:
         goleadores.save_csv(df, 'Web_Scrapping/Players_csv/pasadores.csv')
 
     def lanzar_scrap_gks(self):
+        from Web_Scrapping.scrap_players import ScrapPlayers
         print('Haciendo scrapping de los porteros...')
         porteros = ScrapPlayers('https://www.mediotiempo.com/futbol/champions-league/porteros')
         html = porteros.get_html()
@@ -182,6 +179,7 @@ class Lanzador:
         porteros.save_csv(df, 'Web_Scrapping/Players_csv/porteros.csv')
     
     def lanzar_scrap_logos(self):
+        from Web_Scrapping.scrap_img import Scrap_Img
         url = 'https://resultados.as.com/resultados/futbol/champions/equipos/'
         scrap_img = Scrap_Img(url)
         soup = scrap_img.get_html()
@@ -191,6 +189,7 @@ class Lanzador:
     
 
     def lanzar_winrate(self):
+        from UEFA_Winrate.winrate import Winrate
         print('Calculando probabilidad de éxito para cada equipo...')
         winrate = Winrate('./UEFA_Predictions/csv')
         combined_df = winrate.combine_data()
@@ -200,6 +199,7 @@ class Lanzador:
     
 
     def lanzar_img_classifier(self):
+        from IMG_Classifier.img_classifier import Img_Classifier
         print('Clasificando imagenes...')
         img_classifier = Img_Classifier('./Web_Scrapping/Logos_img')
         img_classifier.data_exploration()
