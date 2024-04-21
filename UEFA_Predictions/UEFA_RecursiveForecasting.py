@@ -1,11 +1,11 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingRegressor
 
-from Spark.spark import Spark
+#from Spark.spark import Spark
 
 
 
-class RecursiveForecasting(Spark):
+class RecursiveForecasting():
 
     def __init__(self, data_path):
         self.data_path = data_path
@@ -40,8 +40,8 @@ class RecursiveForecasting(Spark):
 
     #Metodo para hacer predicciones a cada jugador, y posteriormente añadirlo a los coeficientes de prediccion del equipo
     def player_performance(self, df_players, pred_dict):
-        df_pred_players = super().predict_player('./Web_Scrapping/Players_csv/goleadores.csv')
-        df_pred_gks = super().predict_player('./Web_Scrapping/Players_csv/porteros.csv')
+        df_pred_players = self.predict_player('./Web_Scrapping/Players_csv/goleadores.csv')
+        df_pred_gks = self.predict_player('./Web_Scrapping/Players_csv/porteros.csv')
         for team in pred_dict.keys():
             
             #Obtenemos el coeficiente para cada goleador y lo añadimos a la prediccion del equipo
@@ -62,53 +62,60 @@ class RecursiveForecasting(Spark):
                     pred_dict[team] += coef_gk
 
         return pred_dict
+    
 
+    #Metodo para calcular un coeficiente para cada jugador, y posteriormente añadirlo a los coeficientes de regresion del equipo
+    def predict_player(self, path):  
+        df = pd.read_csv(path)
+        type_ = path.split('/')[-1][:-4]
+        if type_ == 'goleadores':
+            ga = df['GA'] / 10
+            gc = (10 - df['G/C']) / 10
+            df['pred'] = (ga + gc) / 2
+        elif type_ == 'porteros':
+            efec = df['EFEC'] / 100
+            gc = df['GC'].apply(lambda x: (10-x) / 10 if x < 10 else 0)
+            df['pred'] =  (efec + gc) / 2
+        return df[['Jugadores', 'pred']]
 
 
     #Metodo para convertir el numero de standing a la ronda de la champions
     def convert(self, dictionary):
-        semifinalists_dict = dict(zip(list(dictionary.keys())[:4], list(dictionary.values())[:4]))
-        defeated_dict = dict(zip(list(dictionary.keys())[4:], list(dictionary.values())[4:]))
         final_dict = {}
         semifinalists1_dict = {}
         semifinalists2_dict = {}
+        defeated_dict = {}
 
         #Emparejamos cada equipo de cada semifinal en un diccionario diferente
-        for key, value in semifinalists_dict.items():
-            if key.startswith('Real Madrid'):
+        for key, value in dictionary.items():
+            if key.startswith('Real Madrid') or key.startswith('Bayern Munich'):
                 semifinalists1_dict[key] = value
-            if key.startswith('Bayern Munich'):
-                semifinalists1_dict[key] = value
-            if key.startswith('Paris S-G'):
+            elif key.startswith('Paris S-G') or key.startswith('Dortmund'):
                 semifinalists2_dict[key] = value
-            if key.startswith('Dortmund'):
-                semifinalists2_dict[key] = value
-        
+            else:
+                defeated_dict[key] = value
+                
         #Emparejamos los equipos de las semifinales, y sacamos el ganador y el perdedor
         semifin1_winner = max(semifinalists1_dict.items(), key=lambda x: x[1])
-        print(semifin1_winner)
         semifin1_looser = min(semifinalists1_dict.items(), key=lambda x: x[1])
-        print(semifin1_looser)
         semifin2_winner = max(semifinalists2_dict.items(), key=lambda x: x[1])
-        print(semifin2_winner)
         semifin2_looser = min(semifinalists2_dict.items(), key=lambda x: x[1])
-        print(semifin2_looser)
 
         if semifin1_winner[1] > semifin2_winner[1]:
             final_dict[semifin1_winner[0]] = 'W'
             final_dict[semifin2_winner[0]] = 'F'
-            print(semifin1_winner[0], ' ha ganado al ', semifin2_winner[0])
+            print('\n\n\n', semifin1_winner[0], ' ha ganado al ', semifin2_winner[0], ' en la final de la UCL')
         else:
             final_dict[semifin2_winner[0]] = 'W'
             final_dict[semifin1_winner[0]] = 'F'
-            print(semifin2_winner[0], ' ha ganado al ', semifin1_winner[0])
+            print('\n\n\n', semifin2_winner[0], ' ha ganado al ', semifin1_winner[0])
         final_dict[semifin1_looser[0]] = 'SF'
         final_dict[semifin2_looser[0]] = 'SF'
 
         #Los equipos que no han llegado a la semifinal los dejamos igual
         count_defeated = 0
         for key, value in defeated_dict.items():
-            if count_defeated < 32 - len(semifinalists_dict):
+            if count_defeated < len(defeated_dict):
                 if count_defeated <= 3:
                     final_dict[key] = 'QF'
                 elif 3 < count_defeated <= 11:

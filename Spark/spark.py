@@ -5,9 +5,11 @@ import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
 
+from UEFA_Predictions.UEFA_RecursiveForecasting import RecursiveForecasting
 
 
-class Spark:
+
+class Spark(RecursiveForecasting):
 
     def __init__(self):
         # Iniciamos una sesión de Spark, esto se hace siempre que se quiera trabajar con Spark
@@ -51,13 +53,18 @@ class Spark:
     def predict(self, df, teams, df_coef_players, df_coef_gks):
         predictions = {}
         for team in teams:
-            filtered_df = df.filter(col('Squad').like('%'+team+'%'))
-            pandas_df = filtered_df.toPandas()
-            #De esta manera nos aseguramos que el dataframe no este vacio
-            if pandas_df.shape[0] == 0:
-                data = pd.read_csv('./UEFA_Analisis_CSV/UEFA_Target.csv')
-                pandas_df = data[data['Squad'].str.contains(team)]
-            predictions[f'{team} 2023-2024'] = self.linear_regression(pandas_df, 'Rk', df_coef_players, df_coef_gks)
+            #startswith solo acepta 3 argumentos como maximo por lo que lo hacemos uno a uno
+            if team.startswith('Real Madrid') or team.startswith('Bayern Munich') or team.startswith('Paris S-G') or team.startswith('Dortmund'):
+                filtered_df = df.filter(col('Squad').like('%'+team+'%'))
+                pandas_df = filtered_df.toPandas()
+                #De esta manera nos aseguramos que el dataframe no este vacio
+                if pandas_df.shape[0] == 0:
+                    data = pd.read_csv('./UEFA_Analisis_CSV/UEFA_Target.csv')
+                    pandas_df = data[data['Squad'].str.contains(team)]
+                predictions[f'{team} 2023-2024'] = self.linear_regression(pandas_df, 'Rk', df_coef_players, df_coef_gks)
+        df_defeated = pd.read_csv('./UEFA_Analisis_CSV/UEFA_Target.csv', skiprows=5, header=None)
+        defeated_dict = {equipo: '' for equipo in df_defeated[2]}
+        predictions.update(defeated_dict)
         converted_pred = self.convert(predictions)
         df_predictions = pd.DataFrame(list(converted_pred.items()), columns=['Squad', 'Prediction'])
         df_predictions.to_csv('./UEFA_Predictions/csv/LinearRegression_Predictions.csv', index=False)
@@ -104,38 +111,9 @@ class Spark:
 
     #Metodo para convertir el numero de standing a la ronda de la champions
     def convert(self, dictionary):
-        #Ordenamos el diccionario de manera descendente
-        ordered_dict = dict(sorted(dictionary.items(), key=lambda x: x[1], reverse=True))
-        final_dict = {}
-        count = 0
-        for key, value in ordered_dict.items():
-            if count < 32:
-                if count == 0:
-                    final_dict[key] = 'W'
-                elif count == 1:
-                    final_dict[key] = 'F'
-                elif count <= 3:
-                    final_dict[key] = 'SF'
-                elif count <= 7:
-                    final_dict[key] = 'QF'
-                elif count <= 15:
-                    final_dict[key] = 'R16'
-                else:
-                    final_dict[key] = 'GR'
-                count += 1
-        return final_dict
+        return super().convert(dictionary)
     
 
     #Metodo para calcular un coeficiente para cada jugador, y posteriormente añadirlo a los coeficientes de regresion del equipo
     def predict_player(self, path):  
-        df = pd.read_csv(path)
-        type_ = path.split('/')[-1][:-4]
-        if type_ == 'goleadores':
-            ga = df['GA'] / 10
-            gc = (10 - df['G/C']) / 10
-            df['pred'] = (ga + gc) / 2
-        elif type_ == 'porteros':
-            efec = df['EFEC'] / 100
-            gc = df['GC'].apply(lambda x: (10-x) / 10 if x < 10 else 0)
-            df['pred'] =  (efec + gc) / 2
-        return df[['Jugadores', 'pred']]
+        return super().predict_player(path)
