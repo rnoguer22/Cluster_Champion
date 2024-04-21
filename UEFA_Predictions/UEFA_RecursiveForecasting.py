@@ -69,25 +69,46 @@ class RecursiveForecasting(Spark):
     def convert(self, dictionary):
         semifinalists_dict = dict(zip(list(dictionary.keys())[:4], list(dictionary.values())[:4]))
         defeated_dict = dict(zip(list(dictionary.keys())[4:], list(dictionary.values())[4:]))
-        #Ordenamos los diccionarios de manera descendente
-        semifinalists_ordered_dict = dict(sorted(semifinalists_dict.items(), key=lambda x: x[1], reverse=True))
-        defeated_ordered_dict = dict(sorted(defeated_dict.items(), key=lambda x: x[1], reverse=True))
         final_dict = {}
+        semifinalists1_dict = {}
+        semifinalists2_dict = {}
 
-        count_semi = 0
-        for key, value in semifinalists_ordered_dict.items():
-            if count_semi < 32 - len(defeated_ordered_dict):
-                if count_semi == 0:
-                    final_dict[key] = 'W'
-                elif count_semi == 1:
-                    final_dict[key] = 'F'
-                elif count_semi <= 3:
-                    final_dict[key] = 'SF'
-                count_semi += 1
+        #Emparejamos cada equipo de cada semifinal en un diccionario diferente
+        for key, value in semifinalists_dict.items():
+            if key.startswith('Real Madrid'):
+                semifinalists1_dict[key] = value
+            if key.startswith('Bayern Munich'):
+                semifinalists1_dict[key] = value
+            if key.startswith('Paris S-G'):
+                semifinalists2_dict[key] = value
+            if key.startswith('Dortmund'):
+                semifinalists2_dict[key] = value
+        
+        #Emparejamos los equipos de las semifinales, y sacamos el ganador y el perdedor
+        semifin1_winner = max(semifinalists1_dict.items(), key=lambda x: x[1])
+        print(semifin1_winner)
+        semifin1_looser = min(semifinalists1_dict.items(), key=lambda x: x[1])
+        print(semifin1_looser)
+        semifin2_winner = max(semifinalists2_dict.items(), key=lambda x: x[1])
+        print(semifin2_winner)
+        semifin2_looser = min(semifinalists2_dict.items(), key=lambda x: x[1])
+        print(semifin2_looser)
 
+        if semifin1_winner[1] > semifin2_winner[1]:
+            final_dict[semifin1_winner[0]] = 'W'
+            final_dict[semifin2_winner[0]] = 'F'
+            print(semifin1_winner[0], ' ha ganado al ', semifin2_winner[0])
+        else:
+            final_dict[semifin2_winner[0]] = 'W'
+            final_dict[semifin1_winner[0]] = 'F'
+            print(semifin2_winner[0], ' ha ganado al ', semifin1_winner[0])
+        final_dict[semifin1_looser[0]] = 'SF'
+        final_dict[semifin2_looser[0]] = 'SF'
+
+        #Los equipos que no han llegado a la semifinal los dejamos igual
         count_defeated = 0
-        for key, value in defeated_ordered_dict.items():
-            if count_defeated < 32 - len(semifinalists_ordered_dict):
+        for key, value in defeated_dict.items():
+            if count_defeated < 32 - len(semifinalists_dict):
                 if count_defeated <= 3:
                     final_dict[key] = 'QF'
                 elif 3 < count_defeated <= 11:
@@ -95,5 +116,5 @@ class RecursiveForecasting(Spark):
                 else:
                     final_dict[key] = 'GR'
                 count_defeated += 1
-                
+
         return final_dict
