@@ -237,17 +237,17 @@ class Lanzador:
         self.lanzar_gmm()
         self.lanzar_agglomerative()
         '''
-        #Lanzamos los modelos de prediccion
-        #self.lanzar_randomforest()
-        #self.lanzar_gradientboosting()
         '''
+        #Lanzamos los modelos de prediccion
+        self.lanzar_randomforest()
+        self.lanzar_gradientboosting()
         self.lanzar_autoregressive()
         self.lanzar_exponentialsmoothing()    
         self.lanzar_arima()
         self.lanzar_sarimax()
-        '''
         self.lanzar_linear_regression()
-        #self.lanzar_monte_carlo()
+        '''
+        self.lanzar_monte_carlo()
 
         #self.lanzar_winrate()
 
