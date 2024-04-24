@@ -1,9 +1,7 @@
 import os
+from Web_Scrapping.lanzador_scrapping import LanzadorScrapping
 from Clusters.lanzador_cluster import Lanzador_Cluster
 from UEFA_Predictions.lanzador_predict import LanzadorPredict
-from Ejercicio3.lanzador3 import main3
-from Ejercicio3.lanzador3 import main4
-from Ejercicio3.lanzador3 import main5
 
 
 
@@ -33,7 +31,33 @@ def iniciar():
         limpiar_pantalla()
 
         if opcion == '1':
-            main1()
+            lanzador_scrapping = LanzadorScrapping()
+            print('========================')
+            print(' Choose the web scrapping you want to launch:')
+            print('========================')
+            print('[1] Update actual Champions League Standings')
+            print('[2] Scrap players')
+            print('[3] Scrapping playmakers')
+            print('[4] Scrapping goalkeepers')
+            print('[5] Scrapping Champions League team logos')
+            print('========================')
+            opcion_scrapping = input('> ')
+            limpiar_pantalla()
+            if opcion_scrapping == '1':
+                lanzador_scrapping.lanzar_actualizacion_scrapping()
+                lanzador_scrapping.lanzar_analisis_scrapped_data()
+            elif opcion_scrapping == '2':
+                lanzador_scrapping.lanzar_scrap_players()
+            elif opcion_scrapping == '3':
+                lanzador_scrapping.lanzar_scrap_pass()
+            elif opcion_scrapping == '4':
+                lanzador_scrapping.lanzar_scrap_gks()
+            elif opcion_scrapping == '5':
+                lanzador_scrapping.lanzar_scrap_logos()
+            else:
+                print('Invalid option')
+            input("\nPress ENTER to continue...")
+
 
         if opcion == '2':
             lanzador_cluster = Lanzador_Cluster()
@@ -112,18 +136,21 @@ def iniciar():
                 lanzador_predict.launch_all()
             else:
                 print('Invalid option')
-                
+
 
         if opcion == '4':
-            main4()
+            print("Launching LangChain...")
+            print('Lanchaing does not work properly :(')
+            print('Moyis needs to update it to Llama 3')
 
         if opcion == '5':
-            main5()
+            print('Launching IMG Classifier...')
+            print('IMG Classifier does not work properly :(')
 
         if opcion == '6':
-            print("Bye bye!!!\n")
+            print('Bye bye!!!\n')
             break
     
-        input("\nPress ENTER to continue...")
+        input('\nPress ENTER to continue...')
 
         limpiar_pantalla()
