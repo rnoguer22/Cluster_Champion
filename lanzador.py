@@ -7,6 +7,8 @@ class Lanzador:
         df_prob = winrate.calculate_prob(combined_df, './UEFA_Winrate/csv/winrate.csv')
         winrate.plot_prob('./UEFA_Winrate/img/winrate.png', df_prob)
 
+    
+
     def lanzar_img_classifier(self):
         from IMG_Classifier.img_classifier import Img_Classifier
         print('Clasificando imagenes...')

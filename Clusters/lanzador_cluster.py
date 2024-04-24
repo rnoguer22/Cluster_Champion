@@ -1,4 +1,8 @@
 class Lanzador_Cluster():
+
+    def __init__(self):
+        self.column_combinations = [['GF', 'Pts'], ['GF', 'GD'], ['GF', 'Attendance'], ['GD', 'Pts'], ['GD', 'Attendance']]
+    
     def lanzar_kmeans(self):
         from Clusters.CentroidClustering.CentroidCluster import CentroidCluster
         print('\n ---------Kmeans---------')
