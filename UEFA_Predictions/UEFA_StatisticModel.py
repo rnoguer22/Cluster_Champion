@@ -52,6 +52,9 @@ class StatisticModel(RecursiveForecasting):
         print('\n', len(sorted_prediction))
         prediction_df = pd.DataFrame({'Squad':sorted_prediction.keys(), 'Prediction':sorted_prediction.values()})
         prediction_df.to_csv(f'./UEFA_Predictions/csv/{classifier}_Predictions.csv', index=False)
+        print(f'csv guardado corectamente en ./UEFA_Predictions/csv/{classifier}_Predictions.csv')
+        print('\n')
+        return prediction_df
 
 
     def convert(self, dictionary):

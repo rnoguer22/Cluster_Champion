@@ -36,6 +36,9 @@ class RecursiveForecasting():
         sorted_prediction = self.convert(prediction_dict)
         prediction_df = pd.DataFrame({'Squad':sorted_prediction.keys(), 'Prediction':sorted_prediction.values()})
         prediction_df.to_csv(f'./UEFA_Predictions/csv/{classifier}_Predictions.csv', index=False)
+        print(f'csv guardado corectamente en ./UEFA_Predictions/csv/{classifier}_Predictions.csv')
+        print('\n')
+        return prediction_df
 
 
     #Metodo para hacer predicciones a cada jugador, y posteriormente añadirlo a los coeficientes de prediccion del equipo

@@ -63,6 +63,7 @@ def iniciar():
                 start()
             else:
                 print('Invalid option')
+            input('Press Enter to continue...')
 
 
         if opcion == '2':
@@ -105,6 +106,7 @@ def iniciar():
                 start()
             else:
                 print('Invalid option')
+            input('Press Enter to continue...')
             
 
         if opcion == '3':
@@ -126,27 +128,28 @@ def iniciar():
             opcion_predict = input('> ')
             limpiar_pantalla()
             if opcion_predict == '1':
-                lanzador_predict.lanzar_randomforest()
+                print(lanzador_predict.lanzar_randomforest())
             elif opcion_predict == '2':
-                lanzador_predict.lanzar_gradientboosting()
+                print(lanzador_predict.lanzar_gradientboosting())
             elif opcion_predict == '3':
-                lanzador_predict.lanzar_autoregressive()
+                print(lanzador_predict.lanzar_autoregressive())
             elif opcion_predict == '4':
-                lanzador_predict.lanzar_exponentialsmoothing()
+                print(lanzador_predict.lanzar_exponentialsmoothing())
             elif opcion_predict == '5':
-                lanzador_predict.lanzar_arima()
+                print(lanzador_predict.lanzar_arima())
             elif opcion_predict == '6':
-                lanzador_predict.lanzar_sarimax()
+                print(lanzador_predict.lanzar_sarimax())
             elif opcion_predict == '7':
-                lanzador_predict.lanzar_linear_regression()
+                print(lanzador_predict.lanzar_linear_regression())
             elif opcion_predict == '8':
-                lanzador_predict.lanzar_monte_carlo()
+                print(lanzador_predict.lanzar_monte_carlo())
             elif opcion_predict == '9':
-                lanzador_predict.launch_all()
+                print(lanzador_predict.launch_all())
             elif opcion_predict == '10':
                 start()
             else:
                 print('Invalid option')
+            input('Press Enter to continue...')
 
 
         if opcion == '4':

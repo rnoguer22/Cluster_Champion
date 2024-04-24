@@ -51,6 +51,7 @@ class MonteCarlo:
         if not os.path.exists(output_path):
             os.makedirs(output_path)
         teams_df_sorted.to_csv(os.path.join(output_path, 'Monte_Carlo_Winner.csv'), index=False)
-        print(teams_df_sorted)
-        print(f'\n\nThe predicted winner of the Champions League is: {winner}')
+        print(f'\nThe predicted winner of the Champions League is: {winner}')
         print('csv saved as', os.path.join(output_path, 'Monte_Carlo_Winner.csv'))
+        print('\n')
+        return teams_df_sorted
