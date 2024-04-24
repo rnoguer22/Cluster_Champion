@@ -1,6 +1,5 @@
-from lanzador import Lanzador
+from menu import iniciar
 
 if __name__ == '__main__':
 
-    lanzador = Lanzador()
-    lanzador.launch_all()
+    iniciar()

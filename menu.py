@@ -1,4 +1,5 @@
 import os
+from time import sleep
 from Web_Scrapping.lanzador_scrapping import LanzadorScrapping
 from Clusters.lanzador_cluster import Lanzador_Cluster
 from UEFA_Predictions.lanzador_predict import LanzadorPredict
@@ -15,20 +16,23 @@ def limpiar_pantalla():
 
 def iniciar():
     while True:
-        limpiar_pantalla()
-        print("========================")
-        print(" Welcome to the Manager Menu!!! ")
-        print("========================")
-        print("[1] Web Scrapping")
-        print("[2] Clusters ")
-        print("[3] Predictions") #Time series, Monte Carlo, Linear Regression with Spark
-        print("[4] LangChain")        
-        print("[5] IMG Classifier")
-        print("[6] Close ")
-        print("========================")
+        def start():
+            limpiar_pantalla()
+            print("========================")
+            print(" Welcome to the Manager Menu!!! ")
+            print("========================")
+            print("[1] Web Scrapping")
+            print("[2] Clusters ")
+            print("[3] Predictions") #Time series, Monte Carlo, Linear Regression with Spark
+            print("[4] LangChain")        
+            print("[5] IMG Classifier")
+            print("[6] Close ")
+            print("========================")
+            opcion = input("> ")
+            limpiar_pantalla()
+            return opcion
 
-        opcion = input("> ")
-        limpiar_pantalla()
+        opcion = start()
 
         if opcion == '1':
             lanzador_scrapping = LanzadorScrapping()
@@ -40,6 +44,7 @@ def iniciar():
             print('[3] Scrapping playmakers')
             print('[4] Scrapping goalkeepers')
             print('[5] Scrapping Champions League team logos')
+            print('[6] Exit')
             print('========================')
             opcion_scrapping = input('> ')
             limpiar_pantalla()
@@ -54,9 +59,10 @@ def iniciar():
                 lanzador_scrapping.lanzar_scrap_gks()
             elif opcion_scrapping == '5':
                 lanzador_scrapping.lanzar_scrap_logos()
+            elif opcion_scrapping == '6':
+                start()
             else:
                 print('Invalid option')
-            input("\nPress ENTER to continue...")
 
 
         if opcion == '2':
@@ -73,6 +79,7 @@ def iniciar():
             print('[7] GMM')
             print('[8] Agglomerative')
             print('[9] All')
+            print('[10] Exit')
             print('========================')
             opcion_cluster = input('> ')
             limpiar_pantalla()
@@ -94,9 +101,10 @@ def iniciar():
                 lanzador_cluster.lanzar_agglomerative()
             elif opcion_cluster == '9':
                 lanzador_cluster.launch_all_clusters()
+            elif opcion_cluster == '10':
+                start()
             else:
                 print('Invalid option')
-            input("\nPress ENTER to continue...")
             
 
         if opcion == '3':
@@ -113,6 +121,7 @@ def iniciar():
             print('[7] Linear Regression')
             print('[8] Monte Carlo')
             print('[9] All')
+            print('[10] Exit')
             print('========================')
             opcion_predict = input('> ')
             limpiar_pantalla()
@@ -134,6 +143,8 @@ def iniciar():
                 lanzador_predict.lanzar_monte_carlo()
             elif opcion_predict == '9':
                 lanzador_predict.launch_all()
+            elif opcion_predict == '10':
+                start()
             else:
                 print('Invalid option')
 
@@ -142,15 +153,16 @@ def iniciar():
             print("Launching LangChain...")
             print('Lanchaing does not work properly :(')
             print('Moyis needs to update it to Llama 3')
+            sleep(3)
+            start()
 
         if opcion == '5':
             print('Launching IMG Classifier...')
             print('IMG Classifier does not work properly :(')
+            sleep(3)
+            start()
 
         if opcion == '6':
-            print('Bye bye!!!\n')
+            print('Bye bye!!!')
+            sleep(2)
             break
-    
-        input('\nPress ENTER to continue...')
-
-        limpiar_pantalla()
