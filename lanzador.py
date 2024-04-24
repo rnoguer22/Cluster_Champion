@@ -247,8 +247,21 @@ class Lanzador:
         self.lanzar_sarimax()
         self.lanzar_linear_regression()
         '''
-        self.lanzar_monte_carlo()
+        #self.lanzar_monte_carlo()
 
         #self.lanzar_winrate()
 
         #self.lanzar_img_classifier()
+
+    
+
+
+    def limpiar_pantalla():
+        import os
+        import platform
+        if platform.system() == "Windows":
+            os.system('cls')
+        else:
+            os.system('clear')
+
+    
