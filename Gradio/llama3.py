@@ -1,6 +1,7 @@
 import requests
+import gradio as gr
 
-def llama3(prompt):
+def predict(prompt, history):
     data = {
         "model": "llama3",
         "messages": [
@@ -20,6 +21,4 @@ def llama3(prompt):
     response = requests.post(url, headers=headers, json=data)
     return(response.json()['message']['content'])
 
-
-response = llama3("Tell me a joke!")
-print(response)
+gr.ChatInterface(predict).launch()
