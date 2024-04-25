@@ -1,13 +1,4 @@
-'''from langchain_community.chat_models import ChatOllama
-
-llm = ChatOllama(model='llama3')
-
-result = llm.invoke('Hello World!')
-print(result)'''
-
 import requests
-
-url = "http://localhost:11434/api/chat"
 
 def llama3(prompt):
     data = {
@@ -25,8 +16,8 @@ def llama3(prompt):
         'Content-Type': 'application/json'
     }
     
+    url = "http://localhost:11434/api/chat"
     response = requests.post(url, headers=headers, json=data)
-    
     return(response.json()['message']['content'])
 
 
