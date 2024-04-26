@@ -21,4 +21,15 @@ def predict(prompt, history):
     response = requests.post(url, headers=headers, json=data)
     return(response.json()['message']['content'])
 
-gr.ChatInterface(predict).launch()
+
+with gr.Blocks() as demo:
+    gr.Markdown('''
+    # Hola Mundo
+    Estamos realizando pruebas con gradio
+    ''')
+    input_text = gr.Textbox(lines=7, label="Input Text")
+    output_text = gr.Textbox(lines=7, label="Output Text")
+
+    gr.ChatInterface(predict)
+
+demo.launch() 
