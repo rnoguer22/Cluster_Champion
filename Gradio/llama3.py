@@ -1,6 +1,7 @@
 import requests
 import os
 import gradio as gr
+import pandas as pd
 
 
 # Obtener lista de nombres de archivos en el directorio
@@ -8,12 +9,8 @@ archivos = os.listdir("./UEFA_Predictions/csv/")
 
 models = []
 for model in archivos:
-    if model[0].islower():
-        model = model.capitalize()
     if model.startswith('Monte'):
-        models.append('Monte Carlo')
-    elif model.startswith('Linear'):
-        models.append('Linear Regression')
+        models.append(model.split("_")[0] + "_" + model.split("_")[1])
     else:
         models.append(model.split("_")[0])
 
@@ -41,8 +38,10 @@ def predict(prompt, history):
     response = requests.post(url, headers=headers, json=data)
     return(response.json()['message']['content'])
 
-def selection(option):
-    return f"{option} selected"
+def selection(model):
+    model += '_Predictions.csv'
+    df = pd.read_csv(f'./UEFA_Predictions/csv/{model}')
+    return df
 
 
 with gr.Blocks() as demo:
@@ -54,11 +53,13 @@ with gr.Blocks() as demo:
     Estamos realizando pruebas con gradio
     ''')
     with gr.Tabs():
-        with gr.TabItem('Predicciones'):
-            dropdown = gr.Dropdown(choices=models, label="Seleccione el modelo que desea utilizar")
-            output_text = gr.Textbox(lines=2, label="Output Text")
-            text_button = gr.Button("Enviar")
-            text_button.click(selection, inputs=dropdown, outputs=output_text)
+
+        with gr.TabItem('Predictions'):
+            dropdown = gr.Dropdown(choices=models, label="Choose the model to launch:")
+            output_text = gr.Textbox(lines=2, label="Output Text", visible=False)
+            text_button = gr.Button("Send")
+            text_button.click(selection, inputs=dropdown, outputs=gr.DataFrame())
+
         with gr.TabItem('ChatBot'):
             gr.ChatInterface(predict)
 
