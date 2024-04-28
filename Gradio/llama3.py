@@ -39,9 +39,21 @@ def predict(prompt, history):
     return(response.json()['message']['content'])
 
 def selection(model):
-    model += '_Predictions.csv'
+    if model.startswith('Monte'):
+        model = 'Monte_Carlo_Winner.csv'
+    else:
+        model += '_Predictions.csv'
     df = pd.read_csv(f'./UEFA_Predictions/csv/{model}')
     return df
+
+def select_cluster(cluster_sel, comb):
+    centroid_clusters = ['kmeans', 'mean-shift', 'minibatch']
+
+    if cluster_sel in centroid_clusters:
+        path = f'./Clusters/CentroidClustering/img/{cluster_sel}/{cluster_sel}-{comb}.png'
+    
+    return path
+    
 
 
 with gr.Blocks() as demo:
@@ -54,11 +66,19 @@ with gr.Blocks() as demo:
     ''')
     with gr.Tabs():
 
+        with gr.TabItem('Clusters'):
+            cluster_type = ['kmeans', 'mean-shift', 'minibatch', 'DBSCAN', 'HDBSCAN', 'OPTICS', 'GMM', 'Agglomerative']
+            cluster_comb = ['GF-Pts', 'GF-GD', 'GF-Attendance', 'GD-Pts', 'GD-Attendance']
+            dropdown_cluster_type = gr.Dropdown(choices=cluster_type, label="Choose the cluster to launch:")
+            dropdown_cluster_comb = gr.Dropdown(choices=cluster_comb, label="Choose the combination of data for the cluster:")
+            text_button = gr.Button("Send")
+            text_button.click(select_cluster, inputs=[dropdown_cluster_type, dropdown_cluster_comb], outputs=gr.Image())
+
         with gr.TabItem('Predictions'):
             dropdown = gr.Dropdown(choices=models, label="Choose the model to launch:")
-            output_text = gr.Textbox(lines=2, label="Output Text", visible=False)
             text_button = gr.Button("Send")
-            text_button.click(selection, inputs=dropdown, outputs=gr.DataFrame())
+            output_df = gr.DataFrame()
+            text_button.click(selection, inputs=dropdown, outputs=output_df)
 
         with gr.TabItem('ChatBot'):
             gr.ChatInterface(predict)
