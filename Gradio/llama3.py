@@ -69,20 +69,20 @@ def select_cluster(cluster_sel, comb):
 with gr.Blocks() as demo:
     gr.Markdown('''
     # Hola Mundo
-    
-    ## [Pincha aqui para acceder al link de este repositorio](https://github.com/rnoguer22/Cluster_Champion.git)
-                
-    Estamos realizando pruebas con gradio
     ''')
     with gr.Tabs():
 
         with gr.TabItem('Clusters'):
             cluster_type = ['kmeans', 'mean-shift', 'minibatch', 'dbscan', 'hdbscan', 'optics', 'gmm', 'agglomerative']
             cluster_comb = ['GF-Pts', 'GF-GD', 'GF-Attendance', 'GD-Pts', 'GD-Attendance']
-            dropdown_cluster_type = gr.Dropdown(choices=cluster_type, value=cluster_type[0], label="Choose the cluster to launch:")
-            dropdown_cluster_comb = gr.Dropdown(choices=cluster_comb, value=cluster_comb[0], label="Choose the combination of data for the cluster:")
-            text_button = gr.Button("Send")
-            text_button.click(select_cluster, inputs=[dropdown_cluster_type, dropdown_cluster_comb], outputs=gr.Image())
+            with gr.Row():
+                with gr.Column():
+                    dropdown_cluster_type = gr.Dropdown(choices=cluster_type, value=cluster_type[0], label="Choose the cluster to launch:")
+                    dropdown_cluster_comb = gr.Dropdown(choices=cluster_comb, value=cluster_comb[0], label="Choose the combination of data for the cluster:")
+                    gr.Markdown('<br><br><br><br><br><br><br><br><br>') 
+                    text_button = gr.Button("Send")
+                cluster_img = gr.Image(height=454)
+            text_button.click(select_cluster, inputs=[dropdown_cluster_type, dropdown_cluster_comb], outputs=cluster_img)
 
         with gr.TabItem('Predictions'):
             dropdown = gr.Dropdown(choices=models, label="Choose the model to launch:")
@@ -93,4 +93,4 @@ with gr.Blocks() as demo:
         with gr.TabItem('ChatBot'):
             gr.ChatInterface(predict)
 
-demo.launch() 
+demo.launch(inbrowser=True) 
