@@ -48,10 +48,20 @@ def selection(model):
 
 def select_cluster(cluster_sel, comb):
     centroid_clusters = ['kmeans', 'mean-shift', 'minibatch']
+    density_clusters = ['dbscan', 'hdbscan', 'optics']
+    distribution_clusters = 'gmm'
+    hierarchical_clusters = 'agglomerative'
 
     if cluster_sel in centroid_clusters:
         path = f'./Clusters/CentroidClustering/img/{cluster_sel}/{cluster_sel}-{comb}.png'
-    
+    elif cluster_sel in density_clusters:
+        path = f'./Clusters/DensityClustering/img/{cluster_sel}/{cluster_sel}-{comb}.png'
+    elif cluster_sel == distribution_clusters:
+        path = f'./Clusters/DistributionClustering/img/{cluster_sel}/{cluster_sel}-{comb}.png'
+    elif cluster_sel == hierarchical_clusters:
+        path = f'./Clusters/HierarchicalClustering/img/{cluster_sel}/{cluster_sel}-{comb}.png'
+    else:
+        print('Error')
     return path
     
 
@@ -67,10 +77,10 @@ with gr.Blocks() as demo:
     with gr.Tabs():
 
         with gr.TabItem('Clusters'):
-            cluster_type = ['kmeans', 'mean-shift', 'minibatch', 'DBSCAN', 'HDBSCAN', 'OPTICS', 'GMM', 'Agglomerative']
+            cluster_type = ['kmeans', 'mean-shift', 'minibatch', 'dbscan', 'hdbscan', 'optics', 'gmm', 'agglomerative']
             cluster_comb = ['GF-Pts', 'GF-GD', 'GF-Attendance', 'GD-Pts', 'GD-Attendance']
-            dropdown_cluster_type = gr.Dropdown(choices=cluster_type, label="Choose the cluster to launch:")
-            dropdown_cluster_comb = gr.Dropdown(choices=cluster_comb, label="Choose the combination of data for the cluster:")
+            dropdown_cluster_type = gr.Dropdown(choices=cluster_type, value=cluster_type[0], label="Choose the cluster to launch:")
+            dropdown_cluster_comb = gr.Dropdown(choices=cluster_comb, value=cluster_comb[0], label="Choose the combination of data for the cluster:")
             text_button = gr.Button("Send")
             text_button.click(select_cluster, inputs=[dropdown_cluster_type, dropdown_cluster_comb], outputs=gr.Image())
 
