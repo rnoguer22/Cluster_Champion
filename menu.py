@@ -3,6 +3,8 @@ from time import sleep
 from Web_Scrapping.lanzador_scrapping import LanzadorScrapping
 from Clusters.lanzador_cluster import Lanzador_Cluster
 from UEFA_Predictions.lanzador_predict import LanzadorPredict
+from Gradio.lanzador_llama3 import LanzadorLlama3
+
 
 
 
@@ -26,7 +28,8 @@ def iniciar():
             print("[3] Predictions") #Time series, Monte Carlo, Linear Regression with Spark
             print("[4] LangChain")        
             print("[5] IMG Classifier")
-            print("[6] Close ")
+            print("[6] ChatBot with Llama3 using gradio gui")
+            print("[7] Close ")
             print("========================")
             opcion = input("> ")
             limpiar_pantalla()
@@ -166,6 +169,9 @@ def iniciar():
             start()
 
         if opcion == '6':
+            LanzadorLlama3.lanzar_gradio_gui(LanzadorLlama3)
+
+        if opcion == '7':
             print('Bye bye!!!')
             sleep(2)
             break

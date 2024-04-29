@@ -109,4 +109,5 @@ class Gradio_GUI():
                     ''')
                     gr.ChatInterface(self.llama3_predict, fill_height=True)
 
-        demo.launch(inbrowser=True) 
+        print('\n\nClose the server with Ctrl + C')
+        demo.launch(inbrowser=True)
