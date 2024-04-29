@@ -110,11 +110,3 @@ class Gradio_GUI():
                     gr.ChatInterface(self.llama3_predict, fill_height=True)
 
         demo.launch(inbrowser=True) 
-
-
-
-
-
-
-gradio_gui = Gradio_GUI('./UEFA_Predictions/csv')
-gradio_gui.launch_gradio_gui()
