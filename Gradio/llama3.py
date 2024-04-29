@@ -66,9 +66,11 @@ def select_cluster(cluster_sel, comb):
     
 
 
-with gr.Blocks() as demo:
+with gr.Blocks(theme=gr.themes.Monochrome()) as demo:
     gr.Markdown('''
-    # Hola Mundo
+    <h1 style="text-align: left">
+    Champions League Analysis with Llama3
+    </h1>
     ''')
     with gr.Tabs():
 
@@ -79,18 +81,27 @@ with gr.Blocks() as demo:
                 with gr.Column():
                     dropdown_cluster_type = gr.Dropdown(choices=cluster_type, value=cluster_type[0], label="Choose the cluster to launch:")
                     dropdown_cluster_comb = gr.Dropdown(choices=cluster_comb, value=cluster_comb[0], label="Choose the combination of data for the cluster:")
-                    gr.Markdown('<br><br><br><br><br><br><br><br><br>') 
-                    text_button = gr.Button("Send")
-                cluster_img = gr.Image(height=454)
+                    gr.Markdown('<br><br><br><br><br><br>') 
+                    text_button = gr.Button("Generate")
+                cluster_img = gr.Image(height=445)
             text_button.click(select_cluster, inputs=[dropdown_cluster_type, dropdown_cluster_comb], outputs=cluster_img)
 
         with gr.TabItem('Predictions'):
-            dropdown = gr.Dropdown(choices=models, label="Choose the model to launch:")
-            text_button = gr.Button("Send")
-            output_df = gr.DataFrame()
+            with gr.Row():
+                with gr.Column():
+                    dropdown = gr.Dropdown(choices=models, value=models[0], label="Choose the time series model to visualize the prediction:")
+                    text_button = gr.Button("Generate")
+                output_df = gr.DataFrame()
             text_button.click(selection, inputs=dropdown, outputs=output_df)
 
         with gr.TabItem('ChatBot'):
-            gr.ChatInterface(predict)
+            gr.Markdown('''
+                ### To make the chatbot work, you need to:
+                - Have Ollama installed and running in your computer (run ollama from the command line with: ollama serve)
+                - Install llama3 in your local machine      
+            ''')
+            gr.ChatInterface(predict, fill_height=True)
+
+
 
 demo.launch(inbrowser=True) 
