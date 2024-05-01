@@ -25,7 +25,7 @@ class Gradio_GUI():
         return models
 
 
-    def llama3_predict(self, prompt):
+    def llama3_predict(self, prompt, history):
         data = {
             "model": "llama3",
             "messages": [
@@ -107,7 +107,7 @@ class Gradio_GUI():
                         - Have Ollama installed and running in your computer (run ollama from the command line with: ollama serve)
                         - Install llama3 in your local machine      
                     ''')
-                    gr.ChatInterface(self.llama3_predict, fill_height=True)
+                    gr.ChatInterface(self.llama3_predict)
 
         print('\n\nClose the server with Ctrl + C')
         demo.launch(inbrowser=True)
