@@ -438,10 +438,32 @@ Por último, hemos realizado una interfaz con gradio, en la que podemos ver de u
 
 <br>
 
+![Cluster-gradio](https://github.com/rnoguer22/Cluster_Champion/blob/main/Gradio/img/cluster.png)
+
+<br>
+
+![Predictions](https://github.com/rnoguer22/Cluster_Champion/blob/main/Gradio/img/predictions.png)
+
 Además, hemos realizado un ChatBot con el reciente modelo de Procesamiento de Lenguaje Natural, Llama3, con el cuál podemos preguntar cualquier cosa mediante la interfaz de gradio y tras un cierto tiempo (dependiendo de la capacidad de su tarjeta gráfica o de su gráfica propiamente integrada en su procesador) obtenemos una respuesta del modelo como si de cualquier persona humana se tratase.
 
 <br>
 
+![Gradio Llama3](https://github.com/rnoguer22/Cluster_Champion/blob/main/Gradio/img/thinking.png)
+
+Y tras pasado un tiempo de procesamiento, obtenemos la respuesta de Llama3:
+
+![Gradio Llama3 response](https://github.com/rnoguer22/Cluster_Champion/blob/main/Gradio/img/response.png)
+
+<br>
+
 Para que esto funcione, al menos en sistemas Linux que es donde hemos estado haciendo las pruebas, hemos de tener el propio modelo Llama3 instalado en nuestra maquina, y tener inicializado ollama en una terminal, tal y como podemos ver a continuación:
+
+<br>
+
+![ollamaserve](https://github.com/rnoguer22/Cluster_Champion/blob/main/Gradio/img/ollama-serve.png)
+
+Y cada vez que le preguntamos algo al ChatBot, se muestra información como el status, la hora a la que se hizo la pregunta, el tiempo que se tardó en dar la respuesta, timestamp, dirección IP, POST, etc.
+
+![status](https://github.com/rnoguer22/Cluster_Champion/blob/main/Gradio/img/image.png)
 
 ---
