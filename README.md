@@ -9,6 +9,7 @@ Hemos seguido realizando la tarea de la champions. En esta entrega, nos hemos ce
 ---
 
 ## Indice
+- [Web Scrapping](#webscrapping)
 - [Clusterizacion](#cluster)
   - [K-Means](#kmeans)
   - [Mean-Shift](#meanshift)
@@ -19,6 +20,25 @@ Hemos seguido realizando la tarea de la champions. En esta entrega, nos hemos ce
   - [GMM](#gmm)
   - [Agglomerative](#agglomerative)
 - [Series Temporales](#serie)
+  -[Random Forest](#randomforest)
+  -[Gradient Boosting](#gradientboosting)
+  -[Autoregressive](#autoregressive)
+  -[Exponential Smoothing](#exponentialsmoothing)
+  -[Arima](#arima)
+  -[Sarimax](#sarimax)
+  -[Regresión Lineal](#regresionlineal)
+  -[Monte Carlo](#montecarlo)
+- [Gradio && Llama3](#gradiou)
+
+---
+
+## Web Scrapping <a name="webscrapping"></a>
+
+El primer paso de este proyecto, como cualquier otro relacionado con la Inteligencia Artificial, son los datos, ya que esto es la base de la IA. Para ello, hemos recaudado dichos datos utilizando diversas técnicas de Web Scrapping, provenientes de [esta](https://fbref.com/en/comps/8/Champions-League-Stats) página web, ya que ofrece información actualizada y relativamente fácil de realizar un scrapping de la Uefa Champions League UCL.
+
+<br>
+
+En cuanto al scrapping, hemos hecho diversos tipos, tales como un scrapping de la clasificación global del torneo, como de jugadores, goleadores, porteros, logos de equipos, etc. Todo ello para mejorar los modelos de IA que hemos usado para predecir la futura clasificación de este torneo (series temporales, regresión lineal, monte carlo...) de manera que conseguimos una métrica adicional para mejorar el rendimiento y desempeño, y, sobre todo, fiabilidad de la predicción.
 
 ---
 
@@ -78,39 +98,58 @@ Hemos realizado diferentes técnicas de clusterización, entre las que podemos d
 
 ## Series Temporales <a name="serie"></a>
 
-Al realizar la prediccion por series temporales, la mejor prediccion resulto ser la arima, con los siguientes resultados (aunque hay que mejorarlos ya que no son muy precisos xd)
+Una de las partes más importantes de este proyecto, es predecir el ganador de la Champions. Para ello, hemos hecho uso de Series Temporales (arima, sarimax, etc.) y otros modelos de predicción como la Regresión Lineal, Random Forest, e incluso otros algoritmos como el famoso Monte Carlo. Estos datos están actualizados hasta las semifinales, por lo que en las predicciones lo único que va a cambiar son los 4 primeros equipos, y los demas se quedarán fijos en la clasificación al estar ya eliminados.
 
-| Squad             | Prediction |
-|-------------------|------------|
-| Manchester City   | GR         |
-| Real Madrid       | GR         |
-| Bayern Munich     | GR         |
-| Porto             | R16        |
-| Inter             | F          |
-| Atlético Madrid   | GR         |
-| Arsenal           | GR         |
-| Barcelona         | R16        |
-| Lazio             | R16        |
-| Dortmund          | QF         |
-| Real Sociedad     | SF         |
-| RB Leipzig        | F          |
-| Paris S-G         | GR         |
-| Napoli            | GR         |
-| PSV Eindhoven     | GR         |
-| FC Copenhagen     | GR         |
-| Shakhtar          | R16        |
-| Milan             | R16        |
-| Lens              | R16        |
-| Feyenoord         | QF         |
-| Newcastle Utd     | QF         |
-| Galatasaray       | SF         |
-| Manchester Utd    | SF         |
-| Benfica           | F          |
-| RB Salzburg       | W          |
-| Young Boys        | GR         |
-| Braga             | GR         |
-| Celtic            | GR         |
-| Antwerp           | GR         |
-| Union Berlin      | GR         |
-| Sevilla           | GR         |
-| Red Star          | R16        |
+<br>
+
+Cabe destacar que el resultado de estas predicciones las hemos modificado según los jugadores que componen su equipo en base al scrapping de jugadores que mencionamos anteriormente, aumentando así las probabilidades de acierto de los modelos.
+
+El resultado de dichas predicciones es el siguiente:
+
+---
+
+#### Random Forest <a name="randomforest"></a>
+
+
+---
+
+#### Gradient Boosting <a name="gradientboosting"></a>
+
+
+---
+
+#### Autoregressive <a name="autoregressive"></a>
+
+
+---
+
+#### Exponential Smoothing <a name="exponentialsmoothing"></a>
+
+
+---
+
+#### Arima <a name="arima"></a>
+
+
+---
+
+#### Sarimax <a name="sarimax"></a>
+
+
+---
+
+#### Regresión Lineal <a name="regresionlineal"></a>
+
+
+---
+
+#### Monte Carlo <a name="montecarlo"></a>
+
+
+---
+
+## Interfaz con Gradio y Llama3 <a name="gradiou"></a>
+
+
+
+---
