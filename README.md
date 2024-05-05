@@ -1,10 +1,19 @@
 # Cluster_Champion
 
 [Pincha aqui para acceder al link de este repositorio](https://github.com/rnoguer22/Cluster_Champion.git)
+[Enlace al primer repositorio](https://github.com/rnoguer22/Api_Casas_Apuestas.git)
 
 ---
 
-Hemos seguido realizando la tarea de la champions. En esta entrega, nos hemos centrado en los clusters y hemos hecho uso de series temporales para predecir la prediccion del modelo.
+Contamos con dos repositorios para esta entrega. El primer repositorio, en el cual dimos nuestros primeros pasos realizando Web Scrapping de los datos, y una limpieza y análisis de los mismos. Por otra parte. hicimos nuestra primera predicción del ganador de la Champions con un Random Forest, el cual no resultó ser muy preciso...
+
+<br>
+
+En este segundo repositorio, hemos seguido realizando la tarea de la champions, añadiendo más datos mediante Web Scrapping y mejorando el modelo anterior. En esta entrega, nos hemos centrado en los clusters y en mejorar la predicción que comenzamos en el primer repositorio, además de integrar otros muchos modelos de predicción como Series Temporales, Regresión Lineal o el famoso Monte Carlo.
+
+<br>
+
+Por otra parte, hemos integrado una interfaz gráfica con gradio, con la que facilitamos y mejoramos la experiencia con el usuario al poder visualizar directamente los resultados, y al integrar un asistente virtual (ChatBot) basado en el reciente modelo Llama3, con el que podemos obtener cualquier información que necesitemos sin la necesidad de buscar en internet.
 
 ---
 
@@ -422,6 +431,14 @@ El resultado de dichas predicciones es el siguiente:
 
 ## Interfaz con Gradio y Llama3 <a name="gradiou"></a>
 
+Por último, hemos realizado una interfaz con gradio, en la que podemos ver de una manera mucho más visual los clusters y el resultado de las predicciones.
 
+<br>
+
+Además, hemos realizado un ChatBot con el reciente modelo de Procesamiento de Lenguaje Natural, Llama3, con el cuál podemos preguntar cualquier cosa mediante la interfaz de gradio y tras un cierto tiempo (dependiendo de la capacidad de su tarjeta gráfica o de su gráfica propiamente integrada en su procesador) obtenemos una respuesta del modelo como si de cualquier persona humana se tratase.
+
+<br>
+
+Para que esto funcione, al menos en sistemas Linux que es donde hemos estado haciendo las pruebas, hemos de tener el propio modelo Llama3 instalado en nuestra maquina, y tener inicializado ollama en una terminal, tal y como podemos ver a continuación:
 
 ---
