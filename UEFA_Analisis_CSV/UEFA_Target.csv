@@ -1,9 +1,9 @@
 id,Rk,Squad,MP,W,D,L,GF,GA,GD,Pts,Attendance,Top Team Scorer,Goalkeeper
-400,4,Real Madrid 2023-2024,10.0,7.0,3.0,0.0,22.0,12.0,10.0,24.0,72.017,Rodrygo-,Andriy Lunin
-401,4,Bayern Munich 2023-2024,10.0,7.0,2.0,1.0,18.0,9.0,9.0,23.0,60.0,Harry Kane-,Manuel Neuer
-402,4,Dortmund 2023-2024,10.0,5.0,3.0,2.0,15.0,9.0,6.0,18.0,65.092,"Marco Reus,Julian Brandt... -",Gregor Kobel
-403,4,Paris S-G 2023-2024,10.0,5.0,2.0,3.0,19.0,13.0,6.0,17.0,46.736,Kylian Mbappé-,Gianluigi Donnarumma
-404,3,Manchester City 2023-2024,10.0,8.0,2.0,0.0,28.0,13.0,15.0,26.0,40.837,Erling Haaland-,Ederson
+400,4,Real Madrid 2023-2024,11.0,7.0,4.0,0.0,24.0,14.0,10.0,25.0,72.017,"Vinicius Júnior,Rodrygo-",Andriy Lunin
+401,4,Bayern Munich 2023-2024,11.0,7.0,3.0,1.0,20.0,11.0,9.0,24.0,75.0,Harry Kane-,Manuel Neuer
+402,4,Dortmund 2023-2024,11.0,6.0,3.0,2.0,16.0,9.0,7.0,21.0,81.365,Niclas Füllkrug-,Gregor Kobel
+403,4,Paris S-G 2023-2024,11.0,5.0,2.0,4.0,19.0,14.0,5.0,17.0,46.736,Kylian Mbappé-,Gianluigi Donnarumma
+404,3,Manchester City 2023-2024,10.0,8.0,2.0,0.0,28.0,13.0,15.0,26.0,51.298,Erling Haaland-,Ederson
 405,3,Atlético Madrid 2023-2024,10.0,6.0,2.0,2.0,23.0,13.0,10.0,20.0,64.803,Antoine Griezmann-,Jan Oblak
 406,3,Barcelona 2023-2024,10.0,6.0,1.0,3.0,20.0,14.0,6.0,19.0,45.308,"Robert Lewandowski,Ferrán Torres... -",Marc-André ter Stegen
 407,3,Arsenal 2023-2024,10.0,5.0,2.0,3.0,19.0,8.0,11.0,17.0,59.87,"Leandro Trossard,Gabriel Jesus... -",David Raya

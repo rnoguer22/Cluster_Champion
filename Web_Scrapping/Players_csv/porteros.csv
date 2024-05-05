@@ -1,42 +1,42 @@
 POS,Jugadores,TGR,AT,EFEC,GC,GC DA,GC FA,DP,PL
-01,Alex Meret,136,33,24.2647,13,12,1,3,2
-02,Anthony Racioppi,112,31,27.6786,11,9,2,2,1
-03,Omri Glazer,139,31,22.3022,15,13,2,3,0
-04,Jan Oblak,100,30,30.0000,8,8,0,3,2
-05,Kamil Grabara,123,30,24.3902,14,13,1,6,2
-06,Gianluigi Donnarumma,91,28,30.7692,9,8,1,2,3
-07,Gregor Kobel,105,25,23.8095,4,4,0,4,4
-08,Yann Sommer,80,25,31.2500,4,3,1,3,4
-09,Dmytro Riznyk,92,25,27.1739,12,9,3,5,2
-10,Nick Pope,97,25,25.7732,5,5,0,4,1
-11,Alexander Schlager,103,25,24.2718,8,7,1,2,2
-12,Anatolii Trubin,97,24,24.7423,11,10,1,6,0
-13,Joe Hart,108,23,21.2963,15,12,3,4,0
-14,Brice Samba,69,23,33.3333,11,10,1,2,0
-15,Matheus Lima Magalhães,79,22,27.8481,12,11,1,2,0
-16,Ivan Provedel,111,21,18.9189,10,9,1,2,3
-17,Walter Benítez,103,21,20.3883,13,10,3,2,1
-18,Diogo Meireles da Costa,89,20,22.4719,9,9,0,3,2
-19,André Onana,91,20,21.9780,15,12,3,3,1
-20,Frederik Rønnow,118,19,16.1017,10,8,2,6,0
-21,Álex Remiro,76,19,25.0000,6,6,0,3,4
-22,Mike Maignan,81,18,22.2222,8,7,1,6,1
-23,Andriy Lunin,54,17,31.4815,3,3,0,2,2
-24,Jean Butez,76,16,21.0526,15,13,2,1,0
-25,David Raya,58,14,24.1379,4,3,1,1,4
-26,Janis Blaswich,72,13,18.0556,9,9,1,2,0
-27,Fernando Muslera,81,13,16.0494,13,12,1,1,0
-28,Marc-André ter Stegen,56,12,21.4286,4,4,0,1,2
-29,Kepa Arrizabalaga Revuelta,46,10,21.7391,5,4,1,1,1
-30,Justin Bijlow,41,10,24.3902,7,7,0,1,0
-31,Ørjan Nyland,40,8,20.0000,4,4,0,2,0
-32,Marko Dmitrovic,43,8,18.6047,8,7,1,5,0
-33,Manuel Neuer,35,8,22.8571,2,2,0,0,3
-34,Péter Gulácsi,42,7,16.6667,3,3,0,1,0
-35,Sven Ulreich,40,7,17.5000,5,5,0,1,0
-36,Ignacio Peña Sotorres,24,6,25.0000,4,4,0,1,0
-37,Stefan Ortega,16,5,31.2500,4,4,0,0,0
-38,Ederson Santana de Moraes,31,5,16.1290,5,3,2,1,1
+01,Jan Oblak,131,38,29.0076,13,13,0,5,2
+02,Gregor Kobel,144,37,25.6944,8,8,0,4,5
+03,Gianluigi Donnarumma,126,36,28.5714,14,13,1,3,3
+04,Alex Meret,136,33,24.2647,13,12,1,3,2
+05,Anthony Racioppi,112,31,27.6786,11,9,2,2,1
+06,Andriy Lunin,113,31,27.4336,9,6,3,7,2
+07,Omri Glazer,139,31,22.3022,15,13,2,3,0
+08,Kamil Grabara,123,30,24.3902,14,13,1,6,2
+09,Yann Sommer,80,25,31.2500,4,3,1,3,4
+10,Dmytro Riznyk,92,25,27.1739,12,9,3,5,2
+11,Nick Pope,97,25,25.7732,5,5,0,4,1
+12,Alexander Schlager,103,25,24.2718,8,7,1,2,2
+13,Anatolii Trubin,97,24,24.7423,11,10,1,6,0
+14,Joe Hart,108,23,21.2963,15,12,3,4,0
+15,Brice Samba,69,23,33.3333,11,10,1,2,0
+16,Matheus Lima Magalhães,79,22,27.8481,12,11,1,2,0
+17,Marc-André ter Stegen,95,21,22.1053,10,9,1,1,2
+18,Ivan Provedel,111,21,18.9189,10,9,1,2,3
+19,Walter Benítez,103,21,20.3883,13,10,3,2,1
+20,Diogo Meireles da Costa,89,20,22.4719,9,9,0,3,2
+21,André Onana,91,20,21.9780,15,12,3,3,1
+22,Frederik Rønnow,118,19,16.1017,10,8,2,6,0
+23,Álex Remiro,76,19,25.0000,6,6,0,3,4
+24,Mike Maignan,81,18,22.2222,8,7,1,6,1
+25,David Raya,81,17,20.9877,7,6,1,1,4
+26,Jean Butez,76,16,21.0526,15,13,2,1,0
+27,Manuel Neuer,66,15,22.7273,6,6,0,1,4
+28,Janis Blaswich,72,13,18.0556,9,9,1,2,0
+29,Fernando Muslera,81,13,16.0494,13,12,1,1,0
+30,Kepa Arrizabalaga Revuelta,46,10,21.7391,5,4,1,1,1
+31,Justin Bijlow,41,10,24.3902,7,7,0,1,0
+32,Ørjan Nyland,40,8,20.0000,4,4,0,2,0
+33,Marko Dmitrovic,43,8,18.6047,8,7,1,5,0
+34,Stefan Ortega,31,8,25.8065,7,6,1,1,0
+35,Péter Gulácsi,42,7,16.6667,3,3,0,1,0
+36,Ederson Santana de Moraes,39,7,17.9487,6,4,2,1,1
+37,Sven Ulreich,40,7,17.5000,5,5,0,1,0
+38,Ignacio Peña Sotorres,24,6,25.0000,4,4,0,1,0
 39,Aaron Ramsdale,17,4,23.5294,1,1,0,0,0
 40,Senne Lammens,16,4,25.0000,2,2,0,0,0
 41,Alexander Meyer,14,4,28.5714,1,1,0,0,0

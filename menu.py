@@ -41,7 +41,7 @@ def iniciar():
             print(' Choose the web scrapping you want to launch:')
             print('========================')
             print('[1] Update actual Champions League Standings')
-            print('[2] Scrap players')
+            print('[2] Scrap strikers')
             print('[3] Scrapping playmakers')
             print('[4] Scrapping goalkeepers')
             print('[5] Scrapping Champions League team logos')
@@ -64,6 +64,7 @@ def iniciar():
                 start()
             else:
                 print('Invalid option')
+            print('\n========================\nScrapping finished')
             input('Press Enter to continue...')
 
 
@@ -107,6 +108,7 @@ def iniciar():
                 start()
             else:
                 print('Invalid option')
+            print('\n========================\nClustering finished')
             input('Press Enter to continue...')
             
 
@@ -150,6 +152,7 @@ def iniciar():
                 start()
             else:
                 print('Invalid option')
+            print('\n========================\nPredictions finished')
             input('Press Enter to continue...')
 
 
