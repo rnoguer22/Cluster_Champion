@@ -110,41 +110,313 @@ El resultado de dichas predicciones es el siguiente:
 
 #### Random Forest <a name="randomforest"></a>
 
+| Squad           | Prediction |
+|-----------------|------------|
+| Bayern Munich   | W          |
+| Paris S-G       | F          |
+| Real Madrid     | SF         |
+| Dortmund        | SF         |
+| Manchester City | QF         |
+| Atlético Madrid | QF         |
+| Barcelona       | QF         |
+| Arsenal         | QF         |
+| Porto           | R16        |
+| Inter           | R16        |
+| RB Leipzig      | R16        |
+| Lazio           | R16        |
+| Real Sociedad   | R16        |
+| Napoli          | R16        |
+| PSV Eindhoven   | R16        |
+| FC Copenhagen   | R16        |
+| Shakhtar        | GR         |
+| Milan           | GR         |
+| Lens            | GR         |
+| Feyenoord       | GR         |
+| Newcastle Utd   | GR         |
+| Galatasaray     | GR         |
+| Manchester Utd  | GR         |
+| Benfica         | GR         |
+| RB Salzburg     | GR         |
+| Young Boys      | GR         |
+| Braga           | GR         |
+| Celtic          | GR         |
+| Antwerp         | GR         |
+| Union Berlin    | GR         |
+| Sevilla         | GR         |
+| Red Star        | GR         |
 
 ---
 
 #### Gradient Boosting <a name="gradientboosting"></a>
 
+| Squad           | Prediction |
+|-----------------|------------|
+| Bayern Munich   | W          |
+| Dortmund        | F          |
+| Real Madrid     | SF         |
+| Paris S-G       | SF         |
+| Manchester City | QF         |
+| Atlético Madrid | QF         |
+| Barcelona       | QF         |
+| Arsenal         | QF         |
+| Porto           | R16        |
+| Inter           | R16        |
+| RB Leipzig      | R16        |
+| Lazio           | R16        |
+| Real Sociedad   | R16        |
+| Napoli          | R16        |
+| PSV Eindhoven   | R16        |
+| FC Copenhagen   | R16        |
+| Shakhtar        | GR         |
+| Milan           | GR         |
+| Lens            | GR         |
+| Feyenoord       | GR         |
+| Newcastle Utd   | GR         |
+| Galatasaray     | GR         |
+| Manchester Utd  | GR         |
+| Benfica         | GR         |
+| RB Salzburg     | GR         |
+| Young Boys      | GR         |
+| Braga           | GR         |
+| Celtic          | GR         |
+| Antwerp         | GR         |
+| Union Berlin    | GR         |
+| Sevilla         | GR         |
+| Red Star        | GR         |
 
 ---
 
 #### Autoregressive <a name="autoregressive"></a>
 
+| Squad           | Prediction |
+|-----------------|------------|
+| Bayern Munich   | W          |
+| Paris S-G       | F          |
+| Real Madrid     | SF         |
+| Dortmund        | SF         |
+| Manchester City | QF         |
+| Atlético Madrid | QF         |
+| Barcelona       | QF         |
+| Arsenal         | QF         |
+| Porto           | R16        |
+| Inter           | R16        |
+| RB Leipzig      | R16        |
+| Lazio           | R16        |
+| Real Sociedad   | R16        |
+| Napoli          | R16        |
+| PSV Eindhoven   | R16        |
+| FC Copenhagen   | R16        |
+| Shakhtar        | GR         |
+| Milan           | GR         |
+| Lens            | GR         |
+| Feyenoord       | GR         |
+| Newcastle Utd   | GR         |
+| Galatasaray     | GR         |
+| Manchester Utd  | GR         |
+| Benfica         | GR         |
+| RB Salzburg     | GR         |
+| Young Boys      | GR         |
+| Braga           | GR         |
+| Celtic          | GR         |
+| Antwerp         | GR         |
+| Union Berlin    | GR         |
+| Sevilla         | GR         |
+| Red Star        | GR         |
 
 ---
 
 #### Exponential Smoothing <a name="exponentialsmoothing"></a>
 
+| Squad           | Prediction |
+|-----------------|------------|
+| Bayern Munich   | W          |
+| Paris S-G       | F          |
+| Real Madrid     | SF         |
+| Dortmund        | SF         |
+| Manchester City | QF         |
+| Atlético Madrid | QF         |
+| Barcelona       | QF         |
+| Arsenal         | QF         |
+| Porto           | R16        |
+| Inter           | R16        |
+| RB Leipzig      | R16        |
+| Lazio           | R16        |
+| Real Sociedad   | R16        |
+| Napoli          | R16        |
+| PSV Eindhoven   | R16        |
+| FC Copenhagen   | R16        |
+| Shakhtar        | GR         |
+| Milan           | GR         |
+| Lens            | GR         |
+| Feyenoord       | GR         |
+| Newcastle Utd   | GR         |
+| Galatasaray     | GR         |
+| Manchester Utd  | GR         |
+| Benfica         | GR         |
+| RB Salzburg     | GR         |
+| Young Boys      | GR         |
+| Braga           | GR         |
+| Celtic          | GR         |
+| Antwerp         | GR         |
+| Union Berlin    | GR         |
+| Sevilla         | GR         |
+| Red Star        | GR         |
 
 ---
 
 #### Arima <a name="arima"></a>
 
+| Squad           | Prediction |
+|-----------------|------------|
+| Paris S-G       | W          |
+| Bayern Munich   | F          |
+| Real Madrid     | SF         |
+| Dortmund        | SF         |
+| Manchester City | QF         |
+| Atlético Madrid | QF         |
+| Barcelona       | QF         |
+| Arsenal         | QF         |
+| Porto           | R16        |
+| Inter           | R16        |
+| RB Leipzig      | R16        |
+| Lazio           | R16        |
+| Real Sociedad   | R16        |
+| Napoli          | R16        |
+| PSV Eindhoven   | R16        |
+| FC Copenhagen   | R16        |
+| Shakhtar        | GR         |
+| Milan           | GR         |
+| Lens            | GR         |
+| Feyenoord       | GR         |
+| Newcastle Utd   | GR         |
+| Galatasaray     | GR         |
+| Manchester Utd  | GR         |
+| Benfica         | GR         |
+| RB Salzburg     | GR         |
+| Young Boys      | GR         |
+| Braga           | GR         |
+| Celtic          | GR         |
+| Antwerp         | GR         |
+| Union Berlin    | GR         |
+| Sevilla         | GR         |
+| Red Star        | GR         |
 
 ---
 
 #### Sarimax <a name="sarimax"></a>
 
+| Squad           | Prediction |
+|-----------------|------------|
+| Bayern Munich   | W          |
+| Paris S-G       | F          |
+| Real Madrid     | SF         |
+| Dortmund        | SF         |
+| Manchester City | QF         |
+| Atlético Madrid | QF         |
+| Barcelona       | QF         |
+| Arsenal         | QF         |
+| Porto           | R16        |
+| Inter           | R16        |
+| RB Leipzig      | R16        |
+| Lazio           | R16        |
+| Real Sociedad   | R16        |
+| Napoli          | R16        |
+| PSV Eindhoven   | R16        |
+| FC Copenhagen   | R16        |
+| Shakhtar        | GR         |
+| Milan           | GR         |
+| Lens            | GR         |
+| Feyenoord       | GR         |
+| Newcastle Utd   | GR         |
+| Galatasaray     | GR         |
+| Manchester Utd  | GR         |
+| Benfica         | GR         |
+| RB Salzburg     | GR         |
+| Young Boys      | GR         |
+| Braga           | GR         |
+| Celtic          | GR         |
+| Antwerp         | GR         |
+| Union Berlin    | GR         |
+| Sevilla         | GR         |
+| Red Star        | GR         |
 
 ---
 
 #### Regresión Lineal <a name="regresionlineal"></a>
 
+| Squad           | Prediction |
+|-----------------|------------|
+| Real Madrid     | W          |
+| Paris S-G       | F          |
+| Bayern Munich   | SF         |
+| Dortmund        | SF         |
+| Manchester City | QF         |
+| Atlético Madrid | QF         |
+| Barcelona       | QF         |
+| Arsenal         | QF         |
+| Porto           | R16        |
+| Inter           | R16        |
+| RB Leipzig      | R16        |
+| Lazio           | R16        |
+| Real Sociedad   | R16        |
+| Napoli          | R16        |
+| PSV Eindhoven   | R16        |
+| FC Copenhagen   | R16        |
+| Shakhtar        | GR         |
+| Milan           | GR         |
+| Lens            | GR         |
+| Feyenoord       | GR         |
+| Newcastle Utd   | GR         |
+| Galatasaray     | GR         |
+| Manchester Utd  | GR         |
+| Benfica         | GR         |
+| RB Salzburg     | GR         |
+| Young Boys      | GR         |
+| Braga           | GR         |
+| Celtic          | GR         |
+| Antwerp         | GR         |
+| Union Berlin    | GR         |
+| Sevilla         | GR         |
+| Red Star        | GR         |
 
 ---
 
 #### Monte Carlo <a name="montecarlo"></a>
 
+| Squad           | Win Probability (%) |
+|-----------------|---------------------|
+| Bayern Munich   | 28.9                |
+| Real Madrid     | 26.7                |
+| Dortmund        | 25.7                |
+| Paris S-G       | 18.7                |
+| Manchester City | 0.0                 |
+| Atlético Madrid | 0.0                 |
+| Barcelona       | 0.0                 |
+| Arsenal         | 0.0                 |
+| Porto           | 0.0                 |
+| Inter           | 0.0                 |
+| RB Leipzig      | 0.0                 |
+| Lazio           | 0.0                 |
+| Real Sociedad   | 0.0                 |
+| Napoli          | 0.0                 |
+| PSV Eindhoven   | 0.0                 |
+| FC Copenhagen   | 0.0                 |
+| Shakhtar        | 0.0                 |
+| Milan           | 0.0                 |
+| Lens            | 0.0                 |
+| Feyenoord       | 0.0                 |
+| Newcastle Utd   | 0.0                 |
+| Galatasaray     | 0.0                 |
+| Manchester Utd  | 0.0                 |
+| Benfica         | 0.0                 |
+| RB Salzburg     | 0.0                 |
+| Young Boys      | 0.0                 |
+| Braga           | 0.0                 |
+| Celtic          | 0.0                 |
+| Antwerp         | 0.0                 |
+| Union Berlin    | 0.0                 |
+| Sevilla         | 0.0                 |
+| Red Star        | 0.0                 |
 
 ---
 
