@@ -460,10 +460,10 @@ Para que esto funcione, al menos en sistemas Linux que es donde hemos estado hac
 
 <br>
 
-![ollamaserve](https://github.com/rnoguer22/Cluster_Champion/blob/main/Gradio/img/ollama-serve.png)
+![ollamaserve](https://github.com/rnoguer22/Cluster_Champion/blob/main/Gradio/img/ollama-serve2.png)
 
 Y cada vez que le preguntamos algo al ChatBot, se muestra información como el status, la hora a la que se hizo la pregunta, el tiempo que se tardó en dar la respuesta, timestamp, dirección IP, POST, etc.
 
-![status](https://github.com/rnoguer22/Cluster_Champion/blob/main/Gradio/img/image.png)
+![status](https://github.com/rnoguer22/Cluster_Champion/blob/main/Gradio/img/showstatus.png)
 
 ---
