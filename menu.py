@@ -26,10 +26,8 @@ def iniciar():
             print("[1] Web Scrapping")
             print("[2] Clusters ")
             print("[3] Predictions") #Time series, Monte Carlo, Linear Regression with Spark
-            print("[4] LangChain")        
-            print("[5] IMG Classifier")
-            print("[6] ChatBot with Llama3 using gradio gui")
-            print("[7] Close ")
+            print("[4] ChatBot with Llama3 using gradio gui")
+            print("[5] Close ")
             print("========================")
             opcion = input("> ")
             limpiar_pantalla()
@@ -156,22 +154,10 @@ def iniciar():
 
 
         if opcion == '4':
-            print("Launching LangChain...")
-            print('Lanchaing does not work properly :(')
-            print('Moyis needs to update it to Llama 3')
-            sleep(3)
-            start()
-
-        if opcion == '5':
-            print('Launching IMG Classifier...')
-            print('IMG Classifier does not work properly :(')
-            sleep(3)
-            start()
-
-        if opcion == '6':
             LanzadorLlama3.lanzar_gradio_gui(LanzadorLlama3)
 
-        if opcion == '7':
+
+        if opcion == '5':
             print('Bye bye!!!')
             sleep(2)
             break
