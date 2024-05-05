@@ -1,11 +1,14 @@
 # Cluster_Champion
 
-[Pincha aqui para acceder al link de este repositorio](https://github.com/rnoguer22/Cluster_Champion.git)
 [Enlace al primer repositorio](https://github.com/rnoguer22/Api_Casas_Apuestas.git)
+
+<br>
+
+[Pincha aqui para acceder al link de este repositorio](https://github.com/rnoguer22/Cluster_Champion.git)
 
 ---
 
-Contamos con dos repositorios para esta entrega. El primer repositorio, en el cual dimos nuestros primeros pasos realizando Web Scrapping de los datos, y una limpieza y análisis de los mismos. Por otra parte. hicimos nuestra primera predicción del ganador de la Champions con un Random Forest, el cual no resultó ser muy preciso...
+Contamos con dos repositorios para esta entrega. El primer repositorio, en el cual dimos nuestros primeros pasos realizando Web Scrapping de los datos, y una limpieza y análisis de los mismos. Por otra parte. hicimos nuestra primera predicción del ganador de la Champions con un Random Forest, la cual no resultó ser muy precisa...
 
 <br>
 
@@ -111,7 +114,7 @@ Una de las partes más importantes de este proyecto, es predecir el ganador de l
 
 <br>
 
-Cabe destacar que el resultado de estas predicciones las hemos modificado según los jugadores que componen su equipo en base al scrapping de jugadores que mencionamos anteriormente, aumentando así las probabilidades de acierto de los modelos.
+Cabe destacar que el resultado de estas predicciones las hemos modificado en base al rendimiento de los jugadores que componen su equipo, obteniendo sus datos mediante el scrapping de jugadores que mencionamos anteriormente, aumentando así las probabilidades de acierto de los modelos.
 
 El resultado de dichas predicciones es el siguiente:
 
